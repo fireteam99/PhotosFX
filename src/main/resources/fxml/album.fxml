@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane dividerPositions="0.12814070351758794" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.photos.java.controllers.AlbumController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Button fx:id="albumsMenuButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#albumsMenu" text="menu" />
+            <Button fx:id="albumsSearchButton" layoutX="532.0" layoutY="12.0" mnemonicParsing="false" onAction="#searchAlbum" text="Search" />
+            <Text layoutX="279.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Albums" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <ListView layoutX="199.0" layoutY="72.0" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="createAlbumButton" layoutX="532.0" layoutY="305.0" mnemonicParsing="false" onAction="#addNewAlbum" text="Add" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
