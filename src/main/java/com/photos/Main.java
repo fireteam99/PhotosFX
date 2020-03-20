@@ -13,6 +13,9 @@ public class Main extends Application {
         primaryStage.setTitle("Photos");
         primaryStage.setScene(new Scene(root, 1000, 650));
         primaryStage.show();
+        primaryStage.setMinWidth(700);
+        primaryStage.setMinHeight(400);
+
     }
 
     public static void main(String[] args) {
