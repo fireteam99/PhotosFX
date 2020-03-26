@@ -1,0 +1,52 @@
+.header-light {
+    -fx-text-fill: #40464E;
+    -fx-font-size: 40pt;
+}
+
+.header-dark {
+    -fx-text-fill: #F7F7F7;
+    -fx-font-size: 40pt;
+}
+
+.subheader-light {
+    -fx-text-fill: #40464E;
+    -fx-font-size: 20pt;
+}
+
+.subheader-dark {
+    -fx-text-fill: #F7F7F7;
+    -fx-font-size: 20pt;
+}
+
+.card {
+    -fx-padding: 3em 8em 3em 8em;
+    -fx-background-color: #D8D8D8;
+    -fx-border-radius: .3em;
+    -fx-background-radius: .3em;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 15, 0, 3, 8);
+}
+
+.input {
+    -fx-min-height: 2.2em;
+    -fx-min-width: 10em;
+    -fx-background-color: #F2F2F2;
+    -fx-border-color: #979797;
+    -fx-border-radius: .2em;
+    -fx-border-width: .04em;
+}
+
+.input-label {
+    -fx-text-fill: #40464E;
+    -fx-font-size: 11pt;
+}
+
+.btn-confirm {
+    -fx-background-color: #A7E6AE;
+    -fx-min-height: 2.2em;
+    -fx-min-width: 4.5em;
+    -fx-border-color: #979797;
+    -fx-border-radius: .2em;
+    -fx-border-width: .04em;
+    -fx-text-fill: #40464E;
+    -fx-font-size: 10pt;
+}
