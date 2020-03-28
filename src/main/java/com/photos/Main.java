@@ -1,4 +1,5 @@
 package com.photos;
+import com.photos.controllers.UserList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,11 +11,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-        primaryStage.setTitle("Photos");
+        primaryStage.setTitle("Photos21");
         primaryStage.setScene(new Scene(root, 1000, 650));
         primaryStage.show();
         primaryStage.setMinWidth(700);
         primaryStage.setMinHeight(400);
+
+        UserList test = new UserList();
+        test.setAdmin();
 
     }
 

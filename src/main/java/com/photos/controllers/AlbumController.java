@@ -3,8 +3,12 @@ package com.photos.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 
 public class AlbumController {
+
+    @FXML
+    private ListView<Picture> listView;
 
     @FXML
     private Button albumsMenuButton;
