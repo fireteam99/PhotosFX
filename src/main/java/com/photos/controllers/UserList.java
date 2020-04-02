@@ -58,6 +58,7 @@ public class UserList implements Serializable{
         //System.out.println("Admin user added to list.");
     }
 
+    //this method adds new user to userList, as long as the user does not already exist
     public void addUser(User user) throws IOException {
         for (User u : userList){
             if (u.getUsername().equals(user.getUsername())){
