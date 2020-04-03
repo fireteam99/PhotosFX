@@ -50,3 +50,21 @@
     -fx-text-fill: #40464E;
     -fx-font-size: 10pt;
 }
+
+.btn-min {
+    -fx-background-color: transparent;
+    -fx-fill: #40464E;
+    -fx-font-size: 14pt;
+}
+
+.btn-floating {
+    -fx-background-color: #F0F0F0;
+    -fx-border-width: 0.06em;
+    -fx-border-color: #979797;
+    -fx-border-radius: 5em;
+    -fx-background-radius: 5em;
+    -fx-padding: 2em 2.4em 2em 2.4em;
+    -fx-border-insets: 2em;
+    -fx-background-insets: 2em;
+    -fx-effect: dropshadow( gaussian , rgba(0, 0, 0, 0.5) , 12, 0, 3, 6);
+}

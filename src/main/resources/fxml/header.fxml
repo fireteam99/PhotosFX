@@ -7,20 +7,20 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.photos.controllers.headerController"
-      prefHeight="40.0">
+      xmlns:fx="http://javafx.com/fxml" styleClass="background"
+      fx:controller="com.photos.controllers.HeaderController"
+      prefHeight="60.0" stylesheets="/css/common.css, /css/header.css">
     <left>
         <VBox alignment="CENTER">
-            <Button text="Hamburger"/>
+            <Button text="Menu" styleClass="btn-min"/>
         </VBox>
     </left>
     <center>
-        <Label text="Screen Title Here"/>
+        <Label text="Screen Title Here" styleClass="subheader-light"/>
     </center>
     <right>
         <VBox alignment="CENTER">
-            <Button text="Search"/>
+            <Button text="Search" styleClass="btn-min"/>
         </VBox>
     </right>
 </BorderPane>

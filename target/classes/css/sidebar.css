@@ -1,0 +1,11 @@
+.background {
+    -fx-background-color: #F6F6F6;
+    -fx-border-style: hidden solid hidden hidden;
+    -fx-border-width: 0.06em;
+    -fx-border-color: #979797;
+}
+.sidebar-list {
+    -fx-padding: 1em;
+    -fx-border-insets: 1em;
+    -fx-background-insets: 1em;
+}

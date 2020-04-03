@@ -9,11 +9,15 @@
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.photos.controllers.SidebarController"
-            stylesheets="/css/common.css" minWidth="200" prefWidth="200">
+            stylesheets="/css/common.css, /css/sidebar.css" minWidth="200" prefWidth="200"
+            styleClass="background">
         <children>
-            <Button text="Close" />
-            <Button text="Home" />
-            <Button text="Search" />
-            <Button text="Logout" />
+            <VBox spacing="10" styleClass="sidebar-list">
+                <children>
+                    <Button fx:id="home" text="Home" styleClass="btn-min" />
+                    <Button fx:id="search" text="Search" styleClass="btn-min" />
+                    <Button fx:id="logout" text="Logout" styleClass="btn-min" />
+                </children>
+            </VBox>
         </children>
 </VBox>
