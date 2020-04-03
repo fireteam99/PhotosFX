@@ -6,24 +6,35 @@
 
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="borderPane"
-            fx:controller="com.photos.controllers.AdminController" stylesheets="/css/common.css, /css/admin.css"
-            styleClass="background">
-    <top>
-        <!--        place header here-->
-    </top>
-    <left>
-        <!--        place sidebar hear-->
-    </left>
-    <center>
-        <VBox>
-            <children>
-                <ListView fx:id="adminListView" prefWidth="200.0" />
-                <StackPane>
-                    <Button fx:id="adminCreateUserButton" mnemonicParsing="false" onAction="#adminCreateUser" text="Add User" />
-                </StackPane>
-            </children>
-        </VBox>
-    </center>
-</BorderPane>
+<?import javafx.scene.layout.HBox?>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="borderPane"
+           fx:controller="com.photos.controllers.AdminController" stylesheets="/css/common.css, /css/admin.css"
+           styleClass="background" style="-fx-background-color: green">
+    <children>
+        <BorderPane>
+            <top>
+                <HBox alignment="CENTER" prefWidth="${borderPane.width}" maxWidth="${borderPane.width}"
+                      minWidth="${borderPane.width}" style="-fx-background-color: purple">
+                    <fx:include source="header.fxml" fx:id="header" style="-fx-background-color: grey" minWidth="${borderPane.width}"/>
+                </HBox>
+            </top>
+            <center>
+                <VBox>
+                    <children>
+                        <ListView fx:id="adminListView" prefWidth="200.0"/>
+                        <StackPane>
+                            <Button fx:id="adminCreateUserButton" mnemonicParsing="false"
+                                    onAction="#adminCreateUser"
+                                    text="Add User"/>
+                        </StackPane>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+        <HBox alignment="CENTER_LEFT">
+            <fx:include source="sidebar.fxml" fx:id="sidebar" style="-fx-background-color: blue"/>
+        </HBox>
+    </children>
+
+</StackPane>
