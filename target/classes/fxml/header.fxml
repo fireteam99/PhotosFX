@@ -14,7 +14,7 @@
             prefHeight="80.0" stylesheets="/css/common.css, /css/header.css">
     <left>
         <VBox alignment="CENTER">
-            <Button styleClass="btn-min">
+            <Button fx:id="menuButton" styleClass="btn-min">
                 <graphic>
                     <ImageView fitHeight="25" fitWidth="35" styleClass="icon">
                         <image>
@@ -23,15 +23,14 @@
                     </ImageView>
                 </graphic>
             </Button>
-
         </VBox>
     </left>
     <center>
-        <Label text="Screen Title Here" styleClass="subheader-light"/>
+        <Label fx:id="title" text="Screen Title Here" styleClass="subheader-light"/>
     </center>
     <right>
         <VBox alignment="CENTER">
-            <Button styleClass="btn-min">
+            <Button fx:id="searchButton" styleClass="btn-min">
                 <graphic>
                     <ImageView fitHeight="40" fitWidth="40" styleClass="icon">
                         <image>
