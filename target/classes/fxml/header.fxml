@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" styleClass="background"
+            fx:controller="com.photos.controllers.HeaderController"
+            prefHeight="80.0" stylesheets="/css/common.css, /css/header.css">
+    <left>
+        <VBox alignment="CENTER">
+            <Button fx:id="menuButton" styleClass="btn-min">
+                <graphic>
+                    <ImageView fitHeight="25" fitWidth="35" styleClass="icon">
+                        <image>
+                            <Image url="/images/menu.png" preserveRatio="true" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </VBox>
+    </left>
+    <center>
+        <Label fx:id="title" text="Screen Title Here" styleClass="subheader-light"/>
+    </center>
+    <right>
+        <VBox alignment="CENTER">
+            <Button fx:id="searchButton" styleClass="btn-min">
+                <graphic>
+                    <ImageView fitHeight="40" fitWidth="40" styleClass="icon">
+                        <image>
+                            <Image url="/images/search.png" preserveRatio="true" />
+                        </image>
+                    </ImageView>
+
+                </graphic>
+            </Button>
+        </VBox>
+    </right>
+</BorderPane>

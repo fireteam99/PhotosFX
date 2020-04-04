@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx" fx:id="borderPane"
+            xmlns:fx="http://javafx.com/fxml" stylesheets="/css/common.css"
+            fx:controller="com.photos.controllers.homeController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <HBox alignment="CENTER" prefWidth="${borderPane.width}" maxWidth="${borderPane.width}"
+              minWidth="${borderPane.width}">
+            <fx:include source="header.fxml" fx:id="header" minWidth="${borderPane.width}" />
+        </HBox>
+    </top>
+    <center>
+        <StackPane alignment="CENTER_LEFT">
+            <children>
+                <StackPane alignment="BOTTOM_RIGHT">
+                    <HBox style="-fx-background-color: white"></HBox>
+                    <Button fx:id="adminCreateUserButton" mnemonicParsing="false"
+                            styleClass="btn-floating"
+                            alignment="BOTTOM_RIGHT">
+                        <graphic>
+                            <ImageView fitHeight="50" fitWidth="50" styleClass="icon">
+                                <image>
+                                    <Image url="/images/add.png" preserveRatio="true"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+
+                </StackPane>
+                <HBox alignment="CENTER_LEFT" maxWidth="200">
+                    <fx:include source="sidebar.fxml" fx:id="sidebar" />
+                </HBox>
+            </children>
+        </StackPane>
+    </center>
+</BorderPane>

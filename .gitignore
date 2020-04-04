@@ -176,3 +176,6 @@ fabric.properties
 # End of https://www.gitignore.io/api/intellij
 
 # End of https://www.gitignore.io/api/java,macos,windows
+
+# serialized data
+serializedUsers.ser

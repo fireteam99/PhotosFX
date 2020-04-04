@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class AdminController {
 
     @FXML
-    private ListView<?> adminListView;
+    private ListView<String> adminListView;
 
     @FXML
     private Button adminCreateUserButton;
@@ -31,6 +31,15 @@ public class AdminController {
         stage.setScene(scene);
         stage.show();
     }
+    public void initialize() {
+        adminListView.getItems().add("User1");
+        adminListView.getItems().add("User2");
+        adminListView.getItems().add("User3");
+
+    }
+
+    public AdminController() {
+        adminListView = new ListView<>();
+    }
 
 }
-

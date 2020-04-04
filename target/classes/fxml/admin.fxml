@@ -5,12 +5,68 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Admin" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="com.photos.controllers.AdminController">
-  <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-         <children>
-            <ListView fx:id="adminListView" layoutX="199.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="adminCreateUserButton" layoutX="511.0" layoutY="335.0" mnemonicParsing="false" onAction="#adminCreateUser" text="Add User" />
-         </children></AnchorPane>
-  </content>
-</TitledPane>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="borderPane"
+            fx:controller="com.photos.controllers.AdminController" stylesheets="/css/common.css"
+            styleClass="background">
+    <top>
+        <BorderPane prefHeight="80.0">
+            <left>
+                <VBox alignment="CENTER">
+                    <Button styleClass="btn-min">
+                        <graphic>
+                            <ImageView fitHeight="35" fitWidth="35" styleClass="icon">
+                                <image>
+                                    <Image url="/images/arrow_back_ios.png" preserveRatio="true"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </VBox>
+            </left>
+            <center>
+                <Label text="Admin Panel" styleClass="subheader-light"/>
+            </center>
+            <right>
+                <VBox alignment="CENTER">
+                    <Button styleClass="btn-min">
+                        <graphic>
+                            <ImageView fitHeight="40" fitWidth="40" styleClass="icon">
+                                <image>
+                                    <Image url="/images/search.png" preserveRatio="true"/>
+                                </image>
+                            </ImageView>
+
+                        </graphic>
+                    </Button>
+                </VBox>
+            </right>
+        </BorderPane>
+    </top>
+    <center>
+        <StackPane alignment="BOTTOM_RIGHT">
+            <children>
+                <ListView fx:id="adminListView" prefWidth="200.0"/>
+                <Button fx:id="adminCreateUserButton" mnemonicParsing="false"
+                        onAction="#adminCreateUser" styleClass="btn-floating"
+                        alignment="BOTTOM_RIGHT">
+                    <graphic>
+                        <ImageView fitHeight="50" fitWidth="50" styleClass="icon">
+                            <image>
+                                <Image url="/images/add.png" preserveRatio="true"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </StackPane>
+    </center>
+</BorderPane>

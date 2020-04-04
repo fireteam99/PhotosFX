@@ -50,3 +50,51 @@
     -fx-text-fill: #40464E;
     -fx-font-size: 10pt;
 }
+
+.btn-min {
+    -fx-background-color: transparent;
+    -fx-fill: #40464E;
+    -fx-font-size: 14pt;
+}
+
+.btn-min:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+}
+
+.btn-min:pressed {
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+    -fx-scale-z: .95;
+}
+
+.btn-floating {
+    -fx-background-color: #F0F0F0;
+    -fx-border-width: 0.08em;
+    -fx-border-color: #979797;
+    -fx-border-radius: 5em;
+    -fx-background-radius: 5em;
+    -fx-padding: .8em;
+    -fx-border-insets: 1.8em;
+    -fx-background-insets: 1.8em;
+    -fx-effect: dropshadow( gaussian , rgba(0, 0, 0, 0.5) , 10, 0, 3, 6);
+}
+
+.btn-floating:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-scale-z: 1.05;
+    -fx-effect: dropshadow( gaussian , rgba(0, 0, 0, 0.5) , 12, 0, 4, 7);
+}
+
+.btn-floating:pressed {
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+    -fx-scale-z: .95;
+    -fx-effect: none;
+}
+
+.btn-floating > .icon {
+    -fx-padding: none;
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.photos.controllers.SidebarController"
+            stylesheets="/css/common.css, /css/sidebar.css" minWidth="200" prefWidth="200"
+            styleClass="background" fx:id="sidebarContainer" translateX="-200">
+        <children>
+            <VBox spacing="10" styleClass="sidebar-list">
+                <children>
+                    <Button fx:id="home" text="Home" styleClass="btn-min" />
+                    <Button fx:id="search" text="Search" styleClass="btn-min" />
+                    <Button fx:id="logout" text="Logout" styleClass="btn-min" />
+                </children>
+            </VBox>
+        </children>
+</VBox>
