@@ -21,7 +21,7 @@
         <BorderPane prefHeight="80.0">
             <left>
                 <VBox alignment="CENTER">
-                    <Button styleClass="btn-min">
+                    <Button fx:id="logoutButton" styleClass="btn-min" onAction="#logout">
                         <graphic>
                             <ImageView fitHeight="35" fitWidth="35" styleClass="icon">
                                 <image>

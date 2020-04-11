@@ -10,56 +10,34 @@ public class UserList implements Serializable{
 
     //master list of users.ser
     private static ArrayList<User> userList = new ArrayList<User>();
+    public static final String dataFile = "serializedUsers.ser";
 
-
-//    public static final String storeDir = "/Users";
-//    public static final String storeFile = "users.ser";
-
-    public static void writeToSerFile(UserList userApp) {
-        try {
-            String fileName = "serializedUsers.ser";
-            File file = new File(fileName);
-            file.setWritable(true);
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file, true));
-            //oos.writeObject((userList)); //adds most recently updated userList
-            oos.writeObject(userApp);
-            oos.close();
-        } catch (IOException i){
-            i.printStackTrace();
-        }
-        //deserialize();
+    //serialize list of users
+    public static void writeToSerFile(ArrayList<User> users) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dataFile));
+        oos.writeObject(users);
     }
 
-    public static UserList deserialize(){
-        UserList test = new UserList();
+    //deserialize list of users - used to get the latest version
+    public static ArrayList<User> deserialize(){
+        ArrayList<User> users = new ArrayList<User>();
         try {
             FileInputStream fileIn = new FileInputStream("serializedUsers.ser");
             ObjectInputStream ois = new ObjectInputStream(fileIn);
-            test = (UserList) ois.readObject();
+            users = (ArrayList<User>) ois.readObject();
             ois.close();
             fileIn.close();
         } catch (IOException | ClassNotFoundException i){
             System.out.println("No users exist or class is not found");
-            i.printStackTrace();
-            return test;
+            //i.printStackTrace();
+            return users;
         }
-        return test;
-    }
-
-    //add admin to the list of users.ser - initially the only user
-    //** must be called **
-    public void setAdmin() throws IOException {
-        final User admin = new User("admin", "admin");
-        for (User u : userList){ //check to see if admin was already added
-            if (u.getUsername().equals("admin")){
-                return;
-            }
-        }
-        addUser(admin);
+        return users;
     }
 
     //this method adds new user to userList, as long as the user does not already exist
-    public void addUser(User user) {
+    //serializes class object whenever we add a user
+    public void addUser(User user) throws IOException {
         for (User u : userList){
             if (u.getUsername().equals(user.getUsername())){
                 System.out.println("Warning: username already exists!");
@@ -67,6 +45,8 @@ public class UserList implements Serializable{
             }
         }
         userList.add(user);
+        writeToSerFile(userList);
+        System.out.println("Successfully added '" + user.getUsername() + "'...");
     }
 
     //get latest version of userList via deserialization from file
@@ -79,6 +59,19 @@ public class UserList implements Serializable{
         for (User u : userList){
             System.out.println(u.getUsername());
         }
+    }
+
+    public boolean userExists(String name){
+        for (User u : userList){
+            if (u.getUsername().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setUpUsers(){
+        this.userList = deserialize();
     }
 
 }
