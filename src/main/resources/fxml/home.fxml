@@ -24,30 +24,15 @@
             <children>
                 <StackPane alignment="BOTTOM_RIGHT">
                     <!--Content goes here-->
-                    <ScrollPane fitToWidth="true" style="-fx-background-color: gray" styleClass="background">
+                    <ScrollPane fitToWidth="true" styleClass="background">
                         <content>
-                            <FlowPane styleClass="flowpane" hgap="10" vgap="10"
-                                      style="-fx-background-color: white">
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
-                                <Rectangle width="200" height="200"/>
+                            <FlowPane styleClass="flowpane" hgap="30" vgap="30">
+                                <fx:include source="albumCard.fxml" />
+                                <fx:include source="albumCard.fxml" />
+                                <fx:include source="albumCard.fxml" />
+                                <fx:include source="albumCard.fxml" />
+                                <fx:include source="albumCard.fxml" />
+                                <fx:include source="albumCard.fxml" />
                             </FlowPane>
                         </content>
                     </ScrollPane>
