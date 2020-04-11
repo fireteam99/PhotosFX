@@ -13,9 +13,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
 
         primaryStage.setTitle("Photos21");
         primaryStage.setScene(new Scene(root, 1000, 650));
@@ -24,15 +24,10 @@ public class Main extends Application {
         primaryStage.setMinHeight(400);
 
         //testing and debugging -- IGNORE
-        UserList test = new UserList();
-        test.setAdmin();
-        User bob = new User("bob", "pass");
-        test.addUser(bob);
-        test.writeToSerFile(test);
-        test.deserialize();
-
+        UserList sess = new UserList();
+        sess.setUpUsers();
         System.out.println("List of users...");
-        test.printUserList();
+        sess.printUserList();
 
     }
 
