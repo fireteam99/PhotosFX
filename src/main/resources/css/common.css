@@ -68,7 +68,7 @@
     -fx-border-radius: .2em;
     -fx-border-width: .04em;
     -fx-text-fill: #40464E;
-    -fx-font-size: 10pt;
+    -fx-font-size: 12pt;
 }
 
 .btn-confirm:hover {
@@ -92,7 +92,7 @@
     -fx-border-radius: .2em;
     -fx-border-width: .04em;
     -fx-text-fill: #40464E;
-    -fx-font-size: 10pt;
+    -fx-font-size: 12pt;
 }
 
 .btn-neutral:hover {
@@ -107,7 +107,6 @@
     -fx-scale-z: .95;
 }
 
-
 .btn-danger {
     -fx-background-color: #E6A7A7;
     -fx-min-height: 2.2em;
@@ -116,7 +115,7 @@
     -fx-border-radius: .2em;
     -fx-border-width: .04em;
     -fx-text-fill: #40464E;
-    -fx-font-size: 10pt;
+    -fx-font-size: 12pt;
 }
 
 .btn-danger:hover {
@@ -183,7 +182,7 @@
     -fx-background-color: #D8D8D8;
     -fx-border-radius: .5em;
     -fx-background-radius: .5em;
-    -fx-effect: dropshadow( gaussian , rgba(0, 0, 0, 0.5) , 12, 0, 4, 7);
-    -fx-padding: 6em;
+    -fx-effect: dropshadow( gaussian , rgba(0, 0, 0, 0.5), 20, 0, 4, 7);
+    -fx-padding: 5em;
     -fx-background-insets: 5em;
 }
