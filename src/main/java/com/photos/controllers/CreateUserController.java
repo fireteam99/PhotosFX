@@ -46,7 +46,6 @@ public class CreateUserController {
         User newUser = new User(username,password);
         UserList uL = new UserList();
         uL.addUser(newUser); //add to userList
-
         //go back to admin page
         goBack(event);
     }

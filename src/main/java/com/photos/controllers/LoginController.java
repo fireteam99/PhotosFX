@@ -32,17 +32,24 @@ public class LoginController {
 
         //check to see if user/pw combo exists in master user list
         //if user provides admin user/pw, go to admin page
-        if (username.equals("admin")){
+        if (username.equals("admin") && password.equals("admin")){
             //System.out.println("admin successfully logged in!");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin.fxml"));
             Parent root = loader.load();
-            AdminController actr = loader.getController();
             Node n = (Node) event.getSource();
             Stage stage=(Stage) n.getScene().getWindow();
             Scene scene = new Scene(root, 750, 500);;
             stage.setScene(scene);
             stage.show();
-
+        }
+        else if (new UserList().userExists(username)){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+            Parent root = loader.load();
+            Node n = (Node) event.getSource();
+            Stage stage=(Stage) n.getScene().getWindow();
+            Scene scene = new Scene(root, 750, 500);;
+            stage.setScene(scene);
+            stage.show();
         }
 
     }
