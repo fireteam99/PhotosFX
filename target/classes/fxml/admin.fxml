@@ -35,20 +35,6 @@
             <center>
                 <Label text="Admin Panel" styleClass="subheader-light"/>
             </center>
-            <right>
-                <VBox alignment="CENTER">
-                    <Button styleClass="btn-min">
-                        <graphic>
-                            <ImageView fitHeight="40" fitWidth="40" styleClass="icon">
-                                <image>
-                                    <Image url="/images/search.png" preserveRatio="true"/>
-                                </image>
-                            </ImageView>
-
-                        </graphic>
-                    </Button>
-                </VBox>
-            </right>
         </BorderPane>
     </top>
     <center>

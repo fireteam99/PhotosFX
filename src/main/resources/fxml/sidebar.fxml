@@ -16,7 +16,7 @@
                 <children>
                     <Button fx:id="home" text="Home" styleClass="btn-min" />
                     <Button fx:id="search" text="Search" styleClass="btn-min" />
-                    <Button fx:id="logout" text="Logout" styleClass="btn-min" />
+                    <Button fx:id="logout" text="Logout" styleClass="btn-min" onAction="#logout" />
                 </children>
             </VBox>
         </children>

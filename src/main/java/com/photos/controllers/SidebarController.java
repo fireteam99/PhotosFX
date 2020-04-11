@@ -2,10 +2,18 @@ package com.photos.controllers;
 
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Translate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 public class SidebarController {
     @FXML
@@ -19,6 +27,11 @@ public class SidebarController {
 
     @FXML
     Button logout;
+
+    @FXML
+    public void logout(javafx.event.ActionEvent actionEvent) throws IOException {
+        goBack(actionEvent);
+    }
 
     private TranslateTransition showSidebar;
     private TranslateTransition hideSidebar;
@@ -42,5 +55,15 @@ public class SidebarController {
             hideSidebar.stop();
             showSidebar.play();
         }
+    }
+
+    private void goBack(javafx.event.ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
+        Parent root = loader.load();
+        Node n = (Node) event.getSource();
+        Stage stage=(Stage) n.getScene().getWindow();
+        Scene scene = new Scene(root, 750, 500);
+        stage.setScene(scene);
+        stage.show();
     }
 }

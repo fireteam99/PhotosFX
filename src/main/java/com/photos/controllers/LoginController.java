@@ -43,6 +43,7 @@ public class LoginController {
             stage.show();
         }
         else if (new UserList().userExists(username)){
+            //new homeController().name(username);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
             Parent root = loader.load();
             Node n = (Node) event.getSource();

@@ -67,11 +67,14 @@ public class UserList implements Serializable{
                 return true;
             }
         }
+        //System.out.println("THIS USER DOES NOT EXIST");
         return false;
     }
 
-    public void setUpUsers(){
+    public void setUpUsers() throws IOException {
         this.userList = deserialize();
+        User stock = new User("stock", "stock");
+        addUser(stock);
     }
 
 }
