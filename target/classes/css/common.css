@@ -18,6 +18,26 @@
     -fx-font-size: 20pt;
 }
 
+.smallheader-light {
+    -fx-text-fill: #40464E;
+    -fx-font-size: 14pt;
+}
+
+.smallheader-dark {
+    -fx-text-fill: #F7F7F7;
+    -fx-font-size: 14pt;
+}
+
+.body-light {
+    -fx-text-fill: #40464E;
+    -fx-font-size: 12pt;
+}
+
+.body-dark {
+    -fx-text-fill: #F7F7F7;
+    -fx-font-size: 12pt;
+}
+
 .card {
     -fx-padding: 3em 8em 3em 8em;
     -fx-background-color: #D8D8D8;
@@ -49,6 +69,66 @@
     -fx-border-width: .04em;
     -fx-text-fill: #40464E;
     -fx-font-size: 10pt;
+}
+
+.btn-confirm:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+}
+
+.btn-confirm:pressed {
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+    -fx-scale-z: .95;
+}
+
+
+.btn-neutral {
+    -fx-background-color: #F2F2F2;
+    -fx-min-height: 2.2em;
+    -fx-min-width: 4.5em;
+    -fx-border-color: #979797;
+    -fx-border-radius: .2em;
+    -fx-border-width: .04em;
+    -fx-text-fill: #40464E;
+    -fx-font-size: 10pt;
+}
+
+.btn-neutral:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+}
+
+.btn-neutral:pressed {
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+    -fx-scale-z: .95;
+}
+
+
+.btn-danger {
+    -fx-background-color: #E6A7A7;
+    -fx-min-height: 2.2em;
+    -fx-min-width: 4.5em;
+    -fx-border-color: #979797;
+    -fx-border-radius: .2em;
+    -fx-border-width: .04em;
+    -fx-text-fill: #40464E;
+    -fx-font-size: 10pt;
+}
+
+.btn-danger:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+}
+
+.btn-danger:pressed {
+    -fx-scale-x: .95;
+    -fx-scale-y: .95;
+    -fx-scale-z: .95;
 }
 
 .btn-min {
@@ -97,4 +177,13 @@
 
 .btn-floating > .icon {
     -fx-padding: none;
+}
+
+.modal-container {
+    -fx-background-color: #D8D8D8;
+    -fx-border-radius: .5em;
+    -fx-background-radius: .5em;
+    -fx-effect: dropshadow( gaussian , rgba(0, 0, 0, 0.5) , 12, 0, 4, 7);
+    -fx-padding: 6em;
+    -fx-background-insets: 5em;
 }
