@@ -2,7 +2,7 @@ package com.photos.controllers;
 
 import javafx.fxml.FXML;
 
-public class homeController {
+public class HomeController {
     @FXML
     protected HeaderController headerController;
 
