@@ -14,8 +14,8 @@
         <children>
             <VBox spacing="10" styleClass="sidebar-list">
                 <children>
-                    <Button fx:id="home" text="Home" styleClass="btn-min" />
-                    <Button fx:id="search" text="Search" styleClass="btn-min" />
+                    <Button fx:id="home" text="Home" styleClass="btn-min" onAction="#goToHome"/>
+                    <Button fx:id="search" text="Search" styleClass="btn-min" onAction="#searchAlbum"/>
                     <Button fx:id="logout" text="Logout" styleClass="btn-min" onAction="#logout" />
                 </children>
             </VBox>

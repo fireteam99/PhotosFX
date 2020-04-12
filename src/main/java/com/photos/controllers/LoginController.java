@@ -45,6 +45,11 @@ public class LoginController {
         }
         else if (new UserList().userExists(username)){
             //new homeController().name(username);
+            AlbumCardController passUser = new AlbumCardController();
+            HomeController h = new HomeController();
+            h.currUser(username);
+            passUser.currentUser(username);
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
             Parent root = loader.load();
             Node n = (Node) event.getSource();
