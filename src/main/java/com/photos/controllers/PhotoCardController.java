@@ -35,11 +35,11 @@ public class PhotoCardController {
         photoName.setText(s);
     }
 
-    public void setImage(Image i) {
+    public void setThumbnail(Image i) {
         imageView.setImage(i);
     }
 
-    public void setCation(String s) {
+    public void setCaption(String s) {
         caption.setText(s);
     }
 }
