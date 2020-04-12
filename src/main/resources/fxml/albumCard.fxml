@@ -23,7 +23,7 @@
                 </VBox>
             </left>
             <right>
-                <MenuButton styleClass="btn-min, drop-down">
+                <MenuButton fx:id="myMenuBar" styleClass="btn-min, drop-down">
                     <graphic>
                         <ImageView fitHeight="30" fitWidth="30" styleClass="icon">
                             <image>
@@ -32,9 +32,9 @@
                         </ImageView>
                     </graphic>
                     <items>
-                        <MenuItem fx:id="view" styleClass="drop-down-item" text="View" />
-                        <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit" />
-                        <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete" />
+                        <MenuItem fx:id="view" styleClass="drop-down-item" text="View" onAction="#viewAlbum"/>
+                        <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit" onAction="#editAlbum"/>
+                        <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete" onAction="#deleteAlbum"/>
                     </items>
                 </MenuButton>
             </right>

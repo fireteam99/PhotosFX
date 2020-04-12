@@ -84,6 +84,16 @@ public class UserList implements Serializable{
         return false;
     }
 
+    public User getUser(String name){
+        for (User u : userList){
+            if (u.getUsername().equals(name)){
+                return u;
+            }
+        }
+        System.out.println("No user with the username '" + name+ "' was found!");
+        return null;
+    }
+
     public void setUpUsers() throws IOException {
         this.userList = deserialize();
         User stock = new User("stock", "stock");

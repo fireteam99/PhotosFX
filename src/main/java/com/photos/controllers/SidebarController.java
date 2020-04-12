@@ -1,6 +1,7 @@
 package com.photos.controllers;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,7 +13,6 @@ import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class SidebarController {
@@ -31,6 +31,21 @@ public class SidebarController {
     @FXML
     public void logout(javafx.event.ActionEvent actionEvent) throws IOException {
         goBack(actionEvent);
+    }
+
+    @FXML
+    public void goToHome(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+        Parent root = loader.load();
+        Node n = (Node) actionEvent.getSource();
+        Stage stage=(Stage) n.getScene().getWindow();
+        Scene scene = new Scene(root, 750, 500);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void searchAlbum(ActionEvent actionEvent) {
     }
 
     private TranslateTransition showSidebar;
@@ -66,4 +81,5 @@ public class SidebarController {
         stage.setScene(scene);
         stage.show();
     }
+
 }
