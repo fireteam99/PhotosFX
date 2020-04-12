@@ -49,6 +49,17 @@ public class UserList implements Serializable{
         System.out.println("Successfully added '" + user.getUsername() + "'...");
     }
 
+    public void deleteUser(User user) throws IOException {
+        for (User u : userList){
+            if (u.getUsername().equals(user.getUsername())){
+                userList.remove(user);
+                System.out.println("The user: " + user.getUsername() + " has been deleted.");
+                return;
+            }
+        }
+        writeToSerFile(userList);
+    }
+
     //get latest version of userList via deserialization from file
     public ArrayList<User> getUserList(){
         return this.userList;
