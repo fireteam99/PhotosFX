@@ -1,17 +1,15 @@
 package com.photos.controllers;
 
 import com.photos.util.ButtonStyle;
-
-import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
-public class ConfirmationModalController {
-
+public class SingleInputModalController {
     @FXML
     private Button closeButton;
 
@@ -22,13 +20,19 @@ public class ConfirmationModalController {
     private Label modalMessage;
 
     @FXML
+    private Label inputLabel;
+
+    @FXML
+    private TextField input;
+
+    @FXML
     private Button confirmButton;
 
     @FXML
     private Button cancelButton;
 
     @FXML
-    private void closeButtonAction() {
+    public void closeButtonAction() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
@@ -39,6 +43,19 @@ public class ConfirmationModalController {
 
     public void setMessageText(String message) {
         modalMessage.setText(message);
+    }
+
+    public void setMessageVisibility(boolean b) {
+        modalMessage.setVisible(b);
+        modalMessage.setManaged(b);
+    }
+
+    public void setInputLabelText(String s) {
+        inputLabel.setText(s);
+    }
+
+    public void setInputPromptText(String s) {
+        input.setPromptText(s);
     }
 
     public void setConfirmButtonAction(EventHandler<ActionEvent> e) {
@@ -63,6 +80,9 @@ public class ConfirmationModalController {
                 break;
             }
         }
+    }
+
+    public void initialize() {
     }
 
 }

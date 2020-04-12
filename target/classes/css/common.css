@@ -60,6 +60,10 @@
     -fx-font-size: 11pt;
 }
 
+.input-container {
+    -fx-spacing: .5em;
+}
+
 .btn-confirm {
     -fx-background-color: #A7E6AE;
     -fx-min-height: 2.2em;
