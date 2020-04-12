@@ -1,4 +1,6 @@
-package com.photos.controllers;
+package com.photos.models;
+
+import com.photos.models.User;
 
 import java.io.*;
 import java.io.Serializable;

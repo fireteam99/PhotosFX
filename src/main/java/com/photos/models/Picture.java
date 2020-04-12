@@ -1,4 +1,4 @@
-package com.photos.controllers;
+package com.photos.models;
 
 import javafx.scene.image.Image;
 import java.io.File;

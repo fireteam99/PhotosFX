@@ -1,15 +1,17 @@
 package com.photos.controllers;
 
-import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class AlbumCardController {
+public class PhotoCardController {
     @FXML
-    private Label albumName;
+    private Label photoName;
+
+    @FXML
+    private ImageView imageView;
 
     @FXML
     private MenuItem view;
@@ -18,16 +20,26 @@ public class AlbumCardController {
     private MenuItem edit;
 
     @FXML
+    private MenuItem copy;
+
+    @FXML
+    private MenuItem move;
+
+    @FXML
     private MenuItem delete;
 
     @FXML
-    private ImageView imageView;
+    private Label caption;
 
-    public void setAlbumName(String s) {
-        albumName.setText(s);
+    public void setPhotoName(String s) {
+        photoName.setText(s);
     }
 
     public void setThumbnail(Image i) {
         imageView.setImage(i);
+    }
+
+    public void setCaption(String s) {
+        caption.setText(s);
     }
 }

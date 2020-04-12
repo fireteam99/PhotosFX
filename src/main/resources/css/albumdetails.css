@@ -1,0 +1,9 @@
+.background {
+    -fx-background-color: white;
+}
+
+.flowpane {
+    -fx-padding: 5em;
+    -fx-border-insets: 5em;
+    -fx-background-insets: 5em;
+}

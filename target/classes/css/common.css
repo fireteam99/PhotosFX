@@ -30,12 +30,12 @@
 
 .body-light {
     -fx-text-fill: #40464E;
-    -fx-font-size: 12pt;
+    -fx-font-size: 10pt;
 }
 
 .body-dark {
     -fx-text-fill: #F7F7F7;
-    -fx-font-size: 12pt;
+    -fx-font-size: 10pt;
 }
 
 .card {

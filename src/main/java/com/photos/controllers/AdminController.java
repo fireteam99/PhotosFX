@@ -1,5 +1,7 @@
 package com.photos.controllers;
 
+import com.photos.models.User;
+import com.photos.models.UserList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -19,7 +19,7 @@
         <BorderPane minWidth="${vBox.width}" maxWidth="${vBox.width}" prefWidth="${vBox.width}">
             <left>
                 <VBox alignment="CENTER_LEFT">
-                    <Label styleClass="subheader-light, album-title" text="Album Name" />
+                    <Label fx:id="albumName" styleClass="subheader-light, album-title" text="Album Name" />
                 </VBox>
             </left>
             <right>
@@ -32,14 +32,14 @@
                         </ImageView>
                     </graphic>
                     <items>
-                        <MenuItem styleClass="drop-down-item" text="View" />
-                        <MenuItem styleClass="drop-down-item" text="Edit" />
-                        <MenuItem styleClass="drop-down-item" text="Delete" />
+                        <MenuItem fx:id="view" styleClass="drop-down-item" text="View" />
+                        <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit" />
+                        <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete" />
                     </items>
                 </MenuButton>
             </right>
         </BorderPane>
-        <ImageView fitWidth="${vBox.width}" fitHeight="${vBox.width * 0.6}">
+        <ImageView fx:id="imageView" fitWidth="${vBox.width}" fitHeight="${vBox.width * 0.6}">
             <image>
                 <Image url="/images/stock/image-placeholder.jpg" preserveRatio="true" />
             </image>

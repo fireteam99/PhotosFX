@@ -1,5 +1,7 @@
 package com.photos.controllers;
 
+import com.photos.models.User;
+import com.photos.models.UserList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

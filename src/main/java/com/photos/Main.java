@@ -1,5 +1,5 @@
 package com.photos;
-import com.photos.controllers.UserList;
+import com.photos.models.UserList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +14,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/albumDetails.fxml"));
 
         primaryStage.setTitle("Photos21");
         primaryStage.setScene(new Scene(root, 1110, 700));

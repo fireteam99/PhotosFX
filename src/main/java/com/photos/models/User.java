@@ -1,4 +1,4 @@
-package com.photos.controllers;
+package com.photos.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
