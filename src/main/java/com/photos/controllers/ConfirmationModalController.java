@@ -1,8 +1,10 @@
 package com.photos.controllers;
 
+import com.photos.util.ButtonStyle;
+
+import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -14,13 +16,16 @@ public class ConfirmationModalController {
     private Button closeButton;
 
     @FXML
-    private Label confirmationTitle;
+    private Label modalTitle;
 
     @FXML
-    private Label confirmationMessage;
+    private Label modalMessage;
 
     @FXML
     private Button confirmButton;
+
+    @FXML
+    private Button cancelButton;
 
     @FXML
     private void closeButtonAction() {
@@ -28,15 +33,36 @@ public class ConfirmationModalController {
         stage.close();
     }
 
-    public void setTitle(String title) {
-        confirmationTitle.setText(title);
+    public void setTitleText(String title) {
+        modalTitle.setText(title);
     }
 
-    public void setMessage(String message) {
-        confirmationMessage.setText(message);
+    public void setMessageText(String message) {
+        modalMessage.setText(message);
     }
 
-    public void setDeleteButtonAction(EventHandler<ActionEvent> e) {
+    public void setConfirmButtonAction(EventHandler<ActionEvent> e) {
         confirmButton.setOnAction(e);
     }
+
+    public void setConfirmButtonStyle(ButtonStyle buttonStyle) {
+        switch (buttonStyle) {
+            case CONFIRM: {
+                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().add("btn-confirm");
+                break;
+            }
+            case DANGER: {
+                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().add("btn-danger");
+                break;
+            }
+            default: {
+                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().add("btn-neutral");
+                break;
+            }
+        }
+    }
+
 }

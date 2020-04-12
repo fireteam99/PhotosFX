@@ -19,11 +19,11 @@
                         <Label text="Login" styleClass="subheader-light" />
                         <VBox minHeight="0.0" minWidth="0.0" spacing="10" styleClass="input-group">
                             <children>
-                                <VBox minHeight="0.0" minWidth="0.0">
+                                <VBox minHeight="0.0" minWidth="0.0" styleClass="input-container">
                                     <Label styleClass="input-label" fx:id="username" text="Username"/>
                                     <TextField styleClass="input" fx:id="usernameBox" />
                                 </VBox>
-                                <VBox minHeight="0.0" minWidth="0.0">
+                                <VBox minHeight="0.0" minWidth="0.0" styleClass="input-container">
                                     <Label styleClass="input-label" fx:id="password" text="Password" />
                                     <TextField styleClass="input" fx:id="passwordBox" />
                                 </VBox>
