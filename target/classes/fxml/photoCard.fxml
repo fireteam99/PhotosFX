@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:id="vBox"
+      fx:controller="com.photos.controllers.PhotoCardController"
+      prefHeight="200.0" prefWidth="300.0" minWidth="300" maxWidth="300"
+      alignment="TOP_CENTER" stylesheets="/css/common.css, /css/photocard.css">
+    <children>
+        <BorderPane minWidth="${vBox.width}" maxWidth="${vBox.width}" prefWidth="${vBox.width}">
+            <left>
+                <VBox alignment="CENTER_LEFT">
+                    <Label fx:id="photoName" styleClass="subheader-light, album-title" text="Photo Name"/>
+                </VBox>
+            </left>
+            <right>
+                <MenuButton styleClass="btn-min, drop-down">
+                    <graphic>
+                        <ImageView fitHeight="30" fitWidth="30" styleClass="icon">
+                            <image>
+                                <Image url="/images/more_horiz.png" preserveRatio="true"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <items>
+                        <MenuItem fx:id="view" styleClass="drop-down-item" text="View"/>
+                        <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit"/>
+                        <MenuItem fx:id="copy" styleClass="drop-down-item" text="Copy"/>
+                        <MenuItem fx:id="Move" styleClass="drop-down-item" text="Move"/>
+                        <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete"/>
+                    </items>
+                </MenuButton>
+            </right>
+        </BorderPane>
+        <VBox spacing="10">
+            <ImageView fx:id="imageView" fitWidth="${vBox.width}" fitHeight="${vBox.width * 0.6}">
+                <image>
+                    <Image url="/images/stock/image-placeholder.jpg" preserveRatio="true"/>
+                </image>
+            </ImageView>
+            <VBox maxHeight="50" prefHeight="35" minHeight="35">
+                <Label styleClass="body-light" wrapText="true"
+                       text="This is some random caption about the photo it is really long so it takes up more than two lines. It also overflows." />
+            </VBox>
+
+        </VBox>
+    </children>
+</VBox>

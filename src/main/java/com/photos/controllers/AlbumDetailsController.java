@@ -1,37 +1,17 @@
 package com.photos.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 
 public class AlbumDetailsController {
+    @FXML
+    protected HeaderController headerController;
 
     @FXML
-    private ListView<Picture> listView;
+    protected SidebarController sidebarController;
 
-    @FXML
-    private Button albumsMenuButton;
-
-    @FXML
-    private Button albumsSearchButton;
-
-    @FXML
-    private Button createAlbumButton;
-
-    @FXML
-    void addNewAlbum(ActionEvent event) {
-
-    }
-
-    @FXML
-    void albumsMenu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void searchAlbum(ActionEvent event) {
-
+    public void initialize() {
+        headerController.setTitle("Album Name Goes Here");
+        headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
     }
 
 }
