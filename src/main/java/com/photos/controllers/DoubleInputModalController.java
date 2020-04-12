@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SingleInputModalController {
+public class DoubleInputModalController {
     @FXML
     private Button closeButton;
 
@@ -20,10 +20,16 @@ public class SingleInputModalController {
     private Label modalMessage;
 
     @FXML
-    private Label inputLabel;
+    private Label inputLabel1;
 
     @FXML
-    private TextField input;
+    private TextField input1;
+
+    @FXML
+    private Label inputLabel2;
+
+    @FXML
+    private TextField input2;
 
     @FXML
     private Button confirmButton;
@@ -50,12 +56,20 @@ public class SingleInputModalController {
         modalMessage.setManaged(b);
     }
 
-    public void setInputLabelText(String s) {
-        inputLabel.setText(s);
+    public void setInputLabel1Text(String s) {
+        inputLabel1.setText(s);
     }
 
-    public void setInputPromptText(String s) {
-        input.setPromptText(s);
+    public void setInput1PromptText(String s) {
+        input1.setPromptText(s);
+    }
+
+    public void setInputLabel2Text(String s) {
+        inputLabel2.setText(s);
+    }
+
+    public void setInput2PromptText(String s) {
+        input2.setPromptText(s);
     }
 
     public void setConfirmButtonAction(EventHandler<ActionEvent> e) {

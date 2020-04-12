@@ -35,14 +35,25 @@ public class Main extends Application {
 //        primaryStage.setMinHeight(350);
 
         // single input modal
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/singleInputModal.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/singleInputModal.fxml"));
+//        primaryStage.setTitle("Photos21");
+//        primaryStage.initStyle(StageStyle.TRANSPARENT);
+//        primaryStage.setScene(new Scene(root, 600, 420));
+//        primaryStage.getScene().setFill(Color.TRANSPARENT);
+//        primaryStage.show();
+//        primaryStage.setMinWidth(600);
+//        primaryStage.setMinHeight(420);
+
+        // double input modal
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/doubleInputModal.fxml"));
         primaryStage.setTitle("Photos21");
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(new Scene(root, 600, 420));
         primaryStage.getScene().setFill(Color.TRANSPARENT);
         primaryStage.show();
         primaryStage.setMinWidth(600);
-        primaryStage.setMinHeight(420);
+        primaryStage.setMinHeight(500);
+
 
 
 
