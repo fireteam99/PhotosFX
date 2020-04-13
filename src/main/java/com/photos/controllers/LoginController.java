@@ -42,7 +42,7 @@ public class LoginController {
             Parent root = loader.load();
             Node n = (Node) event.getSource();
             Stage stage=(Stage) n.getScene().getWindow();
-            Scene scene = new Scene(root, 750, 500);;
+            Scene scene = new Scene(root, 1110, 750);;
             stage.setScene(scene);
             stage.show();
         }
@@ -59,7 +59,7 @@ public class LoginController {
 //            hc.currUser(username);
             Node n = (Node) event.getSource();
             Stage stage=(Stage) n.getScene().getWindow();
-            Scene scene = new Scene(root, 750, 500);;
+            Scene scene = new Scene(root, 1110, 750);;
             stage.setScene(scene);
             stage.show();
         }

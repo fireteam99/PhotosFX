@@ -68,7 +68,7 @@
 }
 
 .input:focused {
-    -fx-background-color: #D8D8D8;
+    -fx-background-color: #e3e3e3;
 }
 
 .text-area {
@@ -79,7 +79,7 @@
 }
 
 .text-area:focused {
-    text-area-background: #D8D8D8;
+    text-area-background: #e3e3e3;
 }
 
 .text-area .content {

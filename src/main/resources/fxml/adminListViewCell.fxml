@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="borderPane"
+            stylesheets="/css/common.css"
+            prefHeight="50.0" prefWidth="400.0">
+    <left>
+        <HBox alignment="CENTER">
+            <Label fx:id="nameLabel" text="Name" />
+        </HBox>
+    </left>
+    <right>
+        <HBox alignment="CENTER">
+            <Button fx:id="editButton" text="edit" />
+            <Button fx:id="deleteButton" text="delete" />
+        </HBox>
+    </right>
+</BorderPane>

@@ -47,14 +47,11 @@ public class AdminController {
     }
 
     public void initialize() {
-//        adminListView.getItems().add("User1");
-//        adminListView.getItems().add("User2");
-//        adminListView.getItems().add("User3");
         UserList u = new UserList();
         ArrayList<User> users = u.getUserList();
         observableList = FXCollections.observableList(users);
         adminListView.setItems(observableList);
-
+        adminListView.setCellFactory(adminListView -> new AdminListViewCellController());
     }
 
     public AdminController() {
