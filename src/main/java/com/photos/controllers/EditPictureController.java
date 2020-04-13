@@ -1,40 +1,60 @@
 package com.photos.controllers;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 public class EditPictureController {
+    @FXML
+    HeaderController headerController;
 
-        @FXML
-        private TitledPane editingPictureTitle;
+    @FXML
+    SidebarController sidebarController;
 
-        @FXML
-        private TextField photoNameField;
+    @FXML
+    HBox sidebarHBox;
 
-        @FXML
-        private TextArea photoCaptionField;
+    @FXML
+    StackPane mainStackPane;
 
-        @FXML
-        private Text filePath;
+    @FXML
+    TextField nameInput;
 
-        @FXML
-        private Button cancelChangesButton;
+    @FXML
+    TextArea captionInput;
 
-        @FXML
-        private Button saveChangesButton;
+    @FXML
+    FlowPane flowpane;
 
-        @FXML
-        void cancelPhotoEdit(ActionEvent event) {
+    @FXML
+    Button cancelButton;
 
-        }
+    @FXML
+    Button saveButton;
 
-        @FXML
-        void savePhotoEdit(ActionEvent event) {
-
-        }
-
+    public void initialize() {
+        mainStackPane.setPickOnBounds(false);
+        sidebarHBox.setPickOnBounds(false);
+        headerController.setTitle("Home");
+        headerController.setMenuButtonAction(e -> {
+            sidebarController.toggleVisibility();
+        });
     }
+
+    @FXML
+    public void exit() {
+        System.out.println("Cancel");
+    }
+
+    @FXML
+    public void saveChanges() {
+        System.out.println("Save");
+    }
+}

@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
@@ -62,11 +63,17 @@ public class SidebarController {
         hideSidebar.setOnFinished(event -> sidebarVisible = false);
     }
 
+    public boolean getVisibility() {
+        return sidebarVisible;
+    }
+
     public void toggleVisibility() {
         if (sidebarVisible) {
             showSidebar.stop();
             hideSidebar.play();
+
         } else {
+            sidebarContainer.setVisible(true);
             hideSidebar.stop();
             showSidebar.play();
         }

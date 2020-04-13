@@ -35,7 +35,6 @@ public class HomeController {
     public void initialize() {
         headerController.setTitle("Home");
         headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
-
     }
 
     @FXML
