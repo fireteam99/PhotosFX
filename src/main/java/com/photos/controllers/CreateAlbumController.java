@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CreateAlbumController {
-    private String user;
+    private static String user;
 
     @FXML
     private TextField newAlbumBox;
@@ -44,6 +44,9 @@ public class CreateAlbumController {
         //find user with this username in userList, then add new album object to their list
         UserList uL = new UserList();
         Album newAlbum = new Album(newAlbumBox.getText());
+
+        CurrentUser cu = new CurrentUser();
+        this.user = cu.getCurrentUser();
         uL.getUser(user).getAlbums().add(newAlbum);
 
         System.out.println("Successfully added new album for user: " + user);
@@ -60,7 +63,9 @@ public class CreateAlbumController {
         stage.show();
     }
 
-    public void currentUser(String s){
-        this.user = s;
-    }
+//    public void currentUser(String s){
+//        this.user = s;
+//    }
+
+
 }

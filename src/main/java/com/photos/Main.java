@@ -17,12 +17,13 @@ public class Main extends Application {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/albumDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/slideshow.fxml"));
 
-//        primaryStage.setTitle("Photos21");
-//        primaryStage.setScene(new Scene(root, 1110, 700));
-//        primaryStage.show();
-//        primaryStage.setMinWidth(700);
-//        primaryStage.setMinHeight(400);
+        primaryStage.setTitle("Photos21");
+        primaryStage.setScene(new Scene(root, 1110, 750));
+        primaryStage.show();
+        primaryStage.setMinWidth(700);
+        primaryStage.setMinHeight(400);
 
         // confirmation modal
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/confirmationModal.fxml"));
@@ -45,14 +46,14 @@ public class Main extends Application {
 //        primaryStage.setMinHeight(420);
 
         // double input modal
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/doubleInputModal.fxml"));
-        primaryStage.setTitle("Photos21");
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setScene(new Scene(root, 600, 420));
-        primaryStage.getScene().setFill(Color.TRANSPARENT);
-        primaryStage.show();
-        primaryStage.setMinWidth(600);
-        primaryStage.setMinHeight(500);
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/doubleInputModal.fxml"));
+//        primaryStage.setTitle("Photos21");
+//        primaryStage.initStyle(StageStyle.TRANSPARENT);
+//        primaryStage.setScene(new Scene(root, 600, 420));
+//        primaryStage.getScene().setFill(Color.TRANSPARENT);
+//        primaryStage.show();
+//        primaryStage.setMinWidth(600);
+//        primaryStage.setMinHeight(500);
 
 
 

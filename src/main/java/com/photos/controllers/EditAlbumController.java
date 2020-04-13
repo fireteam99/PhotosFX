@@ -17,8 +17,8 @@ import java.io.IOException;
 
 public class EditAlbumController {
 
-    private String user;
-    private String albumName;
+    private static String user;
+    private static String albumName;
 
     @FXML
     private TextField editAlbumBox;
@@ -47,6 +47,7 @@ public class EditAlbumController {
         //get the user object with this user name
         //go into their collection of albums and find the one with this name, then update its name
         UserList ul = new UserList();
+        System.out.println("EditAlbum User: " + user);
         for (Album a : ul.getUser(user).getAlbums()){
             if (a.getAlbumName().equals(albumName)){
                 a.changeAlbumName(editAlbumBox.getText());

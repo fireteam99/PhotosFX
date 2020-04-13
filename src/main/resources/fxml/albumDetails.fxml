@@ -36,9 +36,9 @@
                             </FlowPane>
                         </content>
                     </ScrollPane>
-                    <Button fx:id="adminCreateUserButton" mnemonicParsing="false"
+                    <Button fx:id="addNewPhotoButton" mnemonicParsing="false"
                             styleClass="btn-floating"
-                            alignment="BOTTOM_RIGHT">
+                            alignment="BOTTOM_RIGHT" onAction="#addNewPhoto">
                         <graphic>
                             <ImageView fitHeight="50" fitWidth="50" styleClass="icon">
                                 <image>
