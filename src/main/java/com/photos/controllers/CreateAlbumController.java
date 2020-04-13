@@ -45,8 +45,6 @@ public class CreateAlbumController {
         UserList uL = new UserList();
         Album newAlbum = new Album(newAlbumBox.getText());
 
-        CurrentUser cu = new CurrentUser();
-        this.user = cu.getCurrentUser();
         uL.getUser(user).getAlbums().add(newAlbum);
 
         System.out.println("Successfully added new album for user: " + user);
