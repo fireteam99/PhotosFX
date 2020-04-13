@@ -1,5 +1,6 @@
 package com.photos.models;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -31,6 +32,16 @@ public class User implements Serializable{
 
     public ArrayList<Album> getAlbums(){
         return this.albums;
+    }
+
+    public Album getAlbums(String album) {
+        for (Album a : albums){
+            if (a.getAlbumName().equals(album)){
+                return a;
+            }
+        }
+        System.out.println("No album was found with the given name!");
+        return null;
     }
 
 }

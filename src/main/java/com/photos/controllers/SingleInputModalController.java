@@ -1,6 +1,7 @@
 package com.photos.controllers;
 
 import com.photos.util.ButtonStyle;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 
 public class SingleInputModalController {
     @FXML
@@ -83,6 +86,7 @@ public class SingleInputModalController {
     }
 
     public void initialize() {
+
     }
 
 }

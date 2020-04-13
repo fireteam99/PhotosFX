@@ -14,6 +14,10 @@ public class Album implements Serializable {
         this.albumName = name;
     }
 
+    public void addPhoto(Picture p){
+        this.photos.add(p);
+    }
+
     public String getUser(){
         return this.user;
     }
