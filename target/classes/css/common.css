@@ -1,29 +1,41 @@
 .header-light {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: Bold;
     -fx-text-fill: #40464E;
     -fx-font-size: 40pt;
 }
 
 .header-dark {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: Bold;
     -fx-text-fill: #F7F7F7;
     -fx-font-size: 40pt;
 }
 
 .subheader-light {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: bold;
     -fx-text-fill: #40464E;
     -fx-font-size: 20pt;
 }
 
 .subheader-dark {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: bold;
     -fx-text-fill: #F7F7F7;
     -fx-font-size: 20pt;
 }
 
 .smallheader-light {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: bolder;
     -fx-text-fill: #40464E;
     -fx-font-size: 14pt;
 }
 
 .smallheader-dark {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: bolder;
     -fx-text-fill: #F7F7F7;
     -fx-font-size: 14pt;
 }
@@ -55,6 +67,26 @@
     -fx-border-width: .04em;
 }
 
+.input:focused {
+    -fx-background-color: #D8D8D8;
+}
+
+.text-area {
+    text-area-background: #F2F2F2;
+    -fx-border-color: #979797;
+    -fx-border-radius: .2em;
+    -fx-border-width: .04em;
+}
+
+.text-area:focused {
+    text-area-background: #D8D8D8;
+}
+
+.text-area .content {
+    -fx-background-color: text-area-background ;
+}
+
+
 .input-label {
     -fx-text-fill: #40464E;
     -fx-font-size: 11pt;
@@ -65,6 +97,8 @@
 }
 
 .btn-confirm {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: Bold;
     -fx-background-color: #A7E6AE;
     -fx-min-height: 2.2em;
     -fx-min-width: 4.5em;
@@ -89,6 +123,8 @@
 
 
 .btn-neutral {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: Bold;
     -fx-background-color: #F2F2F2;
     -fx-min-height: 2.2em;
     -fx-min-width: 4.5em;
@@ -112,6 +148,8 @@
 }
 
 .btn-danger {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: Bold;
     -fx-background-color: #E6A7A7;
     -fx-min-height: 2.2em;
     -fx-min-width: 4.5em;
@@ -135,6 +173,8 @@
 }
 
 .btn-min {
+    -fx-font-family: "Verdana";
+    -fx-font-weight: Bold;
     -fx-background-color: transparent;
     -fx-fill: #40464E;
     -fx-font-size: 14pt;

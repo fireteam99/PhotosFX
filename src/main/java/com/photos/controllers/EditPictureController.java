@@ -43,9 +43,7 @@ public class EditPictureController {
         mainStackPane.setPickOnBounds(false);
         sidebarHBox.setPickOnBounds(false);
         headerController.setTitle("Home");
-        headerController.setMenuButtonAction(e -> {
-            sidebarController.toggleVisibility();
-        });
+        headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
     }
 
     @FXML

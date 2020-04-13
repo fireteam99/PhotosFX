@@ -1,0 +1,13 @@
+.background {
+    -fx-background-color: white;
+}
+.file-path {
+    -fx-font-family: "Verdana";
+    -fx-text-fill: #40464E;
+    -fx-font-size: 9pt;
+    -fx-font-style: italic;
+}
+
+.btn-edit {
+    -fx-padding: 0;
+}
