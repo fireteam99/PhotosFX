@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="/css/common.css"
+            fx:controller="com.photos.controllers.SlideshowController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <BorderPane>
+            <right>
+                <Button fx:id="closeButton" styleClass="btn-min">
+                    <graphic>
+                        <ImageView fitWidth="35" fitHeight="35">
+                            <image>
+                                <Image url="/images/close.png" preserveRatio="true" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </right>
+        </BorderPane>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true">
+            <content>
+                <VBox alignment="CENTER" style="-fx-background-color: orange" minWidth="0">
+                    <Label text="Image Name" />
+                    <HBox style="-fx-background-color: green" alignment="CENTER_RIGHT" maxWidth="${image.fitWidth}">
+                        <MenuButton>
+                            <items>
+                                <MenuItem text="Edit" />
+                                <MenuItem text="Copy" />
+                                <MenuItem text="Move" />
+                                <MenuItem text="Delete" />
+                            </items>
+                        </MenuButton>
+                    </HBox>
+                    <ImageView fx:id="image" preserveRatio="true" fitWidth="700">
+                        <image>
+                            <Image url="/images/stock/image-placeholder.jpg" />
+                        </image>
+                    </ImageView>
+                    <VBox alignment="CENTER_LEFT" maxWidth="${image.fitWidth}">
+                        <Label text="Photo Date" />
+                        <Label text="Photo caption goes here..." />
+                        <FlowPane alignment="CENTER_LEFT">
+                            <fx:include source="tag.fxml" />
+                        </FlowPane>
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+    <left>
+        <VBox alignment="CENTER">
+            <padding>
+                <Insets left="5" />
+            </padding>
+            <Button text="left" />
+        </VBox>
+    </left>
+    <right>
+        <VBox alignment="CENTER">
+            <Button text="right" />
+        </VBox>
+    </right>
+</BorderPane>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="/css/common.css"
+            fx:controller="com.photos.controllers.TagController"
+            prefHeight="50" prefWidth="80" style="-fx-background-color: gray">
+    <left>
+        <VBox alignment="CENTER">
+            <Label text="Key" />
+            <Label text="Value" />
+        </VBox>
+    </left>
+    <right>
+        <VBox alignment="CENTER">
+            <Button text="x" />
+        </VBox>
+    </right>
+</BorderPane>
