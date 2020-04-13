@@ -40,7 +40,8 @@
                                         </items>
                                     </MenuButton>
                                 </HBox>
-                                <ImageView fx:id="image" preserveRatio="true" fitWidth="650">
+                                <!-- Photo -->
+                                <ImageView fx:id="image" preserveRatio="true" fitWidth="700">
                                     <image>
                                         <Image url="/images/stock/image-placeholder.jpg"/>
                                     </image>
@@ -54,7 +55,7 @@
                                 <Label text="Photo Date" styleClass="image-date"/>
                                 <Label text="Photo caption goes here..." styleClass="image-caption"/>
                             </VBox>
-                            <FlowPane alignment="CENTER_LEFT" hgap="18" vgap="18">
+                            <FlowPane alignment="CENTER_LEFT" hgap="15" vgap="18">
                                 <fx:include source="tag.fxml"/>
                                 <Button styleClass="btn-square">
                                     <graphic>

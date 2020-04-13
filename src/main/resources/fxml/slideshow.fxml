@@ -40,7 +40,8 @@
                                         </items>
                                     </MenuButton>
                                 </HBox>
-                                <ImageView fx:id="image" preserveRatio="true" fitWidth="650">
+                                <!-- Photo -->
+                                <ImageView fx:id="image" preserveRatio="true" fitWidth="700">
                                     <image>
                                         <Image url="/images/stock/image-placeholder.jpg"/>
                                     </image>
