@@ -1,5 +1,10 @@
 package com.photos.controllers;
 
+import com.photos.models.Album;
+import com.photos.models.User;
+import com.photos.models.UserList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +16,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.prefs.Preferences;
 
 public class HomeController {
     private String user;
@@ -32,10 +39,26 @@ public class HomeController {
     @FXML
     protected SingleInputModalController singleInputModalController;
 
+    protected AlbumCardController albumCardController;
+
+    private ObservableList<AlbumCardController> observableList;
+
     public void initialize() {
         headerController.setTitle("Home");
         headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
 
+        Preferences userPreferences = Preferences.userRoot();
+        String currentUser = userPreferences.get("sessionUser","");
+        UserList ul = new UserList();
+
+        for (Album a : ul.getUser(currentUser).getAlbums()){
+            AlbumCardController acc = new AlbumCardController();
+            acc.setAlbumName(a.getAlbumName());
+            //acc.setThumbnail(a.getPhotos().get(0).getImage());
+            observableList.add(acc);
+        }
+        albumFlowPane.getChildren().addAll((Node) observableList);
+        //Scene s = albumCardController
     }
 
     @FXML

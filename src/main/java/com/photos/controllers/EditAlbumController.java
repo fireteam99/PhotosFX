@@ -51,6 +51,7 @@ public class EditAlbumController {
         for (Album a : ul.getUser(user).getAlbums()){
             if (a.getAlbumName().equals(albumName)){
                 a.changeAlbumName(editAlbumBox.getText());
+                ul.getUser(user).updateUser();
                 break;
             }
         }
@@ -61,10 +62,16 @@ public class EditAlbumController {
     //given the user and the specific album name, store this data
     //and search thru the userList --> find this user and the album that matches this name
     public void currUser(String user, String albumName){
-        this.user = user;
-        this.albumName = albumName;
+        UserList ul = new UserList();
+        User ur = ul.getUser(user);
+        this.user = ur.getUsername();
         this.editAlbumBox.setText(albumName);
     }
+//    public void passAlbum(Album a){
+//        if (a == null) {
+//            System.out.println("No album was found - null value");
+//        }
+//    }
 
     public void goBack(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));

@@ -44,4 +44,17 @@ public class User implements Serializable{
         return null;
     }
 
+    public void addAlbum(Album a){
+        if (!(albums.contains(a))){
+            albums.add(a);
+            return;
+        }
+        System.out.println("Album '" + a.getAlbumName() + "' already exists.");
+    }
+
+    public void updateUser() throws IOException {
+        UserList ul = new UserList();
+        ul.writeToSerFile(ul.getUserList());
+    }
+
 }
