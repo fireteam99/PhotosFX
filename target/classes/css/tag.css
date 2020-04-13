@@ -1,0 +1,11 @@
+.key {
+    -fx-font-size: 11pt;
+}
+
+.value {
+    -fx-font-size: 9pt;
+}
+
+.btn-delete {
+    -fx-padding: 0.1em 0.3em 0.1em 0.3em;
+}

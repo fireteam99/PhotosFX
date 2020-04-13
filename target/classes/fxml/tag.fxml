@@ -6,20 +6,38 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            stylesheets="/css/common.css"
+            stylesheets="/css/common.css, /css/tag.css"
             fx:controller="com.photos.controllers.TagController"
-            prefHeight="50" prefWidth="80" style="-fx-background-color: gray">
+            styleClass="btn-square"
+            prefHeight="45" minWidth="80" maxWidth="200">
     <left>
-        <VBox alignment="CENTER">
-            <Label text="Key" />
-            <Label text="Value" />
+        <VBox alignment="CENTER_LEFT" maxWidth="150">
+            <padding>
+                <Insets left="5" />
+            </padding>
+            <Label styleClass="key" text="Location" />
+            <Label styleClass="value" text="Florida" />
         </VBox>
     </left>
     <right>
-        <VBox alignment="CENTER">
-            <Button text="x" />
+        <VBox alignment="CENTER_RIGHT">
+            <padding>
+                <Insets right="1" />
+            </padding>
+            <Button styleClass="btn-min, btn-delete">
+                <graphic>
+                    <ImageView preserveRatio="true" fitHeight="20">
+                        <image>
+                            <Image url="/images/cancel.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
         </VBox>
     </right>
 </BorderPane>

@@ -20,7 +20,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/slideshow.fxml"));
 
         primaryStage.setTitle("Photos21");
-        primaryStage.setScene(new Scene(root, 1110, 700));
+        primaryStage.setScene(new Scene(root, 1110, 750));
         primaryStage.show();
         primaryStage.setMinWidth(700);
         primaryStage.setMinHeight(400);

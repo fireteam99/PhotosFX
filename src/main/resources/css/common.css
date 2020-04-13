@@ -190,3 +190,101 @@
     -fx-padding: 5em;
     -fx-background-insets: 5em;
 }
+
+.drop-down {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-max-width: 2em;
+    -fx-min-width: 2em;
+    -fx-pref-width: 2em;
+}
+
+.drop-down > .arrow-button {
+    -fx-padding: 0;
+}
+
+.drop-down > .arrow-button > .arrow {
+    -fx-padding: 0;
+}
+
+.drop-down-item {
+    -fx-fill: #40464E;
+}
+
+.drop-down-item:focused {
+    -fx-background-color: #40464E;
+}
+
+.btn-square {
+    -fx-background-color: #D8D8D8;
+    -fx-border-radius: .2em;
+    -fx-background-radius: .2em;
+    -fx-border-color: #979797;
+    -fx-padding: 0;
+}
+
+.btn-square:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-scale-z: 1.02;
+}
+
+.btn-square:pressed {
+    -fx-scale-x: .97;
+    -fx-scale-y: .97;
+    -fx-scale-z: .97;
+}
+
+
+/*scroll bar stuff*/
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color :transparent;
+    -fx-border-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-border-radius :2.0em;
+}
+
+
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 0.0 10.0 0.0;
+
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 10.0 0.0 0.0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.15em 0.0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.0 0.15em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: derive(black,90.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 2.0em;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: derive(#4D4C4F,10.0%);
+    -fx-background-insets: 2.0, 0.0, 0.0;
+    -fx-background-radius: 2.0em;
+}

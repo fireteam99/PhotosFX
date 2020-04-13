@@ -1,0 +1,23 @@
+.background {
+    -fx-background-color: rgba(45,45,45, 0.9);
+}
+.image-name {
+    -fx-text-fill: #F7F7F7;
+    -fx-font-size: 23pt;
+}
+
+.image-date {
+    -fx-text-fill: #F7F7F7;
+    -fx-font-size: 14pt;
+}
+
+.image-caption {
+    -fx-text-fill: #F7F7F7;
+    -fx-font-size: 12pt;
+}
+
+.btn-close {
+    -fx-padding: 1em;
+    -fx-border-insets: 1em;
+    -fx-background-insets: 1em;
+}
