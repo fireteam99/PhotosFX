@@ -35,6 +35,19 @@ public class HomeController {
     public void initialize() {
         headerController.setTitle("Home");
         headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
+
+        Preferences userPreferences = Preferences.userRoot();
+        String currentUser = userPreferences.get("sessionUser","");
+        UserList ul = new UserList();
+
+        for (Album a : ul.getUser(currentUser).getAlbums()){
+            AlbumCardController acc = new AlbumCardController();
+            acc.setAlbumName(a.getAlbumName());
+            //acc.setThumbnail(a.getPhotos().get(0).getImage());
+            observableList.add(acc);
+        }
+        albumFlowPane.getChildren().addAll((Node) observableList);
+        //Scene s = albumCardController
     }
 
     @FXML
