@@ -3,6 +3,9 @@ package com.photos.controllers;
 import java.io.IOException;
 import java.util.prefs.Preferences;
 
+import com.photos.models.Album;
+import com.photos.models.User;
+import com.photos.models.UserList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,22 +66,28 @@ public class AlbumCardController {
 
     @FXML
     public void editAlbum(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editAlbum.fxml"));
-        //----send the album object to EditAlbumController----//
-        EditAlbumController eactr = loader.getController();
+        if (!(albumName.getText().equals(null))) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editAlbum.fxml"));
 
-        Preferences userPreferences = Preferences.userRoot();
-        String str = userPreferences.get("sessionUser","");
-        this.user = str;
-        //System.out.println("Clicking edit button: " + user);
-        //null error bc album name does not exist yet***
-        eactr.currUser(user,albumName.getText());
-        //
-        Parent root = loader.load();
-        Stage stage = (Stage) myMenuBar.getScene().getWindow();
-        Scene scene = new Scene(root, 750, 500);
-        stage.setScene(scene);
-        stage.show();
+            //----send album name and user to the editAlbumController----//
+            Preferences userPreferences = Preferences.userRoot();
+            String str = userPreferences.get("sessionUser", "");
+            this.user = str;
+            System.out.println("User edit button: " + user);
+            System.out.println("User album name: " + albumName.getText());
+            //null error bc album name does not exist yet***
+            EditAlbumController eactr = loader.getController();
+            eactr.currUser(user, albumName.getText());
+
+            Parent root = loader.load();
+            Stage stage = (Stage) myMenuBar.getScene().getWindow();
+            Scene scene = new Scene(root, 750, 500);
+            stage.setScene(scene);
+            stage.show();
+        }
+        else {
+            System.out.println("well shit");
+        }
     }
 
     @FXML

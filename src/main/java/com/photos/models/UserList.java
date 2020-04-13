@@ -97,6 +97,8 @@ public class UserList implements Serializable{
     public void setUpUsers() throws IOException {
         this.userList = deserialize();
         User stock = new User("stock", "stock");
+        Album stockA = new Album("testAlbumStock", stock.getUsername());
+        stock.addAlbum(stockA);
         addUser(stock);
     }
 

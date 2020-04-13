@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.prefs.Preferences;
 
 public class CreateAlbumController {
     private static String user;
@@ -43,11 +44,14 @@ public class CreateAlbumController {
     void submitNewAlbum(ActionEvent event) throws IOException {
         //find user with this username in userList, then add new album object to their list
         UserList uL = new UserList();
-        Album newAlbum = new Album(newAlbumBox.getText());
+        Album newAlbum = new Album(newAlbumBox.getText(),user);
+        Preferences userPreferences = Preferences.userRoot();
+        String str = userPreferences.get("sessionUser","");
+        this.user = str;
+        uL.getUser(user).addAlbum(newAlbum);
+        uL.getUser(user).updateUser();
 
-        uL.getUser(user).getAlbums().add(newAlbum);
-
-        System.out.println("Successfully added new album for user: " + user);
+        System.out.println("Successfully added album: '" + newAlbum.getAlbumName() + "'");
         goBack(event);
     }
 
