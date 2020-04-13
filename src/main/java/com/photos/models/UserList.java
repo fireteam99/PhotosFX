@@ -12,7 +12,7 @@ public class UserList implements Serializable{
 
     //master list of users.ser
     private static ArrayList<User> userList = new ArrayList<User>();
-    public static final String dataFile = "/src/main/resources/persist/serializedUsers.ser";
+    public static final String dataFile = "src/main/resources/persist/serializedUsers.ser";
 
     //serialize list of users
     public static void writeToSerFile(ArrayList<User> users) throws IOException {
