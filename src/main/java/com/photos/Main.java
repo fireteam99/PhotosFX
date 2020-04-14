@@ -8,14 +8,16 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.prefs.Preferences;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         // normal screens
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/albumDetails.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/editPicture.fxml"));
 
@@ -55,8 +57,10 @@ public class Main extends Application {
 //        primaryStage.setMinWidth(600);
 //        primaryStage.setMinHeight(500);
 
-
-
+        // for testing home screen
+        Preferences userPreferences = Preferences.userRoot();
+        userPreferences.put("sessionUser", "e472bc87-3606-4b74-be7d-2b967179152d");
+        userPreferences.flush();
 
         //testing and debugging -- IGNORE
         UserList sess = new UserList();

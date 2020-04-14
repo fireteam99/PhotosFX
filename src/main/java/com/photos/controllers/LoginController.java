@@ -62,6 +62,8 @@ public class LoginController {
                 userPreferences.put("sessionUser", user.getId());
                 userPreferences.flush();
 
+                System.out.println(user.getId());
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
                 Parent root = loader.load();
                 Node n = (Node) event.getSource();

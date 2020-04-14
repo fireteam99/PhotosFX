@@ -19,7 +19,7 @@
         <BorderPane minWidth="${vBox.width}" maxWidth="${vBox.width}" prefWidth="${vBox.width}">
             <left>
                 <VBox alignment="CENTER_LEFT">
-                    <Label fx:id="albumName" styleClass="subheader-light, album-title" text="Album Name" />
+                    <Label fx:id="albumName" styleClass="body-light, album-title" text="Album Name" />
                 </VBox>
             </left>
             <right>
