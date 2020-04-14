@@ -48,10 +48,8 @@ public class CreateAlbumController {
         Preferences userPreferences = Preferences.userRoot();
         String str = userPreferences.get("sessionUser","");
         this.user = str;
-        uL.getUser(user).addAlbum(newAlbum);
-        uL.getUser(user).updateUser();
 
-        System.out.println("Successfully added album: '" + newAlbum.getAlbumName() + "'");
+        System.out.println("Successfully added album: '" + newAlbum.getName() + "'");
         goBack(event);
     }
 

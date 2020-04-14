@@ -25,8 +25,6 @@ public class AdminController {
     @FXML
     private VBox usersContainer;
 
-    private ObservableList<Node> userCardsList;
-
     @FXML
     private Button adminCreateUserButton;
 
@@ -49,13 +47,18 @@ public class AdminController {
         goBack(event);
     }
 
-    public AdminController() {
-        userCardsList = FXCollections.observableList(new ArrayList<>());
-    }
-
     public void initialize() throws IOException {
         UserList u = new UserList();
-        List<User> users = u.getUserList();
+        List<User> users = u.getUsers();
+        refreshUsersList();
+    }
+
+    private void refreshUsersList() throws IOException {
+        UserList userList = new UserList();
+        List<User> users = userList.getUsers();
+
+        // remove all of the children
+        usersContainer.getChildren().clear();
 
         for (User user: users) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userCard.fxml"));
@@ -64,14 +67,8 @@ public class AdminController {
             ucc.setNameLabelText(user.getUsername());
             ucc.setEditButtonAction(e -> System.out.println("editing user"));
             ucc.setDeleteButtonAction(e -> System.out.println("deleting user"));
-            userCardsList.add(root);
             usersContainer.getChildren().add(root);
         }
-    }
-
-    private void refreshUsersList() {
-        UserList userList = new UserList();
-        List<User> users = userList.getUserList();
     }
 
     private void goBack(ActionEvent event) throws IOException {

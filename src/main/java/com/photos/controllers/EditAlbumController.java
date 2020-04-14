@@ -48,13 +48,6 @@ public class EditAlbumController {
         //go into their collection of albums and find the one with this name, then update its name
         UserList ul = new UserList();
         System.out.println("EditAlbum User: " + user);
-        for (Album a : ul.getUser(user).getAlbums()){
-            if (a.getAlbumName().equals(albumName)){
-                a.changeAlbumName(editAlbumBox.getText());
-                ul.getUser(user).updateUser();
-                break;
-            }
-        }
         System.out.println("Album name was successfully updated!");
         goBack(event);
     }
