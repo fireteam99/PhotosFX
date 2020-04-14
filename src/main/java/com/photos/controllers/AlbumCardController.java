@@ -55,7 +55,6 @@ public class AlbumCardController {
         //System.out.println("Check 5: " + str);
         this.user = str;
         AlbumDetailsController adc = loader.getController();
-        adc.thisUser(user, albumName.toString());
         //System.out.println("USERNAME (AlbumCard): " + user);
 
         Stage stage = (Stage) myMenuBar.getScene().getWindow();

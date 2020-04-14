@@ -13,11 +13,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // normal screens
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/albumDetails.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/editPicture.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/editPicture.fxml"));
 
         primaryStage.setTitle("Photos21");
         primaryStage.setScene(new Scene(root, 1110, 750));

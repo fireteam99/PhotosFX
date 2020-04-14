@@ -2,7 +2,11 @@ package com.photos.models;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 /*
     When a user wants to create a new album, they must create a new array list of Picture objects first,
@@ -11,50 +15,49 @@ import java.util.ArrayList;
  */
 public class User implements Serializable{
 
-    private String username = "";
-    private String password = "";
-    private ArrayList<Album> albums; //collection of albums for this user
+    private String id;
+    private String username;
+    private String password;
 
     //constructor to create new user objects
-    public User(String user, String pw) {
-        this.username = user;
-        this.password = pw;
-        this.albums = new ArrayList<Album>();
+    public User(String username, String password) {
+        id = UUID.randomUUID().toString();
+        this.username = username;
+        this.password = password;
     }
 
-    public String getUsername(){
-        return this.username;
+    public String getId() {
+        return id;
     }
 
-    public String getPassword(){
-        return this.password;
+    public String getUsername() {
+        return username;
     }
 
-    public ArrayList<Album> getAlbums(){
-        return this.albums;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public Album getAlbums(String album) {
-        for (Album a : albums){
-            if (a.getAlbumName().equals(album)){
-                return a;
-            }
-        }
-        System.out.println("No album was found with the given name!");
-        return null;
+    public String getPassword() {
+        return password;
     }
 
-    public void addAlbum(Album a){
-        if (!(albums.contains(a))){
-            albums.add(a);
-            return;
-        }
-        System.out.println("Album '" + a.getAlbumName() + "' already exists.");
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void updateUser() throws IOException {
-        UserList ul = new UserList();
-        ul.writeToSerFile(ul.getUserList());
+    // convenience methods
+
+    public List<Album> getAlbums(){
+        AlbumList albumList = new AlbumList();
+        List<Album> albums = albumList.getAlbums();
+        return albums.stream().filter(a -> a.getUser().equals(id)).collect(Collectors.toList());
+    }
+
+    public void addAlbum(Album album) throws IOException {
+        album.setUser(id);
+        AlbumList albumList = new AlbumList();
+        albumList.addAlbum(album);
     }
 
 }

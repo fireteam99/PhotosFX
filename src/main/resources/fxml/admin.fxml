@@ -13,9 +13,10 @@
 <?import javafx.scene.control.Label?>
 
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.Insets?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="borderPane"
-            fx:controller="com.photos.controllers.AdminController" stylesheets="/css/common.css"
+            fx:controller="com.photos.controllers.AdminController" stylesheets="/css/common.css, /css/admin.css"
             styleClass="background">
     <top>
         <BorderPane prefHeight="80.0">
@@ -40,7 +41,17 @@
     <center>
         <StackPane alignment="BOTTOM_RIGHT">
             <children>
-                <ListView fx:id="adminListView" prefWidth="200.0"/>
+                <HBox alignment="CENTER" style="-fx-background-color: white">
+                    <VBox fx:id="usersContainer" minWidth="900" maxWidth="900" prefWidth="900" alignment="TOP_CENTER" spacing="20">
+                        <padding>
+                            <Insets top="20" />
+                        </padding>
+                        <children></children>
+<!--                        <children>-->
+<!--                            <fx:include source="userCard.fxml" />-->
+<!--                        </children>-->
+                    </VBox>
+                </HBox>
                 <Button fx:id="adminCreateUserButton" mnemonicParsing="false"
                         onAction="#adminCreateUser" styleClass="btn-floating"
                         alignment="BOTTOM_RIGHT">

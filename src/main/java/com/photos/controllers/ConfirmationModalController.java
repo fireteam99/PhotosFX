@@ -28,7 +28,7 @@ public class ConfirmationModalController {
     private Button cancelButton;
 
     @FXML
-    private void closeButtonAction() {
+    public void closeModal() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }

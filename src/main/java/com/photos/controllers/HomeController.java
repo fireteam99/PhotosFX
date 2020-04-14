@@ -53,7 +53,7 @@ public class HomeController {
 
         for (Album a : ul.getUser(currentUser).getAlbums()){
             AlbumCardController acc = new AlbumCardController();
-            acc.setAlbumName(a.getAlbumName());
+            acc.setAlbumName(a.getName());
             //acc.setThumbnail(a.getPhotos().get(0).getImage());
             observableList.add(acc);
         }
