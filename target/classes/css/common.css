@@ -101,7 +101,7 @@
     -fx-font-weight: Bold;
     -fx-background-color: #A7E6AE;
     -fx-min-height: 2.2em;
-    -fx-min-width: 4.5em;
+    -fx-min-width: 5em;
     -fx-border-color: #979797;
     -fx-border-radius: .2em;
     -fx-border-width: .04em;
@@ -127,7 +127,7 @@
     -fx-font-weight: Bold;
     -fx-background-color: #F2F2F2;
     -fx-min-height: 2.2em;
-    -fx-min-width: 4.5em;
+    -fx-min-width: 5em;
     -fx-border-color: #979797;
     -fx-border-radius: .2em;
     -fx-border-width: .04em;
@@ -152,7 +152,7 @@
     -fx-font-weight: Bold;
     -fx-background-color: #E6A7A7;
     -fx-min-height: 2.2em;
-    -fx-min-width: 4.5em;
+    -fx-min-width: 5em;
     -fx-border-color: #979797;
     -fx-border-radius: .2em;
     -fx-border-width: .04em;

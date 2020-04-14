@@ -37,12 +37,6 @@ public class DoubleInputModalController {
     @FXML
     private Button cancelButton;
 
-    @FXML
-    public void closeButtonAction() {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-    }
-
     public void setTitleText(String title) {
         modalTitle.setText(title);
     }
@@ -60,12 +54,28 @@ public class DoubleInputModalController {
         inputLabel1.setText(s);
     }
 
+    public String getInput1Text() {
+        return input1.getText().trim();
+    }
+
+    public void setInput1Text(String s) {
+        input1.setText(s);
+    }
+
     public void setInput1PromptText(String s) {
         input1.setPromptText(s);
     }
 
     public void setInputLabel2Text(String s) {
         inputLabel2.setText(s);
+    }
+
+    public String getInput2Text() {
+        return input2.getText().trim();
+    }
+
+    public void setInput2Text(String s) {
+        input2.setText(s);
     }
 
     public void setInput2PromptText(String s) {
@@ -79,24 +89,26 @@ public class DoubleInputModalController {
     public void setConfirmButtonStyle(ButtonStyle buttonStyle) {
         switch (buttonStyle) {
             case CONFIRM: {
-                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().removeAll(new String[]{"btn-confirm", "btn-neutral", "btn-danger"});
                 confirmButton.getStyleClass().add("btn-confirm");
                 break;
             }
             case DANGER: {
-                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().removeAll(new String[]{"btn-confirm", "btn-neutral", "btn-danger"});
                 confirmButton.getStyleClass().add("btn-danger");
                 break;
             }
             default: {
-                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().removeAll(new String[]{"btn-confirm", "btn-neutral", "btn-danger"});
                 confirmButton.getStyleClass().add("btn-neutral");
                 break;
             }
         }
     }
 
-    public void initialize() {
+    public void closeModal() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 
 }

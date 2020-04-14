@@ -68,17 +68,17 @@ public class SingleInputModalController {
     public void setConfirmButtonStyle(ButtonStyle buttonStyle) {
         switch (buttonStyle) {
             case CONFIRM: {
-                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().removeAll(new String[]{"btn-confirm", "btn-neutral", "btn-danger"});
                 confirmButton.getStyleClass().add("btn-confirm");
                 break;
             }
             case DANGER: {
-                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().removeAll(new String[]{"btn-confirm", "btn-neutral", "btn-danger"});
                 confirmButton.getStyleClass().add("btn-danger");
                 break;
             }
             default: {
-                confirmButton.getStyleClass().removeAll();
+                confirmButton.getStyleClass().removeAll(new String[]{"btn-confirm", "btn-neutral", "btn-danger"});
                 confirmButton.getStyleClass().add("btn-neutral");
                 break;
             }

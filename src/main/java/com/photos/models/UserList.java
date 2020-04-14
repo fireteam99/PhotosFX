@@ -72,6 +72,19 @@ public class UserList implements Serializable{
         return filtered.get(0);
     }
 
+    // update user by id
+    public void editUser(String id, String username, String password) throws IOException {
+        init();
+        List<User> filtered = userList.stream().filter(u -> u.getId().equals(id)).collect(Collectors.toList());
+        if (filtered.isEmpty()) {
+            throw new NoSuchElementException("User does not exist.");
+        }
+        User user = filtered.get(0);
+        user.setUsername(username);
+        user.setPassword(password);
+        serialize();
+    }
+
     // remove user by id
     public void deleteUser(User id) throws IOException {
         init();
@@ -109,10 +122,12 @@ public class UserList implements Serializable{
     // appends initial stock user
     public void setUpUsers() throws IOException {
         init();
-        User stock = new User("stock", "stock");
-        Album stockA = new Album("testAlbumStock", stock.getUsername());
-        stock.addAlbum(stockA);
-        addUser(stock);
+        if (!userExistsByUsername("stock")) {
+            User stock = new User("stock", "stock");
+            Album stockA = new Album("testAlbumStock", stock.getId());
+            stock.addAlbum(stockA);
+            addUser(stock);
+        }
     }
 
 }

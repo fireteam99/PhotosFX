@@ -2,6 +2,7 @@ package com.photos.util;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 
 public class CreateScene {
     public static Scene createNormalScene(Parent root) {
@@ -9,14 +10,20 @@ public class CreateScene {
     }
 
     public static Scene createConfirmationModalScene(Parent root) {
-        return new Scene(root, 600, 350);
+        Scene scene = new Scene(root, 600, 350);
+        scene.setFill(Color.TRANSPARENT);
+        return scene;
     }
 
     public static Scene createSingleInputModalScene(Parent root) {
-        return new Scene(root, 600, 420);
+        Scene scene =  new Scene(root, 600, 420);
+        scene.setFill(Color.TRANSPARENT);
+        return scene;
     }
 
     public static Scene createDoubleInputModalScene(Parent root) {
-        return new Scene(root, 600, 420);
+        Scene scene = new Scene(root, 600, 500);
+        scene.setFill(Color.TRANSPARENT);
+        return scene;
     }
 }
