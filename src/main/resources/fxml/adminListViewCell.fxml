@@ -6,20 +6,38 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="borderPane"
             stylesheets="/css/common.css"
-            prefHeight="50.0" prefWidth="400.0">
+            styleClass="card">
     <left>
         <HBox alignment="CENTER">
-            <Label fx:id="nameLabel" text="Name" />
+            <Label fx:id="nameLabel" text="Name" styleClass="smallheader-light" />
         </HBox>
     </left>
     <right>
         <HBox alignment="CENTER">
-            <Button fx:id="editButton" text="edit" />
-            <Button fx:id="deleteButton" text="delete" />
+            <Button fx:id="editButton" styleClass="btn-min">
+                <graphic>
+                    <ImageView preserveRatio="true" fitWidth="30">
+                        <image>
+                            <Image url="/images/wrench.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="deleteButton" styleClass="btn-min">
+                <graphic>
+                    <ImageView preserveRatio="true" fitWidth="30">
+                        <image>
+                            <Image url="/images/delete.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
         </HBox>
     </right>
 </BorderPane>

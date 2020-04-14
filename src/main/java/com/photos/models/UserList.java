@@ -5,36 +5,36 @@ import com.photos.models.User;
 import java.io.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class UserList implements Serializable{
 
     static final long serialVersionUID = 1L;
 
     //master list of users.ser
-    private static ArrayList<User> userList = new ArrayList<User>();
-    public static final String dataFile = "src/main/resources/persist/serializedUsers.ser";
+    private List<User> userList = new ArrayList<User>();
+    public final String dataFile = "src/main/resources/persist/serializedUsers.ser";
 
     //serialize list of users
-    public static void writeToSerFile(ArrayList<User> users) throws IOException {
+    public void serialize() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dataFile));
-        oos.writeObject(users);
+        oos.writeObject(userList);
     }
 
-    //deserialize list of users - used to get the latest version
-    public static ArrayList<User> deserialize(){
-        ArrayList<User> users = new ArrayList<User>();
+    // deserialize list of users - used to get the latest version
+    private void init() {
         try {
             FileInputStream fileIn = new FileInputStream(dataFile);
             ObjectInputStream ois = new ObjectInputStream(fileIn);
-            users = (ArrayList<User>) ois.readObject();
+            userList = (ArrayList<User>) ois.readObject();
             ois.close();
             fileIn.close();
         } catch (IOException | ClassNotFoundException i){
             System.out.println("No users exist or class is not found");
-            //i.printStackTrace();
-            return users;
+            userList = new ArrayList<User>();
         }
-        return users;
     }
 
     //this method adds new user to userList, as long as the user does not already exist
@@ -47,36 +47,44 @@ public class UserList implements Serializable{
             }
         }
         userList.add(user);
-        writeToSerFile(userList);
+        serialize();
         System.out.println("Successfully added '" + user.getUsername() + "'...");
     }
 
-    public void deleteUser(User user) throws IOException {
-        for (User u : userList){
-            if (u.getUsername().equals(user.getUsername())){
-                userList.remove(user);
-                System.out.println("The user: " + user.getUsername() + " has been deleted.");
-                return;
-            }
+    public User getUser(String id) {
+        init();
+        List<User> filtered = userList.stream().filter(u -> u.getId().equals(id)).collect(Collectors.toList());
+        if (filtered.isEmpty()) {
+            throw new IllegalArgumentException("User does not exist.");
         }
-        writeToSerFile(userList);
+        return filtered.get(0);
+    }
+
+    public void deleteUser(User id) throws IOException {
+        init();
+        List<User> filtered = userList.stream().filter(a -> a.getId().equals(id)).collect(Collectors.toList());
+        if (filtered.isEmpty()) {
+            throw new NoSuchElementException("The user to delete does not exist.");
+        }
+        userList = userList.stream().filter(p -> !p.getId().equals(id)).collect(Collectors.toList());
+        serialize();
     }
 
     //get latest version of userList via deserialization from file
-    public ArrayList<User> getUserList(){
-        return this.userList;
+    public List<User> getUsers(){
+        init();
+        return userList;
     }
 
-    //print the userList
     public void printUserList(){
         for (User u : userList){
-            System.out.println(u.getUsername());
+            System.out.println(u.toString());
         }
     }
 
-    public boolean userExists(String name){
+    public boolean userExists(String id){
         for (User u : userList){
-            if (u.getUsername().equals(name)){
+            if (u.getUsername().equals(id)){
                 return true;
             }
         }
@@ -84,18 +92,8 @@ public class UserList implements Serializable{
         return false;
     }
 
-    public User getUser(String name){
-        for (User u : userList){
-            if (u.getUsername().equals(name)){
-                return u;
-            }
-        }
-        System.out.println("No user with the username '" + name+ "' was found!");
-        return null;
-    }
-
     public void setUpUsers() throws IOException {
-        this.userList = deserialize();
+        init();
         User stock = new User("stock", "stock");
         Album stockA = new Album("testAlbumStock", stock.getUsername());
         stock.addAlbum(stockA);

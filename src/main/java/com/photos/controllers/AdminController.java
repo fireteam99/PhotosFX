@@ -2,6 +2,7 @@ package com.photos.controllers;
 
 import com.photos.models.User;
 import com.photos.models.UserList;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,17 +13,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdminController {
-
     @FXML
-    private ListView<User> adminListView;
+    private VBox usersContainer;
 
-    private ObservableList<User> observableList;
+    private ObservableList<Node> userCardsList;
 
     @FXML
     private Button adminCreateUserButton;
@@ -46,16 +49,29 @@ public class AdminController {
         goBack(event);
     }
 
-    public void initialize() {
-        UserList u = new UserList();
-        ArrayList<User> users = u.getUserList();
-        observableList = FXCollections.observableList(users);
-        adminListView.setItems(observableList);
-        adminListView.setCellFactory(adminListView -> new AdminListViewCellController());
+    public AdminController() {
+        userCardsList = FXCollections.observableList(new ArrayList<>());
     }
 
-    public AdminController() {
-        adminListView = new ListView<>();
+    public void initialize() throws IOException {
+        UserList u = new UserList();
+        List<User> users = u.getUserList();
+
+        for (User user: users) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userCard.fxml"));
+            Parent root = loader.load();
+            UserCardController ucc = loader.getController();
+            ucc.setNameLabelText(user.getUsername());
+            ucc.setEditButtonAction(e -> System.out.println("editing user"));
+            ucc.setDeleteButtonAction(e -> System.out.println("deleting user"));
+            userCardsList.add(root);
+            usersContainer.getChildren().add(root);
+        }
+    }
+
+    private void refreshUsersList() {
+        UserList userList = new UserList();
+        List<User> users = userList.getUserList();
     }
 
     private void goBack(ActionEvent event) throws IOException {
