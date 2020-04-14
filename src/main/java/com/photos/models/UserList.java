@@ -119,6 +119,7 @@ public class UserList implements Serializable{
     }
 
     public void printUserList(){
+        init();
         for (User u : userList){
             System.out.println(u.toString());
         }
@@ -126,6 +127,7 @@ public class UserList implements Serializable{
 
     // check user existence by username
     public boolean userExistsByUsername(String username){
+        init();
         for (User u : userList){
             if (u.getUsername().equals(username)){
                 return true;

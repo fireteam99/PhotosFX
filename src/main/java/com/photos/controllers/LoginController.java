@@ -74,7 +74,6 @@ public class LoginController {
                 message.setText("Invalid password.");
             }
 
-
         } else {
             message.setVisible(true);
             message.setText("Invalid username.");
