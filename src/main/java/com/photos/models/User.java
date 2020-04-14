@@ -46,10 +46,12 @@ public class User implements Serializable{
         this.password = password;
     }
 
+    // convenience methods
+
     public List<Album> getAlbums(){
         AlbumList albumList = new AlbumList();
         List<Album> albums = albumList.getAlbums();
-        return albums.stream().filter(a -> a.getId().equals(id)).collect(Collectors.toList());
+        return albums.stream().filter(a -> a.getUser().equals(id)).collect(Collectors.toList());
     }
 
     public void addAlbum(Album album) throws IOException {

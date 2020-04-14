@@ -34,23 +34,26 @@ public class LoginController {
         String username = usernameBox.getText().trim();
         String password = passwordBox.getText().trim();
 
+        UserList userList = new UserList();
+
         //check to see if user/pw combo exists in master user list
         //if user provides admin user/pw, go to admin page
-        if (username.equals("admin") && password.equals("admin")){
+        if (username.equals("admin") && password.equals("admin")) {
             //System.out.println("admin successfully logged in!");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin.fxml"));
             Parent root = loader.load();
             Node n = (Node) event.getSource();
-            Stage stage=(Stage) n.getScene().getWindow();
-            Scene scene = new Scene(root, 1110, 750);;
+            Stage stage = (Stage) n.getScene().getWindow();
+            Scene scene = new Scene(root, 1110, 750);
+            ;
             stage.setScene(scene);
             stage.show();
-        }
-        else if (new UserList().userExists(username)){
+        } else if (userList.userExistsByUsername(username)) { // TODO: actually implement login
             //System.out.println("USERNAME (Login): " + username);
+            String userId = userList.getUserByUsername(username).getId();
 
             Preferences userPreferences = Preferences.userRoot();
-            userPreferences.put("sessionUser", username);
+            userPreferences.put("sessionUser", userId);
             userPreferences.flush();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
@@ -58,8 +61,8 @@ public class LoginController {
 //            HomeController hc = loader.getController();
 //            hc.currUser(username);
             Node n = (Node) event.getSource();
-            Stage stage=(Stage) n.getScene().getWindow();
-            Scene scene = new Scene(root, 1110, 750);;
+            Stage stage = (Stage) n.getScene().getWindow();
+            Scene scene = new Scene(root, 1110, 750);
             stage.setScene(scene);
             stage.show();
         }

@@ -40,10 +40,12 @@ public class Album implements Serializable {
         this.name = name;
     }
 
+    // convenience methods
+
     public List<Picture> getPictures() {
         PictureList pictureList = new PictureList();
         List<Picture> pictures = pictureList.getPictures();
-        return pictures.stream().filter(p -> p.getId().equals(id)).collect(Collectors.toList());
+        return pictures.stream().filter(p -> p.getAlbum().equals(id)).collect(Collectors.toList());
     }
 
     public void addPicture(Picture picture) throws IOException {

@@ -28,7 +28,7 @@ public class PictureList {
             fileIn.close();
         } catch (IOException | ClassNotFoundException i){
             System.out.println("No pictures exist or class is not found");
-            pictureList = new ArrayList<Picture>();
+            pictureList = new ArrayList<>();
         }
     }
 
@@ -73,6 +73,7 @@ public class PictureList {
     }
 
     public List<Picture> getPictures() {
+        init();
         return pictureList;
     }
 

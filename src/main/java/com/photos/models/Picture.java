@@ -18,7 +18,8 @@ public class Picture {
         this.album = album;
         date = new Date(file.lastModified());
         name = file.getName();
-        caption = file.getName() + date.toString();
+        // sets default caption to the file's name plus the file's date
+        caption = file.getName() + ' ' + date.toString();
         tags = new HashMap<>();
         this.file = file;
     }
@@ -27,10 +28,12 @@ public class Picture {
         return id;
     }
 
+    // gets the id of the album associated with picture (the album it belongs to)
     public String getAlbum() {
         return album;
     }
 
+    // sets the id of the album associated with picture (the album it belongs to)
     public void setAlbum(String album) {
         this.album = album;
     }
@@ -51,6 +54,7 @@ public class Picture {
         this.caption = caption;
     }
 
+    // gets the date where the file was last modified
     public Date getDate() {
         return date;
     }

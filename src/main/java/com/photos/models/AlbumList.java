@@ -74,6 +74,7 @@ public class AlbumList implements Serializable {
     }
 
     public List<Album> getAlbums() {
+        init();
         return albumList;
     }
 
