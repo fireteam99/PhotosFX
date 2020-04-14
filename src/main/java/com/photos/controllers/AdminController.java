@@ -131,9 +131,14 @@ public class AdminController {
                             dimc.closeModal();
                             // refresh the user list
                             refreshUsersList();
+                        } catch (IllegalArgumentException ex) {
+                            dimc.setMessageVisibility(true);
+                            dimc.setMessageStyle(TextStyle.DANGER);
+                            dimc.setMessageText(ex.getMessage());
                         } catch (IOException ex) {
-                            // TODO: Show a modal on why it failed
-                            ex.printStackTrace();
+                            dimc.setMessageVisibility(true);
+                            dimc.setMessageStyle(TextStyle.DANGER);
+                            dimc.setMessageText("Unexpected error, please try again.");
                         }
                     });
                     dimc.setConfirmButtonStyle(ButtonStyle.CONFIRM);

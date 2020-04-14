@@ -1,7 +1,3 @@
-.text-danger {
-    -fx-text-fill: #ba3a3a;
-}
-
 .header-light {
     -fx-font-family: "Verdana";
     -fx-font-weight: Bold;
@@ -52,6 +48,10 @@
 .body-dark {
     -fx-text-fill: #F7F7F7;
     -fx-font-size: 10pt;
+}
+
+.text-danger {
+    -fx-text-fill: #ba3a3a;
 }
 
 .card {

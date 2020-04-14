@@ -1,5 +1,6 @@
 package com.photos.controllers;
 
+import com.photos.models.User;
 import com.photos.models.UserList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -16,7 +18,8 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 public class LoginController {
-    private static String poop;
+    @FXML
+    private Label message;
 
     @FXML
     private TextField usernameBox;
@@ -38,35 +41,49 @@ public class LoginController {
 
         //check to see if user/pw combo exists in master user list
         //if user provides admin user/pw, go to admin page
-        if (username.equals("admin") && password.equals("admin")) {
-            //System.out.println("admin successfully logged in!");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin.fxml"));
-            Parent root = loader.load();
-            Node n = (Node) event.getSource();
-            Stage stage = (Stage) n.getScene().getWindow();
-            Scene scene = new Scene(root, 1110, 750);
-            ;
-            stage.setScene(scene);
-            stage.show();
-        } else if (userList.userExistsByUsername(username)) { // TODO: actually implement login
-            //System.out.println("USERNAME (Login): " + username);
-            String userId = userList.getUserByUsername(username).getId();
+        if (username.equals("admin")) {
+            if (password.equals("admin")) {
+                //System.out.println("admin successfully logged in!");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/admin.fxml"));
+                Parent root = loader.load();
+                Node n = (Node) event.getSource();
+                Stage stage = (Stage) n.getScene().getWindow();
+                Scene scene = new Scene(root, 1110, 750);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                message.setVisible(true);
+                message.setText("Invalid password.");
+            }
+        } else if (userList.userExistsByUsername(username)) {
+            User user = userList.getUserByUsername(username);
+            if (passwordBox.getText().equals(user.getPassword())) {
+                Preferences userPreferences = Preferences.userRoot();
+                userPreferences.put("sessionUser", user.getId());
+                userPreferences.flush();
 
-            Preferences userPreferences = Preferences.userRoot();
-            userPreferences.put("sessionUser", userId);
-            userPreferences.flush();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
+                Parent root = loader.load();
+                Node n = (Node) event.getSource();
+                Stage stage = (Stage) n.getScene().getWindow();
+                Scene scene = new Scene(root, 1110, 750);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                message.setVisible(true);
+                message.setText("Invalid password.");
+            }
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
-            Parent root = loader.load();
-//            HomeController hc = loader.getController();
-//            hc.currUser(username);
-            Node n = (Node) event.getSource();
-            Stage stage = (Stage) n.getScene().getWindow();
-            Scene scene = new Scene(root, 1110, 750);
-            stage.setScene(scene);
-            stage.show();
+
+        } else {
+            message.setVisible(true);
+            message.setText("Invalid username.");
         }
 
+    }
+
+    public void initialize() {
+        message.setVisible(false);
     }
 
 }

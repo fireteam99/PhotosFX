@@ -17,6 +17,7 @@
                 <VBox minHeight="0.0" maxWidth="400" alignment="CENTER" spacing="10" styleClass="card">
                     <children>
                         <Label text="Login" styleClass="subheader-light" />
+                        <Label fx:id="message" text="Message" styleClass="text-danger, body-light" />
                         <VBox minHeight="0.0" minWidth="0.0" spacing="10" styleClass="input-group">
                             <children>
                                 <VBox minHeight="0.0" minWidth="0.0" styleClass="input-container">

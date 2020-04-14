@@ -61,11 +61,11 @@ public class DoubleInputModalController {
     public void setMessageStyle(TextStyle textStyle) {
         switch (textStyle) {
             case DANGER: {
-                modalMessage.setTextFill(Paint.valueOf("#ba3a3a"));
+                modalMessage.getStyleClass().add("text-danger");
                 break;
             }
             case NEUTRAL: {
-                modalMessage.setTextFill(Paint.valueOf("#40464E"));
+                modalMessage.getStyleClass().remove("text-danger");
             }
         }
     }

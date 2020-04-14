@@ -83,6 +83,18 @@ public class UserList implements Serializable{
         if (filtered.isEmpty()) {
             throw new NoSuchElementException("User does not exist.");
         }
+
+        // make sure username is not empty
+        if (username.isEmpty()) {
+            throw new IllegalArgumentException("Username cannot be empty.");
+        }
+        // make sure username is unique
+        for (User user: userList) {
+            if (user.getUsername().equals(username)) {
+                throw new IllegalArgumentException("Username already taken.");
+            }
+        }
+
         User user = filtered.get(0);
         user.setUsername(username);
         user.setPassword(password);
