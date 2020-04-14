@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.image.Image?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:id="vBox"
+      fx:controller="com.photos.controllers.AlbumCardController"
+      prefHeight="200.0" prefWidth="300.0"  minWidth="300" maxWidth="300"
+      alignment="TOP_CENTER" stylesheets="/css/common.css, /css/albumcard.css">
+    <children>
+        <BorderPane minWidth="${vBox.width}" maxWidth="${vBox.width}" prefWidth="${vBox.width}">
+            <left>
+                <VBox alignment="CENTER_LEFT">
+                    <Label fx:id="albumName" styleClass="subheader-light, album-title" text="Album Name" />
+                </VBox>
+            </left>
+            <right>
+                <MenuButton fx:id="myMenuBar" styleClass="btn-min, drop-down">
+                    <graphic>
+                        <ImageView fitHeight="30" fitWidth="30" styleClass="icon">
+                            <image>
+                                <Image url="/images/more_horiz.png" preserveRatio="true"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <items>
+                        <MenuItem fx:id="view" styleClass="drop-down-item" text="View" onAction="#viewAlbum"/>
+                        <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit" onAction="#editAlbum"/>
+                        <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete" onAction="#deleteAlbum"/>
+                    </items>
+                </MenuButton>
+            </right>
+        </BorderPane>
+        <ImageView fx:id="imageView" fitWidth="${vBox.width}" fitHeight="${vBox.width * 0.6}">
+            <image>
+                <Image url="/images/stock/image-placeholder.jpg" preserveRatio="true" />
+            </image>
+        </ImageView>
+    </children>
+</VBox>

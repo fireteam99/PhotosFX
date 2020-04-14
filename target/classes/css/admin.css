@@ -1,0 +1,6 @@
+.listview {
+    -fx-background-color: -fx-box-border, -fx-control-inner-background; //this line
+    -fx-background-insets: 0, 1;
+    -fx-padding: 1;
+    -fx-control-inner-background-alt: -fx-control-inner-background ;
+}
