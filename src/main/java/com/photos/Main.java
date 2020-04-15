@@ -62,8 +62,8 @@ public class Main extends Application {
         userPreferences.clear();
 
         // to skip login for testing
-//        userPreferences.put("sessionUser", "3f8b91d0-5cf5-41d5-8b3e-0c9bf66cd995");
-//        userPreferences.flush();
+        userPreferences.put("sessionUser", "3f8b91d0-5cf5-41d5-8b3e-0c9bf66cd995");
+        userPreferences.flush();
 
         //testing and debugging -- IGNORE
         UserList sess = new UserList();

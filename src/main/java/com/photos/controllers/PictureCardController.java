@@ -19,6 +19,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
 
 
 public class PictureCardController {
@@ -52,8 +54,22 @@ public class PictureCardController {
     private Label caption;
 
     @FXML
-    public void viewPicture() throws IOException {
+    public void viewPicture() throws IOException, BackingStoreException {
         System.out.println("viewing picture");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/slideshow.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) vBox.getScene().getWindow();
+        Scene scene = CreateScene.createNormalScene(root);
+        stage.setScene(scene);
+        SlideshowController slideshowController = loader.getController();
+        slideshowController.setPicture(picture);
+        stage.show();
+
+        // set the picture in preferences
+        Preferences userPreferences = Preferences.userRoot();
+        userPreferences.put("selectedPicture", picture.getId());
+        userPreferences.flush();
+
     }
 
     @FXML
@@ -99,11 +115,29 @@ public class PictureCardController {
         System.out.println("Setting picture to be: " + picture.getName());
         setImageViewOnClick(e -> {
             System.out.println("Redirecting to slideshow");
+            try {
+                viewPicture();
+            } catch (IOException | BackingStoreException ex) {
+                // TODO: change to usesful info
+                ex.printStackTrace();
+            }
         });
         imageView.setImage(new Image(picture.getFile().toURI().toString()));
 
         System.out.println(picture.getFile().getPath());
 
+    }
+
+    public void setViewDisable(boolean b) {
+        view.setDisable(b);
+    }
+
+    public void setMoveDisable(boolean b) {
+        move.setDisable(b);
+    }
+
+    public void setDeleteDisable(boolean b) {
+        delete.setDisable(b);
     }
 
     public void setPhotoName(String s) {

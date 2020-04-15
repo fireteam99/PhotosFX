@@ -3,6 +3,10 @@ package com.photos.models;
 import javafx.scene.image.Image;
 import java.io.File;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.*;
 
 /**
@@ -30,7 +34,9 @@ public class Picture implements Serializable {
         date = new Date(file.lastModified());
         name = file.getName();
         // sets default caption to the file's name plus the file's date
-        caption = file.getName() + ' ' + date.toString();
+        LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        String formattedDate = localDateTime.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(Locale.getDefault()));
+        caption = String.format("%s was taken on %s", file.getName(), formattedDate);
         tags = new HashMap<>();
         this.file = file;
     }

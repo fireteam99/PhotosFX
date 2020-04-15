@@ -14,16 +14,26 @@
            stylesheets="/css/common.css, /css/slideshow.css"
            fx:controller="com.photos.controllers.SlideshowController"
            styleClass="background" alignment="TOP_CENTER"
+           fx:id="container"
            prefHeight="400.0" prefWidth="600.0">
-    <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: transparent">
+
+    <!-- Only appears if the album is empty -->
+    <VBox alignment="CENTER">
+        <Label styleClass="subheader-dark" text="Album is empty..."/>
+        <Label styleClass="smallheader-dark" text="Exit out to add some pictures!"/>
+    </VBox>
+
+    <!-- image details -->
+    <ScrollPane fx:id="imageDetailsContainer" fitToWidth="true" fitToHeight="true"
+                style="-fx-background-color: transparent">
         <content>
             <BorderPane styleClass="background">
                 <center>
                     <VBox alignment="CENTER" minWidth="0" spacing="10">
                         <VBox alignment="CENTER">
-                            <Label text="Image Name" styleClass="image-name"/>
+                            <Label fx:id="name" text="Image Name" styleClass="image-name"/>
                             <VBox alignment="CENTER">
-                                <HBox alignment="CENTER_RIGHT" maxWidth="${image.fitWidth}">
+                                <HBox alignment="CENTER_RIGHT" maxWidth="${imageView.fitWidth}">
                                     <MenuButton styleClass="btn-min, drop-down">
                                         <graphic>
                                             <ImageView fitHeight="30" preserveRatio="true" styleClass="icon">
@@ -33,15 +43,15 @@
                                             </ImageView>
                                         </graphic>
                                         <items>
-                                            <MenuItem styleClass="drop-down-item" text="Edit"/>
-                                            <MenuItem styleClass="drop-down-item" text="Copy"/>
-                                            <MenuItem styleClass="drop-down-item" text="Move"/>
-                                            <MenuItem styleClass="drop-down-item" text="Delete"/>
+                                            <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit"/>
+                                            <MenuItem fx:id="copy" styleClass="drop-down-item" text="Copy"/>
+<!--                                            <MenuItem fx:id="move" styleClass="drop-down-item" text="Move"/>-->
+<!--                                            <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete"/>-->
                                         </items>
                                     </MenuButton>
                                 </HBox>
                                 <!-- Photo -->
-                                <ImageView fx:id="image" preserveRatio="true" fitWidth="700">
+                                <ImageView fx:id="imageView" preserveRatio="true" fitWidth="700">
                                     <image>
                                         <Image url="/images/image-placeholder.jpg"/>
                                     </image>
@@ -50,10 +60,10 @@
                         </VBox>
 
                         <!-- Photo Meta-data -->
-                        <VBox alignment="CENTER_LEFT" maxWidth="${image.fitWidth}" spacing="20">
+                        <VBox alignment="CENTER_LEFT" maxWidth="${imageView.fitWidth}" spacing="20">
                             <VBox spacing="3">
-                                <Label text="Photo Date" styleClass="image-date"/>
-                                <Label text="Photo caption goes here..." styleClass="image-caption"/>
+                                <Label fx:id="date" text="Photo Date" styleClass="image-date"/>
+                                <Label fx:id="caption" text="Photo caption goes here..." styleClass="image-caption"/>
                             </VBox>
                             <FlowPane alignment="CENTER_LEFT" hgap="15" vgap="18">
                                 <fx:include source="tag.fxml"/>
@@ -61,7 +71,7 @@
                                     <graphic>
                                         <ImageView preserveRatio="true" fitWidth="25">
                                             <image>
-                                                <Image url="/images/add.png" />
+                                                <Image url="/images/add.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -77,7 +87,7 @@
                         <padding>
                             <Insets left="30"/>
                         </padding>
-                        <Button styleClass="btn-min">
+                        <Button fx:id="moveLeft" styleClass="btn-min" onAction="#moveLeftPicture">
                             <graphic>
                                 <ImageView preserveRatio="true" fitHeight="70">
                                     <image>
@@ -93,7 +103,7 @@
                         <padding>
                             <Insets right="30"/>
                         </padding>
-                        <Button styleClass="btn-min">
+                        <Button fx:id="moveRight" styleClass="btn-min" onAction="#moveRightPicture">
                             <graphic>
                                 <ImageView preserveRatio="true" fitHeight="75">
                                     <image>

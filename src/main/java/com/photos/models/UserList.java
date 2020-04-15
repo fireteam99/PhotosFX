@@ -193,8 +193,26 @@ public class UserList implements Serializable{
         if (!userExistsByUsername("stock")) {
             User stock = new User("stock", "stock");
             Album album = new Album("testAlbumStock", stock.getId());
-            Picture picture = new Picture(album.getId(), new File("src/main/resources/images/stock/desert_night.png"));
-            album.addPicture(picture);
+
+            // add all photos in data directory
+            File dataFolder = new File("data");
+            FileFilter fileFilter = new FileFilter() {
+                @Override
+                public boolean accept(File pathname) {
+                    String name = pathname.getName();
+                    return name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png") || name.endsWith(".gif");
+                }
+            };
+
+            File[] stockPhotos = dataFolder.listFiles(fileFilter);
+
+            for (File file: stockPhotos) {
+                album.addPicture(new Picture(album.getId(), file));
+            }
+
+//            album.addPicture(new Picture(album.getId(), new File("data/desert_night.png")));
+//            album.addPicture(new Picture(album.getId(), new File("data/arch_bridge.png")));
+
             stock.addAlbum(album);
             addUser(stock);
         }
