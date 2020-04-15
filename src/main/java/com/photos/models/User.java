@@ -86,6 +86,7 @@ public class User implements Serializable{
     public List<Album> getAlbums(){
         AlbumList albumList = new AlbumList();
         List<Album> albums = albumList.getAlbums();
+        System.out.println(albums.toString());
         return albums.stream().filter(a -> a.getUser().equals(id)).collect(Collectors.toList());
     }
 

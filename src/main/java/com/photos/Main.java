@@ -62,7 +62,7 @@ public class Main extends Application {
         userPreferences.clear();
 
         // to skip login for testing
-//        userPreferences.put("sessionUser", "3f8b91d0-5cf5-41d5-8b3e-0c9bf66cd995");
+//        userPreferences.put("sessionUser", "f2003b47-0a2d-4af0-b4dc-9ee3666bcc64");
 //        userPreferences.flush();
 
         //testing and debugging -- IGNORE
