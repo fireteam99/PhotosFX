@@ -47,17 +47,17 @@ public class AlbumCardController {
     }
 
     @FXML
-    public void viewAlbum(ActionEvent event) throws IOException {
+    public void viewAlbum() throws IOException {
         System.out.println("viewing album");
     }
 
     @FXML
-    public void editAlbum(ActionEvent actionEvent) throws IOException {
+    public void editAlbum() throws IOException {
         System.out.println("editing album");
     }
 
     @FXML
-    public void deleteAlbum(ActionEvent actionEvent) throws IOException {
+    public void deleteAlbum() throws IOException {
         System.out.println("deleting album");
     }
 
@@ -66,6 +66,7 @@ public class AlbumCardController {
         setImageViewOnClick(e -> {
             System.out.println("redirecting to album detials");
         });
+
     }
 
 
