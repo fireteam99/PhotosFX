@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
+            fx:id="container"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="/css/common.css, /css/tag.css"
             fx:controller="com.photos.controllers.TagController"
@@ -20,8 +21,8 @@
             <padding>
                 <Insets left="5" />
             </padding>
-            <Label styleClass="key" text="Location" />
-            <Label styleClass="value" text="Florida" />
+            <Label fx:id="key" styleClass="key" text="Location" />
+            <Label fx:id="value" styleClass="value" text="Florida" />
         </VBox>
     </left>
     <right>
@@ -29,7 +30,7 @@
             <padding>
                 <Insets right="1" />
             </padding>
-            <Button styleClass="btn-min, btn-delete">
+            <Button fx:id="delete" styleClass="btn-min, btn-delete">
                 <graphic>
                     <ImageView preserveRatio="true" fitHeight="20">
                         <image>

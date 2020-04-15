@@ -15,9 +15,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // normal screens
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/albumDetails.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/editPicture.fxml"));
 
@@ -57,9 +57,12 @@ public class Main extends Application {
 //        primaryStage.setMinWidth(600);
 //        primaryStage.setMinHeight(500);
 
-        // for testing home screen
+        // clears all preferences for a clean start
         Preferences userPreferences = Preferences.userRoot();
-        userPreferences.put("sessionUser", "e472bc87-3606-4b74-be7d-2b967179152d");
+        userPreferences.clear();
+
+        // to skip login for testing
+        userPreferences.put("sessionUser", "3f8b91d0-5cf5-41d5-8b3e-0c9bf66cd995");
         userPreferences.flush();
 
         //testing and debugging -- IGNORE

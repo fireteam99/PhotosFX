@@ -2,6 +2,7 @@ package com.photos.controllers;
 
 import com.photos.models.Picture;
 import com.photos.util.CreateScene;
+import com.photos.util.ScreenHistory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +23,10 @@ import java.io.IOException;
 
 public class PhotoCardController {
     private Picture picture;
+
+    @FXML
+    VBox vBox;
+
     @FXML
     private Label photoName;
 
@@ -46,22 +52,22 @@ public class PhotoCardController {
     private Label caption;
 
     @FXML
-    public void viewPicture(ActionEvent event) throws IOException {
+    public void viewPicture() throws IOException {
         System.out.println("viewing picture");
+    }
+
+    @FXML
+    public void editPicture() throws IOException {
+        System.out.println("editing picture");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editPicture.fxml"));
         Parent root = loader.load();
-        Node n = (Node) event.getSource();
-        Stage stage = (Stage) n.getScene().getWindow();
+        Stage stage = (Stage) vBox.getScene().getWindow();
         Scene scene = CreateScene.createNormalScene(root);
         stage.setScene(scene);
         EditPictureController epc = loader.getController();
         epc.setPicture(picture);
+        epc.setPrevScreen(ScreenHistory.ALBUM_DETAILS);
         stage.show();
-    }
-
-    @FXML
-    public void editPicture() {
-        System.out.println("editing picture");
     }
 
     @FXML
@@ -88,6 +94,8 @@ public class PhotoCardController {
 
     public void setPicture(Picture picture) {
         this.picture = picture;
+        photoName.setText(picture.getName());
+        caption.setText(picture.getCaption());
         System.out.println("Setting picture to be: " + picture.getName());
         setImageViewOnClick(e -> {
             System.out.println("Redirecting to slideshow");

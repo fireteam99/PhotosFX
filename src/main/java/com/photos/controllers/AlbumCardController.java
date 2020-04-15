@@ -1,6 +1,7 @@
 package com.photos.controllers;
 
 import java.io.IOException;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 import com.photos.models.Album;
@@ -53,8 +54,14 @@ public class AlbumCardController {
     }
 
     @FXML
-    public void viewAlbum(ActionEvent event) throws IOException {
+    public void viewAlbum() throws IOException, BackingStoreException {
         System.out.println("viewing album");
+
+        // log this as the selected album in preferences
+        Preferences userPreferences = Preferences.userRoot();
+        userPreferences.put("selectedAlbum", album.getId());
+        userPreferences.flush();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/albumDetails.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) vBox.getScene().getWindow();
@@ -79,8 +86,13 @@ public class AlbumCardController {
         this.album = album;
         albumName.setText(album.getName());
         System.out.println("setting to album: " + album.getName());
+
         setImageViewOnClick(e -> {
-            System.out.println("redirecting to album detials");
+            try {
+                viewAlbum();
+            } catch (IOException | BackingStoreException ex) {
+                ex.printStackTrace();
+            }
         });
     }
 
