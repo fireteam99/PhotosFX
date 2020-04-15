@@ -85,6 +85,13 @@ public class AlbumList implements Serializable {
         }
         Album album = filtered.get(0);
         album.setName(name);
+
+        // enforce that album names are unique per user
+        List<Album> dupFiltered = albumList.stream().filter(a -> a.getName().equals(album.getName()) && a.getUser().equals(album.getUser())).collect(Collectors.toList());
+        if (!dupFiltered.isEmpty()) {
+            throw new IllegalArgumentException("Album name must be unique per user.");
+        }
+
         serialize();
     }
 

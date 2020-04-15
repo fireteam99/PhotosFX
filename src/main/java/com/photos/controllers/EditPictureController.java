@@ -291,8 +291,19 @@ public class EditPictureController {
     public void exitScreen() throws IOException {
         switch (prevScreen) {
             case SLIDESHOW: {
-                // TODO: make it navigate to slideshow
-                navigateHome();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/slideshow.fxml"));
+                Parent root = loader.load();
+                Stage stage = (Stage) mainStackPane.getScene().getWindow();
+                Scene scene = CreateScene.createNormalScene(root);
+                stage.setScene(scene);
+                stage.show();
+                SlideshowController slideshowController = loader.getController();
+                if (picture.getId() == null) {
+                    slideshowController.setPicture(null);
+                } else {
+                    slideshowController.setPicture(new PictureList().getPicture(picture.getId()));
+
+                }
                 break;
             }
             case ALBUM_DETAILS: {

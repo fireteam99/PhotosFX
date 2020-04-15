@@ -3,6 +3,10 @@ package com.photos.models;
 import javafx.scene.image.Image;
 import java.io.File;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.*;
 
 /**
@@ -19,6 +23,10 @@ public class Picture implements Serializable {
     private Map<String, String> tags;
     private File file;
 
+    public static Picture deepCopy(Picture picture) {
+        return new Picture(picture.getAlbum(), picture.getName(), picture.getCaption(), picture.getTags(), picture.getFile());
+    }
+
     /**
      * Picture class constructor - each picture has a unique id
      * @param album String (name of album to which this Picture object belongs)
@@ -30,9 +38,21 @@ public class Picture implements Serializable {
         date = new Date(file.lastModified());
         name = file.getName();
         // sets default caption to the file's name plus the file's date
-        caption = file.getName() + ' ' + date.toString();
+        LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        String formattedDate = localDateTime.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(Locale.getDefault()));
+        caption = String.format("%s taken on %s", file.getName(), formattedDate);
         tags = new HashMap<>();
         this.file = file;
+    }
+
+    public Picture(String album, String name, String caption, Map<String, String> tags, File file) {
+        id = UUID.randomUUID().toString();
+        this.album = album;
+        this.name = name;
+        this.caption = caption;
+        this.tags = tags;
+        this.file = file;
+        date = new Date(file.lastModified());
     }
 
     /**
