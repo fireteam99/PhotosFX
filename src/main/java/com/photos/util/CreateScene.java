@@ -26,4 +26,10 @@ public class CreateScene {
         scene.setFill(Color.TRANSPARENT);
         return scene;
     }
+
+    public static Scene createComboBoxModalScene(Parent root) {
+        Scene scene =  new Scene(root, 600, 420);
+        scene.setFill(Color.TRANSPARENT);
+        return scene;
+    }
 }

@@ -1,6 +1,7 @@
 package com.photos.controllers;
 
 import com.photos.models.Album;
+import com.photos.models.AlbumList;
 import com.photos.models.Picture;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.stage.Window;
 
 import java.io.*;
 import java.util.List;
+import java.util.prefs.Preferences;
 
 public class AlbumDetailsController implements Serializable{
     private Album album;
@@ -35,7 +37,13 @@ public class AlbumDetailsController implements Serializable{
     }
 
     public void setAlbum(Album album) throws IOException {
-        this.album = album;
+        if (album == null) {
+            Preferences userPreferences = Preferences.userRoot();
+            String selectedAlbumId = userPreferences.get("selectedAlbum", "");
+            this.album = new AlbumList().getAlbum(selectedAlbumId);
+        } else {
+            this.album = album;
+        }
         refreshPictureFlowPane();
     }
 

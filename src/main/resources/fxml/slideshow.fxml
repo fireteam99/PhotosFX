@@ -32,30 +32,42 @@
                     <VBox alignment="CENTER" minWidth="0" spacing="10">
                         <VBox alignment="CENTER">
                             <Label fx:id="name" text="Image Name" styleClass="image-name"/>
-                            <VBox alignment="CENTER">
-                                <HBox alignment="CENTER_RIGHT" maxWidth="${imageView.fitWidth}">
-                                    <MenuButton styleClass="btn-min, drop-down">
-                                        <graphic>
-                                            <ImageView fitHeight="30" preserveRatio="true" styleClass="icon">
-                                                <image>
-                                                    <Image url="/images/more_horiz_dark.png"/>
-                                                </image>
-                                            </ImageView>
-                                        </graphic>
-                                        <items>
-                                            <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit"/>
-                                            <MenuItem fx:id="copy" styleClass="drop-down-item" text="Copy"/>
-<!--                                            <MenuItem fx:id="move" styleClass="drop-down-item" text="Move"/>-->
-<!--                                            <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete"/>-->
-                                        </items>
-                                    </MenuButton>
-                                </HBox>
+                            <VBox alignment="CENTER" maxWidth="700" prefWidth="${imageView.fitWidth}">
+                                <BorderPane >
+                                    <right>
+                                        <HBox fx:id="menuButtonContainer" alignment="CENTER_RIGHT">
+                                            <MenuButton styleClass="btn-min, drop-down">
+                                                <graphic>
+                                                    <ImageView fitHeight="30" preserveRatio="true" styleClass="icon">
+                                                        <image>
+                                                            <Image url="/images/more_horiz_dark.png"/>
+                                                        </image>
+                                                    </ImageView>
+                                                </graphic>
+                                                <items>
+                                                    <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit" onAction="#editPicture" />
+                                                    <MenuItem fx:id="copy" styleClass="drop-down-item" text="Copy" onAction="#copyPicture" />
+                                                </items>
+                                            </MenuButton>
+                                        </HBox>
+                                    </right>
+                                    <left>
+                                        <HBox alignment="CENTER_LEFT">
+                                            <Label fx:id="currentPosition" styleClass="body-dark" />
+
+                                        </HBox>
+                                    </left>
+                                </BorderPane>
+
                                 <!-- Photo -->
-                                <ImageView fx:id="imageView" preserveRatio="true" fitWidth="700">
-                                    <image>
-                                        <Image url="/images/image-placeholder.jpg"/>
-                                    </image>
-                                </ImageView>
+                                <HBox fx:id="imageContainer" maxWidth="700" prefWidth="${imageView.fitWidth}" style="-fx-background-color: black" alignment="CENTER">
+                                    <ImageView fx:id="imageView" preserveRatio="true" fitWidth="700">
+                                        <image>
+                                            <Image url="/images/image-placeholder.jpg"/>
+                                        </image>
+                                    </ImageView>
+                                </HBox>
+
                             </VBox>
                         </VBox>
 
@@ -65,9 +77,9 @@
                                 <Label fx:id="date" text="Photo Date" styleClass="image-date"/>
                                 <Label fx:id="caption" text="Photo caption goes here..." styleClass="image-caption"/>
                             </VBox>
-                            <FlowPane alignment="CENTER_LEFT" hgap="15" vgap="18">
-                                <fx:include source="tag.fxml"/>
-                                <Button styleClass="btn-square">
+                            <FlowPane fx:id="flowPane" alignment="CENTER_LEFT" hgap="15" vgap="18">
+<!--                                <fx:include source="tag.fxml"/>-->
+                                <Button fx:id="addTagButton" styleClass="btn-square" onAction="#addTag">
                                     <graphic>
                                         <ImageView preserveRatio="true" fitWidth="25">
                                             <image>
@@ -123,11 +135,11 @@
         <top>
             <BorderPane>
                 <right>
-                    <Button fx:id="closeButton" styleClass="btn-min, btn-close">
+                    <Button fx:id="closeButton" styleClass="btn-min, btn-close" onAction="#exit">
                         <graphic>
                             <ImageView fitWidth="35" fitHeight="35">
                                 <image>
-                                    <Image url="/images/close_dark.png" preserveRatio="true"/>
+                                    <Image url="/images/close_dark.png" preserveRatio="true" />
                                 </image>
                             </ImageView>
                         </graphic>

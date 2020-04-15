@@ -1,5 +1,6 @@
 package com.photos;
 import com.photos.models.UserList;
+import com.photos.util.CreateScene;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,13 +58,24 @@ public class Main extends Application {
 //        primaryStage.setMinWidth(600);
 //        primaryStage.setMinHeight(500);
 
+        // combo box modal
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/comboBoxModal.fxml"));
+//        primaryStage.setTitle("Photos21");
+//        primaryStage.initStyle(StageStyle.TRANSPARENT);
+//        primaryStage.setScene(CreateScene.createComboBoxModalScene(root));
+//        primaryStage.getScene().setFill(Color.TRANSPARENT);
+//        primaryStage.show();
+//        primaryStage.setMinWidth(600);
+//        primaryStage.setMinHeight(420);
+
+
         // clears all preferences for a clean start
         Preferences userPreferences = Preferences.userRoot();
         userPreferences.clear();
 
         // to skip login for testing
-        userPreferences.put("sessionUser", "3f8b91d0-5cf5-41d5-8b3e-0c9bf66cd995");
-        userPreferences.flush();
+//        userPreferences.put("sessionUser", "06b9f17a-7433-4803-b08d-138326c4b47f");
+//        userPreferences.flush();
 
         //testing and debugging -- IGNORE
         UserList sess = new UserList();
