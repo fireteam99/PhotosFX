@@ -6,18 +6,28 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+/**
+ * AlbumList class: stores a master list of Albums across users. Any changes or deletions
+ * are serialized.
+ * @author Robert Cheng, Ray Sy
+ */
 public class AlbumList implements Serializable {
     static final long serialVersionUID = 1L;
 
     private List<Album> albumList = new ArrayList<Album>();
     public final String dataFile = "src/main/resources/persist/serializedAlbums.ser";
 
-    //serialize list of albums
+    /**serialize list of albums
+     * @throws IOException
+     */
     public void serialize() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dataFile));
         oos.writeObject(albumList);
     }
 
+    /**
+     * AlbumList init method - deserializes and gets the latest albumList
+     */
     private void init() {
         try {
             FileInputStream fileIn = new FileInputStream(dataFile);
@@ -31,6 +41,11 @@ public class AlbumList implements Serializable {
         }
     }
 
+    /**
+     * addAlbum adds a new Album object to a user's collection
+     * @param album Album
+     * @throws IOException
+     */
     public void addAlbum(Album album) throws IOException {
         init();
         // enforce that album names are unique per user
@@ -42,6 +57,11 @@ public class AlbumList implements Serializable {
         serialize();
     }
 
+    /**
+     * gets the Album object with the specified id
+     * @param id String
+     * @return Album
+     */
     public Album getAlbum(String id) {
         init();
         List<Album> filtered = albumList.stream().filter(a -> a.getId().equals(id)).collect(Collectors.toList());
@@ -51,7 +71,12 @@ public class AlbumList implements Serializable {
         return filtered.get(0);
     }
 
-
+    /**
+     * editAlbum updates a specified Album object with the given String
+     * @param id String
+     * @param name String (the new name)
+     * @throws IOException
+     */
     public void editAlbum(String id, String name) throws IOException {
         init();
         List<Album> filtered = albumList.stream().filter(a -> a.getId().equals(id)).collect(Collectors.toList());
@@ -63,6 +88,11 @@ public class AlbumList implements Serializable {
         serialize();
     }
 
+    /**
+     * deleteAlbum deletes the specified Album
+     * @param id String
+     * @throws IOException
+     */
     public void deleteAlbum(String id) throws IOException {
         init();
         List<Album> filtered = albumList.stream().filter(a -> a.getId().equals(id)).collect(Collectors.toList());
@@ -73,6 +103,10 @@ public class AlbumList implements Serializable {
         serialize();
     }
 
+    /**
+     * getAlbums gets the master albumList
+     * @return List
+     */
     public List<Album> getAlbums() {
         init();
         return albumList;
