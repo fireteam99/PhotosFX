@@ -25,6 +25,10 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.prefs.Preferences;
 
+/**
+ * EditPictureController class: allows changes to be made to an individual picture object
+ * @author Robert Cheng, Ray Say
+ */
 public class EditPictureController {
     private Picture picture;
 
@@ -73,6 +77,10 @@ public class EditPictureController {
     @FXML
     Button addButton;
 
+    /**
+     * saves the changes made to a Picture object
+     * @throws IOException
+     */
     @FXML
     public void saveChanges() throws IOException {
         PictureList pictureList = new PictureList();
@@ -81,13 +89,19 @@ public class EditPictureController {
         exitScreen();
     }
 
+    /**
+     * cancel editing a Picture
+     * @throws IOException
+     */
     @FXML
     public void cancel() throws IOException {
         System.out.println("Cancel");
         exitScreen();
     }
 
-
+    /**
+     * edit a file (path to image)
+     */
     @FXML
     public void editFile() {
         Stage stage = (Stage) mainStackPane.getScene().getWindow();
@@ -104,6 +118,10 @@ public class EditPictureController {
         }
     }
 
+    /**
+     * sets up the edit picture screen
+     * @throws IOException
+     */
     public void initialize() throws IOException {
         // deals with sidebar blocking actions
         mainStackPane.setPickOnBounds(false);
@@ -113,6 +131,11 @@ public class EditPictureController {
         prevScreen = ScreenHistory.HOME;
     }
 
+    /**
+     * sets the picture object
+     * @param picture Picture
+     * @throws IOException
+     */
     public void setPicture(Picture picture) throws IOException {
         this.picture = picture;
         this.tags = picture.getTags();
@@ -129,10 +152,18 @@ public class EditPictureController {
         filePath.setText(picture.getFile().getPath());
     }
 
+    /**
+     * sets the previous screen
+     * @param screenHistory ScreenHistory
+     */
     public void setPrevScreen(ScreenHistory screenHistory) {
         prevScreen = screenHistory;
     }
 
+    /**
+     * gets the latest tags for a Picture object after changes are made
+     * @throws IOException
+     */
     public void refreshTags() throws IOException {
         // clear the flow pane of all tags
         flowPane.getChildren().clear();
@@ -209,6 +240,10 @@ public class EditPictureController {
         flowPane.getChildren().add(addButton);
     }
 
+    /**
+     * adds tag(s) to a Picture object
+     * @throws IOException
+     */
     @FXML
     public void addTag() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/doubleInputModal.fxml"));
@@ -249,6 +284,10 @@ public class EditPictureController {
         });
     }
 
+    /**
+     * exits the edit picture module
+     * @throws IOException
+     */
     public void exitScreen() throws IOException {
         switch (prevScreen) {
             case SLIDESHOW: {
@@ -282,6 +321,10 @@ public class EditPictureController {
         }
     }
 
+    /**
+     * takes user back to the home page
+     * @throws IOException
+     */
     private void navigateHome() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
         Parent root = loader.load();
