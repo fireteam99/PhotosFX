@@ -27,12 +27,12 @@
                     <ScrollPane fitToWidth="true" styleClass="background">
                         <content>
                             <FlowPane fx:id="albumFlowPane" styleClass="flowpane" hgap="30" vgap="30">
-                                <fx:include source="albumCard.fxml" />
-                                <fx:include source="albumCard.fxml" />
-                                <fx:include source="albumCard.fxml" />
-                                <fx:include source="albumCard.fxml" />
-                                <fx:include source="albumCard.fxml" />
-                                <fx:include source="albumCard.fxml" />
+<!--                                <fx:include source="albumCard.fxml" />-->
+<!--                                <fx:include source="albumCard.fxml" />-->
+<!--                                <fx:include source="albumCard.fxml" />-->
+<!--                                <fx:include source="albumCard.fxml" />-->
+<!--                                <fx:include source="albumCard.fxml" />-->
+<!--                                <fx:include source="albumCard.fxml" />-->
                             </FlowPane>
                         </content>
                     </ScrollPane>

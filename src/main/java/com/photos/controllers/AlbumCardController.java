@@ -1,14 +1,19 @@
 package com.photos.controllers;
 
 import java.io.IOException;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 import com.photos.models.Album;
 import com.photos.models.User;
 import com.photos.models.UserList;
+import com.photos.util.CreateScene;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -16,16 +21,21 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class AlbumCardController {
-    private static String user;
+    private Album album;
 
     @FXML
     private MenuButton myMenuBar;
 
     @FXML
     private Label albumName;
+
+    @FXML
+    private VBox vBox;
 
     @FXML
     private MenuItem view;
@@ -39,73 +49,53 @@ public class AlbumCardController {
     @FXML
     private ImageView imageView;
 
-    public void initialize(){
-
+    private void setImageViewOnClick(EventHandler<MouseEvent> e) {
+        imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, e);
     }
+
     @FXML
-    public void viewAlbum(ActionEvent event) throws IOException {
+    public void viewAlbum() throws IOException, BackingStoreException {
+        System.out.println("viewing album");
+
+        // log this as the selected album in preferences
+        Preferences userPreferences = Preferences.userRoot();
+        userPreferences.put("selectedAlbum", album.getId());
+        userPreferences.flush();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/albumDetails.fxml"));
         Parent root = loader.load();
-
-//        CurrentUser c = new CurrentUser();
-//        this.user = c.getCurrentUser();
-        Preferences userPreferences = Preferences.userRoot();
-        String str = userPreferences.get("sessionUser", "");
-        //System.out.println("POOP: " + str);
-        //System.out.println("Check 5: " + str);
-        this.user = str;
+        Stage stage = (Stage) vBox.getScene().getWindow();
+        Scene scene = CreateScene.createNormalScene(root);
+        stage.setScene(scene);
         AlbumDetailsController adc = loader.getController();
-        //System.out.println("USERNAME (AlbumCard): " + user);
-
-        Stage stage = (Stage) myMenuBar.getScene().getWindow();
-        Scene scene = new Scene(root, 750, 500);
-        stage.setScene(scene);
+        adc.setAlbum(album);
         stage.show();
     }
 
     @FXML
-    public void editAlbum(ActionEvent actionEvent) throws IOException {
-        if (!(albumName.getText().equals(null))) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editAlbum.fxml"));
-
-            //----send album name and user to the editAlbumController----//
-            Preferences userPreferences = Preferences.userRoot();
-            String str = userPreferences.get("sessionUser", "");
-            this.user = str;
-            System.out.println("User edit button: " + user);
-            System.out.println("User album name: " + albumName.getText());
-            //null error bc album name does not exist yet***
-            EditAlbumController eactr = loader.getController();
-            eactr.currUser(user, albumName.getText());
-
-            Parent root = loader.load();
-            Stage stage = (Stage) myMenuBar.getScene().getWindow();
-            Scene scene = new Scene(root, 750, 500);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else {
-            System.out.println("well shit");
-        }
+    public void editAlbum() throws IOException {
+        System.out.println("editing album");
     }
 
     @FXML
-    public void deleteAlbum(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/confirmationModal.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) myMenuBar.getScene().getWindow();
-        Scene scene = new Scene(root, 750, 500);
-        stage.setScene(scene);
-        stage.show();
+    public void deleteAlbum() throws IOException {
+        System.out.println("deleting album");
     }
 
-    public void setAlbumName(String s) {
-        albumName.setText(s);
+    public void setAlbum(Album album) {
+        this.album = album;
+        albumName.setText(album.getName());
+        System.out.println("setting to album: " + album.getName());
+
+        setImageViewOnClick(e -> {
+            try {
+                viewAlbum();
+            } catch (IOException | BackingStoreException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
-    public void setThumbnail(Image i) {
-        imageView.setImage(i);
-    }
 
 //    public void setCurrentUser(String str){
 //        //System.out.println("Check 1: " + str);

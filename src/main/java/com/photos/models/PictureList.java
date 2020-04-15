@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * Any changes to the pictureList are serialized.
  * @author Robert Cheng, Ray Sy
  */
-public class PictureList {
+public class PictureList implements Serializable {
     static final long serialVersionUID = 1L;
 
     private List<Picture> pictureList = new ArrayList<Picture>();

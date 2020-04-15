@@ -2,13 +2,15 @@ package com.photos.models;
 
 import javafx.scene.image.Image;
 import java.io.File;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Picture class: used to make Picture objects
  * @author Robert Cheng, Ray Say
  */
-public class Picture {
+
+public class Picture implements Serializable {
     private String id;
     private String album;
     private String name;

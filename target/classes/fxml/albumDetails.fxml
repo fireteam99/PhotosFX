@@ -25,14 +25,14 @@
                     <!--Content goes here-->
                     <ScrollPane fitToWidth="true" styleClass="background">
                         <content>
-                            <FlowPane styleClass="flowpane" hgap="30" vgap="30">
-                                <fx:include source="photoCard.fxml" />
-                                <fx:include source="photoCard.fxml" />
-                                <fx:include source="photoCard.fxml" />
-                                <fx:include source="photoCard.fxml" />
-                                <fx:include source="photoCard.fxml" />
-                                <fx:include source="photoCard.fxml" />
-                                <fx:include source="photoCard.fxml" />
+                            <FlowPane fx:id="pictureFlowPane" styleClass="flowpane" hgap="30" vgap="30">
+<!--                                <fx:include source="photoCard.fxml" />-->
+<!--                                <fx:include source="photoCard.fxml" />-->
+<!--                                <fx:include source="photoCard.fxml" />-->
+<!--                                <fx:include source="photoCard.fxml" />-->
+<!--                                <fx:include source="photoCard.fxml" />-->
+<!--                                <fx:include source="photoCard.fxml" />-->
+<!--                                <fx:include source="photoCard.fxml" />-->
                             </FlowPane>
                         </content>
                     </ScrollPane>

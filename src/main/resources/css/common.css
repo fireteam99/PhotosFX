@@ -252,6 +252,7 @@
 }
 
 .drop-down-item {
+    -fx-font-weight: normal;
     -fx-fill: #40464E;
 }
 

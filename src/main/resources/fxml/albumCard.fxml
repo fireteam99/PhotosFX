@@ -19,7 +19,7 @@
         <BorderPane minWidth="${vBox.width}" maxWidth="${vBox.width}" prefWidth="${vBox.width}">
             <left>
                 <VBox alignment="CENTER_LEFT">
-                    <Label fx:id="albumName" styleClass="subheader-light, album-title" text="Album Name" />
+                    <Label fx:id="albumName" styleClass="body-light, album-title" text="Album Name" />
                 </VBox>
             </left>
             <right>
@@ -41,7 +41,7 @@
         </BorderPane>
         <ImageView fx:id="imageView" fitWidth="${vBox.width}" fitHeight="${vBox.width * 0.6}">
             <image>
-                <Image url="/images/stock/image-placeholder.jpg" preserveRatio="true" />
+                <Image url="/images/image-placeholder.jpg" preserveRatio="true" />
             </image>
         </ImageView>
     </children>

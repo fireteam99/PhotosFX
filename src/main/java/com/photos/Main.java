@@ -8,6 +8,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.prefs.Preferences;
+
 public class Main extends Application {
 
     @Override
@@ -55,8 +57,13 @@ public class Main extends Application {
 //        primaryStage.setMinWidth(600);
 //        primaryStage.setMinHeight(500);
 
+        // clears all preferences for a clean start
+        Preferences userPreferences = Preferences.userRoot();
+        userPreferences.clear();
 
-
+        // to skip login for testing
+//        userPreferences.put("sessionUser", "3f8b91d0-5cf5-41d5-8b3e-0c9bf66cd995");
+//        userPreferences.flush();
 
         //testing and debugging -- IGNORE
         UserList sess = new UserList();

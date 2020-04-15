@@ -31,11 +31,11 @@
                         </ImageView>
                     </graphic>
                     <items>
-                        <MenuItem fx:id="view" styleClass="drop-down-item" text="View"/>
-                        <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit"/>
-                        <MenuItem fx:id="copy" styleClass="drop-down-item" text="Copy"/>
-                        <MenuItem fx:id="move" styleClass="drop-down-item" text="Move"/>
-                        <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete"/>
+                        <MenuItem fx:id="view" styleClass="drop-down-item" text="View" onAction="#viewPicture" />
+                        <MenuItem fx:id="edit" styleClass="drop-down-item" text="Edit" onAction="#editPicture" />
+                        <MenuItem fx:id="copy" styleClass="drop-down-item" text="Copy" onAction="#copyPicture" />
+                        <MenuItem fx:id="move" styleClass="drop-down-item" text="Move" onAction="#movePicture" />
+                        <MenuItem fx:id="delete" styleClass="drop-down-item" text="Delete" onAction="#deletePicture" />
                     </items>
                 </MenuButton>
             </right>
@@ -43,7 +43,7 @@
         <VBox spacing="10">
             <ImageView fx:id="imageView" fitWidth="${vBox.width}" fitHeight="${vBox.width * 0.6}">
                 <image>
-                    <Image url="/images/stock/image-placeholder.jpg" preserveRatio="true"/>
+                    <Image url="/images/image-placeholder.jpg" preserveRatio="true"/>
                 </image>
             </ImageView>
             <VBox maxHeight="50" prefHeight="35" minHeight="35">

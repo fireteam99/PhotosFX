@@ -43,7 +43,7 @@
                                 <!-- Photo -->
                                 <ImageView fx:id="image" preserveRatio="true" fitWidth="700">
                                     <image>
-                                        <Image url="/images/stock/image-placeholder.jpg"/>
+                                        <Image url="/images/image-placeholder.jpg"/>
                                     </image>
                                 </ImageView>
                             </VBox>

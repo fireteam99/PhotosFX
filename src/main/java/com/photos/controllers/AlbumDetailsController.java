@@ -1,20 +1,26 @@
 package com.photos.controllers;
 
+import com.photos.models.Album;
 import com.photos.models.Picture;
 import com.photos.models.User;
 import com.photos.models.UserList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.prefs.Preferences;
 
 public class AlbumDetailsController implements Serializable{
+    private Album album;
     @FXML
     protected HeaderController headerController;
 
@@ -24,9 +30,37 @@ public class AlbumDetailsController implements Serializable{
     @FXML
     private Button addNewPhotoButton;
 
+    @FXML
+    private FlowPane pictureFlowPane;
+
     public void initialize() {
         headerController.setTitle("Album Name Goes Here");
         headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
+    }
+
+    public void setAlbum(Album album) throws IOException {
+        this.album = album;
+        refreshPictureFlowPane();
+    }
+
+    public void refreshPictureFlowPane() throws IOException {
+        // remove all children from flow pane
+        pictureFlowPane.getChildren().clear();
+
+        // get list of pictures
+        List<Picture> pictures = album.getPictures();
+        System.out.println(pictures.toString());
+
+        for (Picture picture: pictures) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/photoCard.fxml"));
+            Parent root = loader.load();
+            PhotoCardController pcc = loader.getController();
+            pcc.setPicture(picture);
+
+            // add the album card to flowpane
+            pictureFlowPane.getChildren().add(root);
+        }
+
     }
 
     @FXML

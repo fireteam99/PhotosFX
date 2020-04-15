@@ -1,4 +1,5 @@
 .album-title {
     -fx-font-size: 14pt;
     -fx-padding: 0;
+    -fx-font-weight: normal;
 }

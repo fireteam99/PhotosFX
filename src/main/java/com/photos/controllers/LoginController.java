@@ -2,6 +2,7 @@ package com.photos.controllers;
 
 import com.photos.models.User;
 import com.photos.models.UserList;
+import com.photos.util.CreateScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +49,7 @@ public class LoginController {
                 Parent root = loader.load();
                 Node n = (Node) event.getSource();
                 Stage stage = (Stage) n.getScene().getWindow();
-                Scene scene = new Scene(root, 1110, 750);
+                Scene scene = CreateScene.createNormalScene(root);
                 stage.setScene(scene);
                 stage.show();
             } else {
@@ -61,6 +62,8 @@ public class LoginController {
                 Preferences userPreferences = Preferences.userRoot();
                 userPreferences.put("sessionUser", user.getId());
                 userPreferences.flush();
+
+                System.out.println(user.getId());
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/home.fxml"));
                 Parent root = loader.load();
