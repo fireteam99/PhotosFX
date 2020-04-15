@@ -13,6 +13,11 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
+/**
+ * SingleInputModalController class is used to create modals that require a
+ * single line of input.
+ * @author Robert Cheng, Ray Sy
+ */
 public class SingleInputModalController {
     @FXML
     private Button closeButton;
@@ -35,26 +40,44 @@ public class SingleInputModalController {
     @FXML
     private Button cancelButton;
 
+    /**
+     * close the modal
+     */
     @FXML
     public void closeModal() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * sets the title of the modal
+     * @param title String
+     */
     public void setTitleText(String title) {
         modalTitle.setText(title);
     }
 
+    /**
+     * sets the message of the modal
+     * @param message String
+     */
     public void setMessageText(String message) {
         modalMessage.setText(message);
     }
 
-
+    /**
+     * sets the visibility of the message
+     * @param b Boolean
+     */
     public void setMessageVisibility(boolean b) {
         modalMessage.setVisible(b);
         modalMessage.setManaged(b);
     }
 
+    /**
+     * sets the style of the message
+     * @param textStyle TextStyle
+     */
     public void setMessageStyle(TextStyle textStyle) {
         switch (textStyle) {
             case DANGER: {
@@ -67,26 +90,56 @@ public class SingleInputModalController {
         }
     }
 
+    /**
+     * sets the input label text
+     * @param s String
+     */
     public void setInputLabelText(String s) {
         inputLabel.setText(s);
     }
 
+    /**
+     * gets the input label text
+     * @return String
+     */
     public String getInputLabelText() {
         return inputLabel.getText().trim();
     }
 
+    /**
+     * sets the input prompt text
+     * @param s String
+     */
     public void setInputPromptText(String s) {
         input.setPromptText(s);
     }
 
+    /**
+     * gets the user input text
+     * @return String
+     */
+    public String getInputText(){ return input.getText().trim();}
+
+    /**
+     * sets the text of the confirmation button
+     * @param s String
+     */
     public void setConfirmButtonText(String s) {
         confirmButton.setText(s);
     }
 
+    /**
+     * sets the action of the confirmation button
+     * @param e EventHandler<ActionEvent>
+     */
     public void setConfirmButtonAction(EventHandler<ActionEvent> e) {
         confirmButton.setOnAction(e);
     }
 
+    /**
+     * sets the style of the confirmation button
+     * @param buttonStyle
+     */
     public void setConfirmButtonStyle(ButtonStyle buttonStyle) {
         switch (buttonStyle) {
             case CONFIRM: {

@@ -4,6 +4,9 @@ import com.photos.models.Album;
 import com.photos.models.AlbumList;
 import com.photos.models.User;
 import com.photos.models.UserList;
+import com.photos.util.ButtonStyle;
+import com.photos.util.CreateScene;
+import com.photos.util.CreateStage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,9 +24,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.prefs.Preferences;
 
+/**
+ * HomeController class: loads in all albums for the current user
+ * @author Robert Cheng
+ */
 public class HomeController {
-    private String user;
-
     @FXML
     private FlowPane albumFlowPane;
 
@@ -37,11 +42,12 @@ public class HomeController {
     private Button createAlbumButton;
 
     @FXML
-    protected CreateAlbumController createAlbumController;
-
-    @FXML
     protected SingleInputModalController singleInputModalController;
 
+    /**
+     * initialize function sets up header and sidebar buttons
+     * @throws IOException
+     */
     public void initialize() throws IOException {
         headerController.setTitle("Home");
         headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
@@ -49,6 +55,10 @@ public class HomeController {
         refreshAlbumFlowPane();
     }
 
+    /**
+     * refreshes the flow pane to reflect any changes to album cards
+     * @throws IOException
+     */
     public void refreshAlbumFlowPane() throws IOException {
         // remove all children from flow pane
         albumFlowPane.getChildren().clear();
@@ -80,17 +90,39 @@ public class HomeController {
 
     }
 
+    /**
+     * allows user to create a new album
+     * @param event ActionEvent
+     * @throws IOException
+     */
     @FXML
     public void createAlbum(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/createAlbum.fxml"));
-        //----send user info to the createAlbumController----//
-//        CreateAlbumController c = new CreateAlbumController();
-//        c.currentUser(user);
+        System.out.println("Creating new album...");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/singleInputModal.fxml"));
         Parent root = loader.load();
-        Node n = (Node) event.getSource();
-        Stage stage = (Stage) n.getScene().getWindow();
-        Scene scene = new Scene(root, 750, 500);
-        stage.setScene(scene);
-        stage.show();
+        Stage modalStage = CreateStage.createModalStage();
+        modalStage.setScene(CreateScene.createDoubleInputModalScene(root));
+        modalStage.show();
+
+        SingleInputModalController simc = loader.getController();
+        simc.setTitleText("Create New Album");
+        simc.setMessageVisibility(false);
+        simc.setInputLabelText("Album Name");
+        simc.setConfirmButtonText("Add Album");
+        simc.setConfirmButtonStyle(ButtonStyle.CONFIRM);
+        simc.setConfirmButtonAction(e -> {
+            UserList ul = new UserList();
+            Preferences userPreferences = Preferences.userRoot();
+            String loggedInUserId = userPreferences.get("sessionUser", "");
+            Album a = new Album(simc.getInputText(), loggedInUserId);
+            try {
+                ul.getUser(loggedInUserId).addAlbum(a);
+                simc.closeModal();
+                refreshAlbumFlowPane();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                System.out.println("Unexpected Error: cannot add new album");
+            }
+        });
     }
 }
