@@ -28,6 +28,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AdminController class: loads the admin screen and displays all existing users
+ * @author Robert Cheng, Ray Sy
+ */
 public class AdminController {
     @FXML
     private VBox usersContainer;
@@ -38,6 +42,11 @@ public class AdminController {
     @FXML
     private Button logoutButton;
 
+    /**
+     * allows admin to create a new user
+     * @param event ActionEvent
+     * @throws IOException
+     */
     @FXML
     void adminCreateUser(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/doubleInputModal.fxml"));
@@ -80,17 +89,30 @@ public class AdminController {
         });
     }
 
+    /**
+     * logs out of the admin sub system
+     * @param event ActionEvent
+     * @throws IOException
+     */
     @FXML
     void logout(ActionEvent event) throws IOException{
         goBack(event);
     }
 
+    /**
+     * gets the latest userList
+     * @throws IOException
+     */
     public void initialize() throws IOException {
         UserList u = new UserList();
         List<User> users = u.getUsers();
         refreshUsersList();
     }
 
+    /**
+     * refreshes the userList that is to be displayed
+     * @throws IOException
+     */
     private void refreshUsersList() throws IOException {
         UserList userList = new UserList();
         // get updated list of users
@@ -193,6 +215,11 @@ public class AdminController {
         }
     }
 
+    /**
+     * helper method that allows admin to logout of admin sub system
+     * @param event ActionEvent
+     * @throws IOException
+     */
     private void goBack(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         Parent root = loader.load();

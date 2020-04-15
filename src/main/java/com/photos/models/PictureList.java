@@ -7,6 +7,11 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+/**
+ * PictureList class stores a collection of all pictures across users.
+ * Any changes to the pictureList are serialized.
+ * @author Robert Cheng, Ray Sy
+ */
 public class PictureList {
     static final long serialVersionUID = 1L;
 
@@ -14,11 +19,19 @@ public class PictureList {
     public final String dataFile = "src/main/resources/persist/serializedPictures.ser";
 
     //serialize list of pictures
+
+    /**
+     * serialize method serializes the master list of photos
+     * @throws IOException
+     */
     public void serialize() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dataFile));
         oos.writeObject(pictureList);
     }
 
+    /**
+     * PictureList init method - deserializes from .ser file, getting the latest version of pictureList
+     */
     private void init() {
         try {
             FileInputStream fileIn = new FileInputStream(dataFile);
@@ -32,12 +45,22 @@ public class PictureList {
         }
     }
 
+    /**
+     * addPicture adds a picture object to the pictureList
+     * @param picture
+     * @throws IOException
+     */
     public void addPicture(Picture picture) throws IOException {
         init();
         pictureList.add(picture);
         serialize();
     }
 
+    /**
+     * getPicture gets the picture object with the specified picture id
+     * @param id String
+     * @return Picture object
+     */
     public Picture getPicture(String id) {
         init();
         List<Picture> filtered = pictureList.stream().filter(p -> p.getId().equals(id)).collect(Collectors.toList());
@@ -47,6 +70,16 @@ public class PictureList {
         return filtered.get(0);
     }
 
+    /**
+     * editPicture method allows edits to be made to a picture object with the specified id
+     * @param id String
+     * @param album Album
+     * @param name String
+     * @param caption String
+     * @param tags Map
+     * @param file File
+     * @throws IOException
+     */
     public void editPicture(String id, String album, String name, String caption, Map<String, String> tags, File file) throws IOException {
         init();
         List<Picture> filtered = pictureList.stream().filter(p -> p.getId().equals(id)).collect(Collectors.toList());
@@ -62,6 +95,11 @@ public class PictureList {
         serialize();
     }
 
+    /**
+     * deletePicture deletes (from file) the Picture object with the specified id
+     * @param id String
+     * @throws IOException
+     */
     public void deletePicture(String id) throws IOException {
         init();
         List<Picture> filtered = pictureList.stream().filter(p -> p.getId().equals(id)).collect(Collectors.toList());
@@ -72,6 +110,10 @@ public class PictureList {
         serialize();
     }
 
+    /**
+     * getPictures returns the master pictureList
+     * @return List
+     */
     public List<Picture> getPictures() {
         init();
         return pictureList;
