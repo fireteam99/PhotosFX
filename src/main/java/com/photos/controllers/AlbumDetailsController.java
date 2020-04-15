@@ -2,8 +2,6 @@ package com.photos.controllers;
 
 import com.photos.models.Album;
 import com.photos.models.Picture;
-import com.photos.models.User;
-import com.photos.models.UserList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +13,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
 
 public class AlbumDetailsController implements Serializable{
     private Album album;
@@ -54,7 +50,7 @@ public class AlbumDetailsController implements Serializable{
         for (Picture picture: pictures) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/photoCard.fxml"));
             Parent root = loader.load();
-            PhotoCardController pcc = loader.getController();
+            PictureCardController pcc = loader.getController();
             pcc.setPicture(picture);
 
             // add the album card to flowpane

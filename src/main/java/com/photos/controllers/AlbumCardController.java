@@ -28,6 +28,8 @@ import javafx.stage.Stage;
 public class AlbumCardController {
     private Album album;
 
+    private HomeController homeController;
+
     @FXML
     private MenuButton myMenuBar;
 
@@ -94,6 +96,10 @@ public class AlbumCardController {
                 ex.printStackTrace();
             }
         });
+    }
+
+    public void setHomeController(HomeController homeController) {
+        this.homeController = homeController;
     }
 
 

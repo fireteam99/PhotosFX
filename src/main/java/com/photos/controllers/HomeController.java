@@ -50,7 +50,7 @@ public class HomeController {
     }
 
     public void refreshAlbumFlowPane() throws IOException {
-        // remove all children from flowpane
+        // remove all children from flow pane
         albumFlowPane.getChildren().clear();
 
         // get the logged in user via preferences
@@ -72,6 +72,7 @@ public class HomeController {
             Parent root = loader.load();
             AlbumCardController acc = loader.getController();
             acc.setAlbum(album);
+            acc.setHomeController(this);
 
             // add the album card to flowpane
             albumFlowPane.getChildren().add(root);
