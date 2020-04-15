@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class PhotoCardController {
+public class PictureCardController {
     private Picture picture;
 
     @FXML

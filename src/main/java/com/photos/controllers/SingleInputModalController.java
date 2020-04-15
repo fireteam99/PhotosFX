@@ -1,6 +1,7 @@
 package com.photos.controllers;
 
 import com.photos.util.ButtonStyle;
+import com.photos.util.TextStyle;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -48,17 +49,38 @@ public class SingleInputModalController {
         modalMessage.setText(message);
     }
 
+
     public void setMessageVisibility(boolean b) {
         modalMessage.setVisible(b);
         modalMessage.setManaged(b);
+    }
+
+    public void setMessageStyle(TextStyle textStyle) {
+        switch (textStyle) {
+            case DANGER: {
+                modalMessage.getStyleClass().add("text-danger");
+                break;
+            }
+            case NEUTRAL: {
+                modalMessage.getStyleClass().remove("text-danger");
+            }
+        }
     }
 
     public void setInputLabelText(String s) {
         inputLabel.setText(s);
     }
 
+    public String getInputLabelText() {
+        return inputLabel.getText().trim();
+    }
+
     public void setInputPromptText(String s) {
         input.setPromptText(s);
+    }
+
+    public void setConfirmButtonText(String s) {
+        confirmButton.setText(s);
     }
 
     public void setConfirmButtonAction(EventHandler<ActionEvent> e) {
