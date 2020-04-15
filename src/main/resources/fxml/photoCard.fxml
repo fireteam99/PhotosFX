@@ -43,7 +43,7 @@
         <VBox spacing="10">
             <ImageView fx:id="imageView" fitWidth="${vBox.width}" fitHeight="${vBox.width * 0.6}">
                 <image>
-                    <Image url="/images/stock/image-placeholder.jpg" preserveRatio="true"/>
+                    <Image url="/images/image-placeholder.jpg" preserveRatio="true"/>
                 </image>
             </ImageView>
             <VBox maxHeight="50" prefHeight="35" minHeight="35">

@@ -1,13 +1,22 @@
 package com.photos.controllers;
 
 import com.photos.models.Picture;
+import com.photos.util.CreateScene;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class PhotoCardController {
@@ -37,8 +46,17 @@ public class PhotoCardController {
     private Label caption;
 
     @FXML
-    public void viewPicture() {
+    public void viewPicture(ActionEvent event) throws IOException {
         System.out.println("viewing picture");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editPicture.fxml"));
+        Parent root = loader.load();
+        Node n = (Node) event.getSource();
+        Stage stage = (Stage) n.getScene().getWindow();
+        Scene scene = CreateScene.createNormalScene(root);
+        stage.setScene(scene);
+        EditPictureController epc = loader.getController();
+        epc.setPicture(picture);
+        stage.show();
     }
 
     @FXML
@@ -69,10 +87,15 @@ public class PhotoCardController {
     }
 
     public void setPicture(Picture picture) {
+        this.picture = picture;
         System.out.println("Setting picture to be: " + picture.getName());
         setImageViewOnClick(e -> {
             System.out.println("Redirecting to slideshow");
         });
+        imageView.setImage(new Image(picture.getFile().toURI().toString()));
+
+        System.out.println(picture.getFile().getPath());
+
     }
 
     public void setPhotoName(String s) {

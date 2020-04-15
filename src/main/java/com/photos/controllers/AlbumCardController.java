@@ -6,11 +6,13 @@ import java.util.prefs.Preferences;
 import com.photos.models.Album;
 import com.photos.models.User;
 import com.photos.models.UserList;
+import com.photos.util.CreateScene;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -19,6 +21,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class AlbumCardController {
@@ -29,6 +32,9 @@ public class AlbumCardController {
 
     @FXML
     private Label albumName;
+
+    @FXML
+    private VBox vBox;
 
     @FXML
     private MenuItem view;
@@ -47,8 +53,16 @@ public class AlbumCardController {
     }
 
     @FXML
-    public void viewAlbum() throws IOException {
+    public void viewAlbum(ActionEvent event) throws IOException {
         System.out.println("viewing album");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/albumDetails.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) vBox.getScene().getWindow();
+        Scene scene = CreateScene.createNormalScene(root);
+        stage.setScene(scene);
+        AlbumDetailsController adc = loader.getController();
+        adc.setAlbum(album);
+        stage.show();
     }
 
     @FXML
@@ -62,11 +76,12 @@ public class AlbumCardController {
     }
 
     public void setAlbum(Album album) {
+        this.album = album;
+        albumName.setText(album.getName());
         System.out.println("setting to album: " + album.getName());
         setImageViewOnClick(e -> {
             System.out.println("redirecting to album detials");
         });
-
     }
 
 

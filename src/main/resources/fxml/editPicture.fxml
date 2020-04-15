@@ -63,15 +63,15 @@
                                 </VBox>
                             </VBox>
                             <VBox spacing="8">
-                                <ImageView preserveRatio="true" fitWidth="450">
+                                <ImageView fx:id="imageView" preserveRatio="true" fitWidth="450">
                                     <image>
-                                        <Image url="/images/stock/image-placeholder.jpg" />
+                                        <Image url="/images/image-placeholder.jpg" />
                                     </image>
                                 </ImageView>
                                 <HBox alignment="CENTER" spacing="8">
                                     <Label text="File Path" styleClass="smallheader-light" />
-                                    <Label text="/some/filepath/image.jpg" styleClass="file-path" />
-                                    <Button styleClass="btn-min, btn-edit">
+                                    <Label fx:id="filePath" text="/some/filepath/image.jpg" styleClass="file-path" />
+                                    <Button fx:id="editFilePath" styleClass="btn-min, btn-edit">
                                         <graphic>
                                             <ImageView preserveRatio="true" fitWidth="20">
                                                 <image>

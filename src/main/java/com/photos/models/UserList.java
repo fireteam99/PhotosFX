@@ -143,7 +143,7 @@ public class UserList implements Serializable{
         if (!userExistsByUsername("stock")) {
             User stock = new User("stock", "stock");
             Album album = new Album("testAlbumStock", stock.getId());
-            Picture picture = new Picture(album.getId(), new File("src/main/resources/images/stock/image-placeholder.jpg"));
+            Picture picture = new Picture(album.getId(), new File("src/main/resources/images/stock/desert_night.png"));
             album.addPicture(picture);
             stock.addAlbum(album);
             addUser(stock);
