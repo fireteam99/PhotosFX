@@ -142,7 +142,12 @@ public class SlideshowController {
                     // TODO: make useful
                     ex.printStackTrace();
                 }
-
+                // refresh
+                try {
+                    refreshSlideshow();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
 
                 // close out of the modal
                 cbmc.closeModal();

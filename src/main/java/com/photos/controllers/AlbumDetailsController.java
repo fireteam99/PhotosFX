@@ -60,6 +60,7 @@ public class AlbumDetailsController implements Serializable{
             Parent root = loader.load();
             PictureCardController pcc = loader.getController();
             pcc.setPicture(picture);
+            pcc.setAlbumDetailsController(this);
 
             // add the album card to flowpane
             pictureFlowPane.getChildren().add(root);
