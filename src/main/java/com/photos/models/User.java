@@ -101,6 +101,10 @@ public class User implements Serializable{
         albumList.addAlbum(album);
     }
 
+    /**
+     * get the list of pictures
+     * @return List<Picture>
+     */
     public List<Picture> getPictures() {
         List<Album> albums = getAlbums();
         List<Picture> pictures = new ArrayList<>();
