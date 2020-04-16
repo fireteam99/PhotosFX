@@ -45,6 +45,12 @@ public class HeaderController {
         menuButton.setOnAction(e);
     }
 
+
+    /**
+     * moves the user to the search page
+     * @param event
+     * @throws IOException
+     */
     public void goToSearch(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/search.fxml"));
         Parent root = loader.load();

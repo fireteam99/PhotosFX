@@ -164,8 +164,4 @@ public class SingleInputModalController {
         }
     }
 
-    public void initialize() {
-
-    }
-
 }
