@@ -23,7 +23,10 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import java.util.stream.Collectors;
 
-
+/**
+ * PictureCardController class used to create PhotoCard objects for the album details
+ * @author Robert Cheng, Ray Sy
+ */
 public class PictureCardController {
     private Picture picture;
 
@@ -41,6 +44,11 @@ public class PictureCardController {
     @FXML
     private MenuItem view;
 
+    /**
+     * views a selected picture
+     * @throws IOException
+     * @throws BackingStoreException
+     */
     @FXML
     public void viewPicture() throws IOException, BackingStoreException {
         System.out.println("viewing picture");
@@ -63,6 +71,10 @@ public class PictureCardController {
     @FXML
     private MenuItem edit;
 
+    /**
+     * edits the selected picture
+     * @throws IOException
+     */
     @FXML
     public void editPicture() throws IOException {
         System.out.println("editing picture");
@@ -80,6 +92,10 @@ public class PictureCardController {
     @FXML
     private MenuItem copy;
 
+    /**
+     * copy picture
+     * @throws IOException
+     */
     @FXML
     public void copyPicture() throws IOException {
         // determine where to copy picture by using combo modal
@@ -159,6 +175,10 @@ public class PictureCardController {
     @FXML
     private MenuItem move;
 
+    /**
+     * moves selected picture
+     * @throws IOException
+     */
     @FXML
     public void movePicture() throws IOException {
         // determine where to copy picture by using combo modal
@@ -234,6 +254,9 @@ public class PictureCardController {
     @FXML
     private MenuItem delete;
 
+    /**
+     * deletes selected picture
+     */
     @FXML
     public void deletePicture() {
         // open up confirmation modal
@@ -270,6 +293,10 @@ public class PictureCardController {
     @FXML
     private Label caption;
 
+    /**
+     * helper method to set albumDetailsController
+     * @param albumDetailsController AlbumDetailsController
+     */
     public void setAlbumDetailsController(AlbumDetailsController albumDetailsController) {
         this.albumDetailsController = albumDetailsController;
     }
@@ -278,6 +305,10 @@ public class PictureCardController {
         imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, e);
     }
 
+    /**
+     * Sets the picture
+     * @param picture Picture
+     */
     public void setPicture(Picture picture) {
         this.picture = picture;
         photoName.setText(picture.getName());

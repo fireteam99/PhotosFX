@@ -195,17 +195,4 @@ public class AlbumCardController {
     }
 
 
-//    public void setCurrentUser(String str){
-//        //System.out.println("Check 1: " + str);
-//        UserList ul = new UserList();
-//        User u = ul.getUser(str);
-//        //System.out.println("Check 2: " + u.getUsername());
-//        this.user = u.getUsername();
-//        //System.out.println("Check 3: " + this.user);
-//    }
-//    public String getUser(){
-//        //System.out.println("Check 4: " + this.user);
-//        return this.user;
-//    }
-
 }

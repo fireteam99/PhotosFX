@@ -64,7 +64,14 @@ public class SidebarController {
      * @param actionEvent
      */
     @FXML
-    public void searchAlbum(ActionEvent actionEvent) {
+    public void searchAlbum(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/search.fxml"));
+        Parent root = loader.load();
+        Node n = (Node) actionEvent.getSource();
+        Stage stage=(Stage) n.getScene().getWindow();
+        Scene scene = new Scene(root, 1110, 750);
+        stage.setScene(scene);
+        stage.show();
     }
 
     private TranslateTransition showSidebar;

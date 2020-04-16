@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+/**
+ * LoginController class handles login
+ * @author Robert Cheng, Ray Sy
+ */
 public class LoginController {
     @FXML
     private Label message;
@@ -31,6 +35,12 @@ public class LoginController {
     @FXML
     private Button submitCredButton;
 
+    /**
+     * handles the username and password entered in by the user
+     * @param event ActionEvent
+     * @throws IOException
+     * @throws BackingStoreException
+     */
     @FXML
     void submitCredentials(ActionEvent event) throws IOException, BackingStoreException {
 
