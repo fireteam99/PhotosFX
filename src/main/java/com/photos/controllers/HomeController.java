@@ -7,6 +7,7 @@ import com.photos.models.UserList;
 import com.photos.util.ButtonStyle;
 import com.photos.util.CreateScene;
 import com.photos.util.CreateStage;
+import com.photos.util.TextStyle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,8 +22,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.prefs.Preferences;
+import java.util.stream.Collectors;
 
 /**
  * HomeController class: loads in all albums for the current user
@@ -76,8 +79,11 @@ public class HomeController {
         // get the albums that belong to the user
         List<Album> albums = user.getAlbums();
 
+        // sort albums by name
+        List<Album> sortedAlbums = albums.stream().sorted(Comparator.comparing(Album::getName)).collect(Collectors.toList());
+
         // generate an album card per album
-        for (Album album: albums) {
+        for (Album album: sortedAlbums) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/albumCard.fxml"));
             Parent root = loader.load();
             AlbumCardController acc = loader.getController();
@@ -119,9 +125,15 @@ public class HomeController {
                 ul.getUser(loggedInUserId).addAlbum(a);
                 simc.closeModal();
                 refreshAlbumFlowPane();
+            } catch (IllegalArgumentException ex) {
+                simc.setMessageVisibility(true);
+                simc.setMessageStyle(TextStyle.DANGER);
+                simc.setMessageText(ex.getMessage());
             } catch (IOException ex) {
                 ex.printStackTrace();
-                System.out.println("Unexpected Error: cannot add new album");
+                simc.setMessageVisibility(true);
+                simc.setMessageStyle(TextStyle.DANGER);
+                simc.setMessageText("Unexpected error, please try again.");
             }
         });
     }

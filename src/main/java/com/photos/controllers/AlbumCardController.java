@@ -1,13 +1,13 @@
 package com.photos.controllers;
 
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
+import java.util.stream.Collectors;
 
-import com.photos.models.Album;
-import com.photos.models.AlbumList;
-import com.photos.models.User;
-import com.photos.models.UserList;
+import com.photos.models.*;
 import com.photos.util.ButtonStyle;
 import com.photos.util.CreateScene;
 import com.photos.util.CreateStage;
@@ -110,6 +110,7 @@ public class AlbumCardController {
         simc.setInputLabelText("New Album Name");
         simc.setConfirmButtonText("Submit Edits");
         simc.setConfirmButtonStyle(ButtonStyle.CONFIRM);
+        simc.setInputText(album.getName());
         simc.setConfirmButtonAction(e -> {
             AlbumList aL = new AlbumList();
             try {
@@ -118,6 +119,10 @@ public class AlbumCardController {
                 //System.out.println("input text is: " + simc.getInputText());
                 simc.closeModal();
                 homeController.refreshAlbumFlowPane();
+            } catch (IllegalArgumentException ex) {
+                simc.setMessageVisibility(true);
+                simc.setMessageStyle(TextStyle.DANGER);
+                simc.setMessageText(ex.getMessage());
             } catch (IOException ex) {
                 ex.printStackTrace();
                 simc.setMessageVisibility(true);
@@ -163,7 +168,13 @@ public class AlbumCardController {
     public void setAlbum(Album album) {
         this.album = album;
         albumName.setText(album.getName());
-        System.out.println("setting to album: " + album.getName());
+
+        // set the image view to first image in album if availible
+        List<Picture> sortedPictures = album.getPictures().stream().sorted(Comparator.comparing(Picture::getName)).collect(Collectors.toList());
+        if (!sortedPictures.isEmpty()) {
+            Picture thumbnail = sortedPictures.get(0);
+            imageView.setImage(new Image(thumbnail.getFile().toURI().toString()));
+        }
 
         setImageViewOnClick(e -> {
             try {

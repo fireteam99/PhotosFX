@@ -79,18 +79,25 @@ public class AlbumList implements Serializable {
      */
     public void editAlbum(String id, String name) throws IOException {
         init();
+        // make sure album to edit exists
         List<Album> filtered = albumList.stream().filter(a -> a.getId().equals(id)).collect(Collectors.toList());
         if (filtered.isEmpty()) {
             throw new NoSuchElementException("Album does not exist.");
         }
         Album album = filtered.get(0);
-        album.setName(name);
+
+        // no nothing if the same
+        if (name.equals(album.getName())) {
+            return;
+        }
 
         // enforce that album names are unique per user
-        List<Album> dupFiltered = albumList.stream().filter(a -> a.getName().equals(album.getName()) && a.getUser().equals(album.getUser())).collect(Collectors.toList());
+        List<Album> dupFiltered = albumList.stream().filter(a -> a.getName().equals(name) && a.getUser().equals(album.getUser())).collect(Collectors.toList());
         if (!dupFiltered.isEmpty()) {
             throw new IllegalArgumentException("Album name must be unique per user.");
         }
+
+        album.setName(name);
 
         serialize();
     }
