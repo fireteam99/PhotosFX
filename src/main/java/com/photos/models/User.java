@@ -101,4 +101,13 @@ public class User implements Serializable{
         albumList.addAlbum(album);
     }
 
+    public List<Picture> getPictures() {
+        List<Album> albums = getAlbums();
+        List<Picture> pictures = new ArrayList<>();
+        for (Album album: albums) {
+            pictures.addAll(album.getPictures());
+        }
+        return pictures;
+    }
+
 }
