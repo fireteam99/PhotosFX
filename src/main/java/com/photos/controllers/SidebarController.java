@@ -1,5 +1,6 @@
 package com.photos.controllers;
 
+import com.photos.util.CreateScene;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,7 +70,7 @@ public class SidebarController {
         Parent root = loader.load();
         Node n = (Node) actionEvent.getSource();
         Stage stage=(Stage) n.getScene().getWindow();
-        Scene scene = new Scene(root, 1110, 750);
+        Scene scene = CreateScene.createNormalScene(root);
         stage.setScene(scene);
         stage.show();
     }

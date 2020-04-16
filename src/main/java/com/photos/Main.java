@@ -79,9 +79,11 @@ public class Main extends Application {
 //        userPreferences.put("sessionUser", "af1eaaea-27c3-43a9-9d9f-680cfeb9be32");
 //        userPreferences.flush();
 
+        UserList sess = new UserList();
+        sess.setUpUsers();
+
         //testing and debugging -- IGNORE
 //        UserList sess = new UserList();
-//        sess.setUpUsers();
 //        System.out.println("List of users...");
 //        sess.printUserList();
 

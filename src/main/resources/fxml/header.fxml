@@ -30,7 +30,7 @@
     </center>
     <right>
         <VBox alignment="CENTER">
-            <Button fx:id="searchButton" styleClass="btn-min">
+            <Button fx:id="searchButton" styleClass="btn-min" onAction="#goToSearch">
                 <graphic>
                     <ImageView fitHeight="40" fitWidth="40" styleClass="icon">
                         <image>
