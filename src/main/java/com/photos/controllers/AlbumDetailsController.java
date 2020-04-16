@@ -20,6 +20,10 @@ import java.util.List;
 import java.util.prefs.Preferences;
 import java.util.stream.Collectors;
 
+/**
+ * AlbumDetailsController gets the details about a selected Album object
+ * @author Robert Cheng, Ray Sy
+ */
 public class AlbumDetailsController implements Serializable{
     private Album album;
     @FXML
@@ -39,6 +43,11 @@ public class AlbumDetailsController implements Serializable{
         headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
     }
 
+    /**
+     * sets the album
+     * @param album Album
+     * @throws IOException
+     */
     public void setAlbum(Album album) throws IOException {
         if (album == null) {
             Preferences userPreferences = Preferences.userRoot();
@@ -52,6 +61,10 @@ public class AlbumDetailsController implements Serializable{
         refreshPictureFlowPane();
     }
 
+    /**
+     * refreshes the picture objects to reflect any recent changes
+     * @throws IOException
+     */
     public void refreshPictureFlowPane() throws IOException {
         // remove all children from flow pane
         pictureFlowPane.getChildren().clear();
@@ -76,6 +89,11 @@ public class AlbumDetailsController implements Serializable{
 
     }
 
+    /**
+     * add a new picture object to this album
+     * @param actionEvent ActionEvent
+     * @throws IOException
+     */
     @FXML
     public void addNewPhoto(ActionEvent actionEvent) throws IOException {
         Node source = (Node) actionEvent.getSource();
