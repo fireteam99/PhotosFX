@@ -107,7 +107,7 @@ public class HomeController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/singleInputModal.fxml"));
         Parent root = loader.load();
         Stage modalStage = CreateStage.createModalStage();
-        modalStage.setScene(CreateScene.createDoubleInputModalScene(root));
+        modalStage.setScene(CreateScene.createSingleInputModalScene(root));
         modalStage.show();
 
         SingleInputModalController simc = loader.getController();

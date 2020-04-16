@@ -95,6 +95,7 @@ public class SlideshowController {
         ComboBoxModalController cbmc = loader.getController();
         cbmc.setTitleText("Copy Picture");
         cbmc.setComboLabelText("Destination Album");
+        cbmc.setConfirmButtonText("Copy");
 
         // get a list of all the availible albums
         UserList userList = new UserList();

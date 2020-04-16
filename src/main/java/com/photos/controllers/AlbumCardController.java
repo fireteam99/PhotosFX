@@ -101,14 +101,14 @@ public class AlbumCardController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/singleInputModal.fxml"));
         Parent root = loader.load();
         Stage modalStage = CreateStage.createModalStage();
-        modalStage.setScene(CreateScene.createDoubleInputModalScene(root));
+        modalStage.setScene(CreateScene.createSingleInputModalScene(root));
         modalStage.show();
 
         SingleInputModalController simc = loader.getController();
         simc.setTitleText("Editing Album");
         simc.setMessageVisibility(false);
         simc.setInputLabelText("New Album Name");
-        simc.setConfirmButtonText("Submit Edits");
+        simc.setConfirmButtonText("Save");
         simc.setConfirmButtonStyle(ButtonStyle.CONFIRM);
         simc.setInputText(album.getName());
         simc.setConfirmButtonAction(e -> {
@@ -142,11 +142,12 @@ public class AlbumCardController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/confirmationModal.fxml"));
         Parent root = loader.load();
         Stage modalStage = CreateStage.createModalStage();
-        modalStage.setScene(CreateScene.createDoubleInputModalScene(root));
+        modalStage.setScene(CreateScene.createConfirmationModalScene(root));
         modalStage.show();
 
         ConfirmationModalController cmc = loader.getController();
-        cmc.setTitleText("Are you sure you want to delete this album?");
+        cmc.setTitleText("Delete Album");
+        cmc.setMessageText("Are you sure you want to delete this album?");
         cmc.setConfirmButtonStyle(ButtonStyle.DANGER);
         cmc.setConfirmButtonAction(e -> {
             AlbumList aL = new AlbumList();
