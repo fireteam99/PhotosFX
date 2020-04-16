@@ -26,6 +26,10 @@ import java.util.*;
 import java.util.prefs.Preferences;
 import java.util.stream.Collectors;
 
+/**
+ * SlideshowController class used for displaying the slideshow
+ * @author Robert Cheng, Ray Sy
+ */
 public class SlideshowController {
     private Picture picture;
 
@@ -42,6 +46,10 @@ public class SlideshowController {
     @FXML
     Button closeButton;
 
+    /**
+     * exits the slideshow
+     * @throws IOException
+     */
     @FXML
     public void exit() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/albumDetails.fxml"));
@@ -66,6 +74,10 @@ public class SlideshowController {
     @FXML
     MenuItem edit;
 
+    /**
+     * allows user to edit a picture from slideshow
+     * @throws IOException
+     */
     @FXML
     public void editPicture() throws IOException {
         // redirect to edit picture page
@@ -83,6 +95,10 @@ public class SlideshowController {
     @FXML
     MenuItem copy;
 
+    /**
+     * copy picture
+     * @throws IOException
+     */
     @FXML
     public void copyPicture() throws IOException {
         // determine where to copy picture by using combo modal
@@ -169,6 +185,10 @@ public class SlideshowController {
     @FXML
     Button moveLeft;
 
+    /**
+     * move to the left in slideshow
+     * @throws IOException
+     */
     @FXML
     public void moveLeftPicture() throws IOException {
         Preferences userPreferences = Preferences.userRoot();
@@ -179,6 +199,10 @@ public class SlideshowController {
     @FXML
     Button moveRight;
 
+    /**
+     * move to the right in slideshow
+     * @throws IOException
+     */
     @FXML public void moveRightPicture() throws IOException {
         Preferences userPreferences = Preferences.userRoot();
         userPreferences.put("selectedPicture", rightPicture.getId());
@@ -191,6 +215,10 @@ public class SlideshowController {
     @FXML
     Button addTagButton;
 
+    /**
+     * allows user to add a tag to a selected picture
+     * @throws IOException
+     */
     @FXML
     public void addTag() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/doubleInputModal.fxml"));
@@ -234,6 +262,11 @@ public class SlideshowController {
     }
 
 
+    /**
+     * setter method for the slideshow
+     * @param picture Picture
+     * @throws IOException
+     */
     public void setPicture(Picture picture) throws IOException {
         // if the picture is null grab it from preferences instead
         if (picture == null) {
@@ -246,6 +279,10 @@ public class SlideshowController {
         refreshSlideshow();
     }
 
+    /**
+     * refresh method for slideshow - reflects any changes made to the album
+     * @throws IOException
+     */
     public void refreshSlideshow() throws IOException {
         // if the picture is null get it through preferences
         Preferences userPreferences = Preferences.userRoot();
