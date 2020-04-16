@@ -29,6 +29,10 @@ import java.util.List;
 import java.util.prefs.Preferences;
 import java.util.stream.Collectors;
 
+/**
+ * SearchController used for the search function
+ * @author Robert Cheng, Ray Sy
+ */
 public class SearchController {
 
     private List<Picture> results;
@@ -51,6 +55,9 @@ public class SearchController {
     @FXML
     DatePicker endDatePicker;
 
+    /**
+     * clear the date search field
+     */
     @FXML
     public void clearDateSearch() {
         startDatePicker.setValue(null);
@@ -66,7 +73,10 @@ public class SearchController {
     @FXML
     Button createAlbumButton;
 
-
+    /**
+     * search by date function
+     * @throws IOException
+     */
     @FXML
     public void searchByDate() throws IOException {
         // get current user using preferences
@@ -117,6 +127,9 @@ public class SearchController {
         this.results.addAll(results);
     }
 
+    /**
+     * clear the results
+     */
     @FXML
     public void clearResults() {
         resultsFlowPane.getChildren().clear();
@@ -125,6 +138,10 @@ public class SearchController {
         results.clear();
     }
 
+    /**
+     * create a new album with the search results
+     * @throws IOException
+     */
     @FXML
     public void createAlbumWithResults() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/singleInputModal.fxml"));
