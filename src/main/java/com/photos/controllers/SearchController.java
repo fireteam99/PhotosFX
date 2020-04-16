@@ -6,74 +6,30 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 
 public class SearchController {
     @FXML
-    private ChoiceBox<?> selectTagsButton;
+    HeaderController headerController;
 
     @FXML
-    private TextField searchTagsField;
+    SidebarController sidebarController;
 
     @FXML
-    private Button clearTagButton;
+    HBox sidebarHBox;
 
     @FXML
-    private Button searchTagButton;
+    StackPane mainStackPane;
 
-    @FXML
-    private Button addStageButton;
-
-    @FXML
-    private ChoiceBox<?> selectStartDateButton;
-
-    @FXML
-    private ChoiceBox<?> selectEndDateButton;
-
-    @FXML
-    private Button clearSearchDateButton;
-
-    @FXML
-    private Button searchDateButton;
-
-    @FXML
-    void addTagStage(ActionEvent event) {
+    public void initialize() {
+        headerController.setTitle("Album Name");
+        headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
+        mainStackPane.setPickOnBounds(false);
+        sidebarHBox.setPickOnBounds(false);
 
     }
 
-    @FXML
-    void clearSearchDate(ActionEvent event) {
-
-    }
-
-    @FXML
-    void clearTags(ActionEvent event) {
-
-    }
-
-    @FXML
-    void searchDate(ActionEvent event) {
-
-    }
-
-    @FXML
-    void searchTags(ActionEvent event) {
-
-    }
-
-    @FXML
-    void selectEndDate(MouseEvent event) {
-
-    }
-
-    @FXML
-    void selectStartDate(MouseEvent event) {
-
-    }
-
-    @FXML
-    void selectTags(MouseEvent event) {
-
-    }
 
 
 }

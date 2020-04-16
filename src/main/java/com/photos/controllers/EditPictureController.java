@@ -109,6 +109,7 @@ public class EditPictureController {
             "Image Files", "*.jpg", "*.jpeg", "*.png", "*.gif");
 
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Please choose an image...");
         fileChooser.getExtensionFilters().add(imageFilter);
 
         file = fileChooser.showOpenDialog(stage);
