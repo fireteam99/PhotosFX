@@ -21,6 +21,8 @@ public class Main extends Application {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/albumDetails.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/editPicture.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/search.fxml"));
+
 
         primaryStage.setTitle("Photos21");
         primaryStage.setScene(new Scene(root, 1110, 750));

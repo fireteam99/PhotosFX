@@ -324,12 +324,14 @@ public class SlideshowController {
             imageDetailsContainer.setVisible(true);
             imageDetailsContainer.setManaged(true);
 
+            List<Picture> sortedPictures = pictures.stream().sorted(Comparator.comparing(Picture::getName)).collect(Collectors.toList());
+
             // find the current position based on the image specified
-            for (int i = 0; i < pictures.size(); i++) {
-                if (pictures.get(i).getId().equals(picture.getId())) {
+            for (int i = 0; i < sortedPictures.size(); i++) {
+                if (sortedPictures.get(i).getId().equals(picture.getId())) {
                     position = i;
                     break;
-                } else if (i == pictures.size() - 1) {
+                } else if (i == sortedPictures.size() - 1) {
                     throw new IllegalStateException("Picture is not in album...?");
                 }
             }
@@ -465,16 +467,16 @@ public class SlideshowController {
 
             // set the left picture
             if (position == 0) { // wrap around
-                leftPicture = pictures.get(pictures.size() - 1);
+                leftPicture = sortedPictures.get(sortedPictures.size() - 1);
             } else {
-                leftPicture = pictures.get(position - 1);
+                leftPicture = sortedPictures.get(position - 1);
             }
 
             // set the right picture
-            if (position == pictures.size() - 1) { // wrap around
-                rightPicture = pictures.get(0);
+            if (position == sortedPictures.size() - 1) { // wrap around
+                rightPicture = sortedPictures.get(0);
             } else {
-                rightPicture = pictures.get(position + 1);
+                rightPicture = sortedPictures.get(position + 1);
             }
 
         }

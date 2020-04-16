@@ -3,6 +3,7 @@ package com.photos.controllers;
 import com.photos.models.Album;
 import com.photos.models.AlbumList;
 import com.photos.models.Picture;
+import com.photos.models.PictureList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,7 +35,7 @@ public class AlbumDetailsController implements Serializable{
     private FlowPane pictureFlowPane;
 
     public void initialize() {
-        headerController.setTitle("Album Name Goes Here");
+        headerController.setTitle("Album Name");
         headerController.setMenuButtonAction(e -> sidebarController.toggleVisibility());
     }
 
@@ -46,6 +47,8 @@ public class AlbumDetailsController implements Serializable{
         } else {
             this.album = album;
         }
+
+        headerController.setTitle(album.getName());
         refreshPictureFlowPane();
     }
 
@@ -75,14 +78,23 @@ public class AlbumDetailsController implements Serializable{
 
     @FXML
     public void addNewPhoto(ActionEvent actionEvent) throws IOException {
-        //this.saveFile = deserialize(); //make sure to get latest file of user photo paths
         Node source = (Node) actionEvent.getSource();
         Window currStage = source.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter(
+            "Image Files", "*.jpg", "*.jpeg", "*.png", "*.gif");
+        fileChooser.getExtensionFilters().add(imageFilter);
         fileChooser.setTitle("Please choose an image...");
+
         File photoPath = fileChooser.showOpenDialog(currStage);
 
-        System.out.println("Chose file: " + photoPath.toString());
+        if (photoPath != null) {
+            // create a new photo and and save it if they chose something
+            album.addPicture(new Picture(album.getId(), photoPath));
+
+            refreshPictureFlowPane();
+        }
+
     }
 
 }
