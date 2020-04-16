@@ -14,8 +14,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import java.io.*;
+import java.util.Comparator;
 import java.util.List;
 import java.util.prefs.Preferences;
+import java.util.stream.Collectors;
 
 public class AlbumDetailsController implements Serializable{
     private Album album;
@@ -55,11 +57,15 @@ public class AlbumDetailsController implements Serializable{
         List<Picture> pictures = album.getPictures();
         System.out.println(pictures.toString());
 
-        for (Picture picture: pictures) {
+        // sort pictures by name
+        List<Picture> sortedPictures = pictures.stream().sorted(Comparator.comparing(Picture::getName)).collect(Collectors.toList());
+
+        for (Picture picture: sortedPictures) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/photoCard.fxml"));
             Parent root = loader.load();
             PictureCardController pcc = loader.getController();
             pcc.setPicture(picture);
+            pcc.setAlbumDetailsController(this);
 
             // add the album card to flowpane
             pictureFlowPane.getChildren().add(root);

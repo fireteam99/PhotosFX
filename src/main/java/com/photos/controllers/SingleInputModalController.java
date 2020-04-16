@@ -90,6 +90,10 @@ public class SingleInputModalController {
         }
     }
 
+    public void setInputText(String s) {
+        input.setText(s);
+    }
+
     /**
      * sets the input label text
      * @param s String

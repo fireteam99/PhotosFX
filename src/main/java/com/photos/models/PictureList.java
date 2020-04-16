@@ -106,6 +106,17 @@ public class PictureList implements Serializable {
         serialize();
     }
 
+    public void editPictureAlbum(String id, String album) throws IOException {
+        init();
+        List<Picture> filtered = pictureList.stream().filter(p -> p.getId().equals(id)).collect(Collectors.toList());
+        if (filtered.isEmpty()) {
+            throw new NoSuchElementException("Picture does not exist.");
+        }
+        Picture picture = filtered.get(0);
+        picture.setAlbum(album);
+        serialize();
+    }
+
     /**
      * deletePicture deletes (from file) the Picture object with the specified id
      * @param id String

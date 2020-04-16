@@ -111,6 +111,7 @@ public class SlideshowController {
         ComboBoxModalController cbmc = loader.getController();
         cbmc.setTitleText("Copy Picture");
         cbmc.setComboLabelText("Destination Album");
+        cbmc.setConfirmButtonText("Copy");
 
         // get a list of all the availible albums
         UserList userList = new UserList();
@@ -158,7 +159,12 @@ public class SlideshowController {
                     // TODO: make useful
                     ex.printStackTrace();
                 }
-
+                // refresh
+                try {
+                    refreshSlideshow();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
 
                 // close out of the modal
                 cbmc.closeModal();

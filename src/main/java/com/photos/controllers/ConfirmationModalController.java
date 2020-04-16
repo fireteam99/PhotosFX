@@ -63,6 +63,10 @@ public class ConfirmationModalController {
         confirmButton.setOnAction(e);
     }
 
+    public void setConfirmButtonText(String s) {
+        confirmButton.setText(s);
+    }
+
     /**
      * sets the style of the confirmation button
      * @param buttonStyle ButtonStyle
