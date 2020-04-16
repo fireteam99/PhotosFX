@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,6 +41,9 @@ public class PictureCardController {
 
     @FXML
     private MenuItem view;
+
+    @FXML
+    private MenuButton menuButton;
 
     @FXML
     public void viewPicture() throws IOException, BackingStoreException {
@@ -296,6 +300,10 @@ public class PictureCardController {
 
         System.out.println(picture.getFile().getPath());
 
+    }
+
+    public void setMenuButtonDisable(boolean b) {
+        menuButton.setDisable(b);
     }
 
     public void setViewDisable(boolean b) {

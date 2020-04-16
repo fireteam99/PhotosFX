@@ -9,7 +9,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.DatePicker?>
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.photos.controllers.SearchController" fx:id="borderPane">
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.FlowPane?>
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.photos.controllers.SearchController" fx:id="borderPane"
+            stylesheets="/css/common.css">
     <top>
         <HBox alignment="CENTER" prefWidth="${borderPane.width}" maxWidth="${borderPane.width}"
               minWidth="${borderPane.width}">
@@ -22,19 +27,45 @@
                 <StackPane alignment="BOTTOM_RIGHT">
                     <!--Content goes here-->
                     <ScrollPane fitToWidth="true" styleClass="background">
-                        <VBox>
-                            <VBox>
-                                <HBox>
-                                    <DatePicker />
-                                    <DatePicker />
-                                </HBox>
-                            </VBox>
-                            <VBox>
-                                <HBox>
+                        <content>
+                            <VBox alignment="CENTER" spacing="40">
+                                <padding>
+                                    <Insets top="40"/>
+                                </padding>
+                                <VBox alignment="CENTER" spacing="10">
+                                    <Label styleClass="smallheader-light" text="Search By Date"/>
+                                    <VBox styleClass="card" alignment="CENTER" maxWidth="800" spacing="20">
+                                        <HBox alignment="CENTER" spacing="30">
+                                            <VBox>
+                                                <Label text="Start Date" styleClass="body-light" />
+                                                <DatePicker fx:id="startDatePicker"/>
+                                            </VBox>
+                                            <VBox>
+                                                <Label text="End Date" styleClass="body-light" />
+                                                <DatePicker fx:id="endDatePicker"/>
+                                            </VBox>
+                                        </HBox>
+                                        <HBox alignment="CENTER" spacing="10">
+                                            <Button styleClass="btn-danger" text="Clear" onAction="#clearDateSearch"/>
+                                            <Button styleClass="btn-confirm" text="Search" onAction="#searchByDate"/>
+                                        </HBox>
+                                    </VBox>
+                                </VBox>
+                                <VBox>
+                                    <HBox>
+                                    </HBox>
+                                </VBox>
+                                <VBox alignment="CENTER" spacing="20">
+                                    <HBox alignment="CENTER" spacing="10">
+                                        <Button fx:id="clearResultsButton" styleClass="btn-danger" text="Clear" onAction="#clearResults" visible="false"/>
+                                        <Button fx:id="createAlbumButton" styleClass="btn-confirm" text="Create Album With Results" onAction="#createAlbumWithResults" visible="false"/>
+                                    </HBox>
+                                    <FlowPane fx:id="resultsFlowPane" styleClass="flowpane" hgap="30" vgap="30" alignment="CENTER">
 
-                                </HBox>
+                                    </FlowPane>
+                                </VBox>
                             </VBox>
-                        </VBox>
+                        </content>
                     </ScrollPane>
                 </StackPane>
                 <HBox fx:id="sidebarHBox" alignment="CENTER_LEFT" maxWidth="200">

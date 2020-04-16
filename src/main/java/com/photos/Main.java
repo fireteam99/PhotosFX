@@ -76,14 +76,14 @@ public class Main extends Application {
         userPreferences.clear();
 
         // to skip login for testing
-//        userPreferences.put("sessionUser", "f2003b47-0a2d-4af0-b4dc-9ee3666bcc64");
+//        userPreferences.put("sessionUser", "af1eaaea-27c3-43a9-9d9f-680cfeb9be32");
 //        userPreferences.flush();
 
         //testing and debugging -- IGNORE
-        UserList sess = new UserList();
-        sess.setUpUsers();
-        System.out.println("List of users...");
-        sess.printUserList();
+//        UserList sess = new UserList();
+//        sess.setUpUsers();
+//        System.out.println("List of users...");
+//        sess.printUserList();
 
     }
 

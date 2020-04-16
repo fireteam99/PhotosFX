@@ -22,7 +22,7 @@
                 </VBox>
             </left>
             <right>
-                <MenuButton styleClass="btn-min, drop-down">
+                <MenuButton styleClass="btn-min, drop-down" fx:id="menuButton">
                     <graphic>
                         <ImageView fitHeight="30" fitWidth="30" styleClass="icon">
                             <image>
