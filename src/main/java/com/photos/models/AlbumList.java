@@ -1,6 +1,6 @@
 package com.photos.models;
 
-import java.io.*;
+import  java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -103,7 +103,7 @@ public class AlbumList implements Serializable {
     }
 
     /**
-     * deleteAlbum deletes the specified Album
+     * deleteAlbum deletes the specified Album along with any pictures belonging to the album
      * @param id String
      * @throws IOException
      */
@@ -113,8 +113,16 @@ public class AlbumList implements Serializable {
         if (filtered.isEmpty()) {
             throw new NoSuchElementException("The album to delete does not exist.");
         }
-        albumList = albumList.stream().filter(p -> !p.getId().equals(id)).collect(Collectors.toList());
+        // delete the album
+        albumList = albumList.stream().filter(a -> !a.getId().equals(id)).collect(Collectors.toList());
         serialize();
+        // delete pictures associated with album
+        PictureList pictureList = new PictureList();
+        try {
+            pictureList.deletePicturesByAlbum(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -190,9 +190,12 @@ public class UserList implements Serializable{
      */
     public void setUpUsers() throws IOException {
         init();
+        // useful to reset the stock album
+//        User oldStock = getUserByUsername("stock");
+//        deleteUser(oldStock.getId());
         if (!userExistsByUsername("stock")) {
             User stock = new User("stock", "stock");
-            Album album = new Album("testAlbumStock", stock.getId());
+            Album album = new Album("Wallpapers", stock.getId());
 
             // add all photos in data directory
             File dataFolder = new File("data");

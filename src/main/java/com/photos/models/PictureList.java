@@ -132,6 +132,12 @@ public class PictureList implements Serializable {
         serialize();
     }
 
+    public void deletePicturesByAlbum(String albumId) throws  IOException {
+        init();
+        pictureList = pictureList.stream().filter(p -> !p.getAlbum().equals(albumId)).collect(Collectors.toList());
+        serialize();
+    }
+
     /**
      * getPictures returns the master pictureList
      * @return List
