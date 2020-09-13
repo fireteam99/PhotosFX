@@ -1,6 +1,6 @@
 # PhotosFX
 ## Description
-This was the third project for CS213 Software Methodology at Rutgers University. The goal was to create a photo album application using JavaFX.
+This was the third project for CS213 Software Methodology at Rutgers University. The goal was to create a photo album application using JavaFX. Created by Ray Sy and Robert Cheng.
 
 ## Features
 * Clean & responsive UI
