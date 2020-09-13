@@ -13,6 +13,10 @@ This was the third project for CS213 Software Methodology at Rutgers University.
 * Data persistence using serialization
 
 ## Local Setup
+1. Clone the repository locally
+2. Import the repository as a maven project
+3. Make sure you are using atleast Java 13
+4. Make sure that JavaFX is configured properly
 
 ## Gallery
 Login Screen
